@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jared Gross">
+    <meta name="description" content="A comprehensive web page for accessing the K-8 Manitoba Social Studies Curriculum.">
+    <meta name="keywords"
+        content="gradiance, education, grading, content, platform, curriki, wiki, curriculum, math, mathematics, science, ela, social studies, physics, chemistry, biology">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/static/icons/curriki.png">
+    <title>K-8 Manitoba Social Studies Curriculum</title>
+</head>
+
+
+<header class="fixed no-padding">
+    <nav class="primary left-padding right-padding">
+        <button class="circle transparent " onclick='window.location.href="/curriki.html"'>
+            <i class="mdi mdi-arrow-left"></i>
+        </button>
+        <h5 class="max small">K-8 Manitoba Social Studies Curriculum</h5>
+        <button class="circle transparent" id="theme-toggle">
+            <i id="theme-icon">dark_mode</i>
+        </button>
+    </nav>
+    <div id="tabs-container">
+        <div class="tabs scroll" id="tabs">
+            <a class="active" data-ui="#grade_0">
+                <span>Kindergarten</span>
+            </a>
+            <a data-ui="#grade_1">
+                <span>Grade 1</span>
+            </a>
+            <a data-ui="#grade_2">
+                <span>Grade 2</span>
+            </a>
+            <a data-ui="#grade_3">
+                <span>Grade 3</span>
+            </a>
+            <a data-ui="#grade_4">
+                <span>Grade 4</span>
+            </a>
+            <a data-ui="#grade_5">
+                <span>Grade 5</span>
+            </a>
+            <a data-ui="#grade_6">
+                <span>Grade 6</span>
+            </a>
+            <a data-ui="#grade_7">
+                <span>Grade 7</span>
+            </a>
+            <a data-ui="#grade_8">
+                <span>Grade 8</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<body class="math-light">
+    <main class="responsive">
+        <div class="snackbar primary" id="copy-outcome-snackbar">
+            <span>Outcome copied to clipboard</span>
+        </div>
+        <div class=grid>
+            <div class="s12 m12 l7">
+                <div class="field label prefix border">
+                    <i>search</i>
+                    <input type="text" id="search">
+                    <label>Search</label>
+                    <span class="helper">You can search by the outcomes' ID and specific or general learning
+                        outcomes.</span>
+                </div>
+                <br>
+                <h6>Learning outcomes</h6>
+                <label class="checkbox">
+                    <input type="checkbox" id="always-open-outcome">
+                    <span>Always open outcome</span>
+                </label>
+                <div class="grid tiny-padding scroll small-round tiny-space" id="content">
+
+                </div>
+            </div>
+            <div class="s12 m12 l5">
+                <h6 class="top-padding">Choose clusters</h6>
+                <div class="padding" style="max-height: 250px; overflow-y: auto;" id="clusters-container"></div>
+                <hr>
+                <h6 class="top-padding">Choose general outcomes</h6>
+                <div class="padding" style="max-height: 250px; overflow-y: auto;" id="general-outcomes-container"></div>
+                <hr>
+                <h6 class="top-padding">Choose outcome types</h6>
+                <div class="padding" style="max-height: 250px; overflow-y: auto;" id="outcome-types-container"></div>
+                <hr>
+                <h6 class="top-padding">Choose skill types</h6>
+                <div class="padding" style="max-height: 250px; overflow-y: auto;" id="skill-types-container"></div>
+                <hr>
+                <h6 class="top-padding">Choose distinctive learning outcomes</h6>
+                <div class="padding" style="max-height: 250px; overflow-y: auto;" id="distinctive-learning-container"></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<!-- Skills Dialogs from Curriculum -->
+
+<dialog class="right medium-width" id="C-dialog">
+    <div class="row no-padding no-margin">
+        <i>chat</i>
+        <h5 class="max">Communication [C]</h5>
+    </div>
+    <p>
+        Students are expected to use communication in order to learn and express their understanding.
+    </p>
+    <p>
+        Students need opportunities to read about, represent, view, write about, listen to, and discuss mathematical
+        ideas. These opportunities allow students to create links among their own language and ideas, the language and
+        ideas of others, and the formal language and symbols of mathematics.
+    </p>
+    <p>
+        Communication is important in clarifying, reinforcing, and modifying ideas, attitudes, and beliefs about
+        mathematics. Students should be encouraged to use a variety of forms of communication while learning
+        mathematics. Students also need to communicate their learning using mathematical terminology.
+    </p>
+    <p>
+        Communication can play a significant role in helping students make connections among concrete, pictorial,
+        graphical, symbolic, verbal, written, and mental representations of mathematical ideas. Explanation of ideas
+        should use the various representations as appropriate.
+    </p>
+    <p>
+        Emerging technologies enable students to engage in communication beyond the traditional classroom to gather data
+        and share mathematical ideas.
+    </p>
+    <div class="right-align">
+        <button class="transparent link small-round" onclick="ui('#C-dialog')">
+            <span>Close</span>
+        </button>
+    </div>
+</dialog>
+
+<dialog class="right medium-width" id="CN-dialog">
+    <div class="row no-padding no-margin">
+        <i>link</i>
+        <h5 class="max">Connection [CN]</h5>
+    </div>
+    <p>
+        Students are expected to make connections among mathematical ideas, other concepts in mathematics, everyday
+        experiences, and other disciplines.
+    </p>
+    <p>
+        Contextualization and making connections to the experiences of learners are powerful processes in developing
+        mathematical understanding. When mathematical ideas are connected to each other or to real- world phenomena,
+        students begin to view mathematics as useful, relevant, and integrated.
+    </p>
+    <p>
+        Learning mathematics within contexts and making connections
+        relevant to learners can validate past experiences and increase student willingness to participate and be
+        actively engaged.
+    </p>
+    <p>
+        The brain is constantly looking for and making connections. “Because the learner is constantly searching for
+        connections on many levels, educators need to orchestrate the experiences from which learners extract
+        understanding…Brain research establishes and confirms that multiple complex and concrete experiences are
+        essential for meaningful learning and teaching” (Caine and Caine 5).
+    </p>
+    <div class="right-align">
+        <button class="transparent link small-round" onclick="ui('#CN-dialog')">
+            <span>Close</span>
+        </button>
+    </div>
+</dialog>
+
+<dialog class="right medium-width" id="ME-dialog">
+    <div class="row no-padding no-margin">
+        <i>calculate</i>
+        <h5 class="max">Mental Mathematics and Estimation [ME]</h5>
+    </div>
+    <p>
+        Students are expected to demonstrate fluency with mental mathematics and estimation.
+    </p>
+    <p>
+        Mental mathematics and estimation is a combination of cognitive strategies that enhance flexible thinking and
+        number sense. It involves using strategies to perform mental calculations.
+    </p>
+    <p>
+        Mental mathematics enables students to determine answers without paper and pencil. It improves computational
+        fluency by developing efficiency, accuracy, and flexibility in reasoning and calculating.
+    </p>
+    <p>
+        “Even more important than performing computational procedures or using calculators is the greater facility that
+        students need—more than ever before— with estimation and mental math” (National Council of Teachers of
+        Mathematics, May 2005).
+    </p>
+    <p>
+        Students proficient with mental mathematics “become liberated from calculator dependence, build confidence in
+        doing mathematics, become more flexible thinkers and are more able to use multiple approaches to problem
+        solving” (Rubenstein 442).
+    </p>
+    <p>
+        Mental mathematics “provides a cornerstone for all estimation processes, offering a variety of alternative
+        algorithms and nonstandard techniques for finding answers” (Hope v).
+    </p>
+    <p>
+        Estimation is used for determining approximate values or quantities, usually by referring to benchmarks or
+        referents, or for determining the reasonableness of calculated values. Estimation is also used to make
+        mathematical judgments and to develop useful, efficient strategies for dealing with situations in daily life.
+        When estimating, students need to learn which strategy to use and how to use it.
+    </p>
+    <p>
+        To help students become efficient with computational fluency, students need to develop mental math skills and
+        recall math facts automatically. Learning math facts is a developmental process where the focus of instruction
+        is on thinking and building number relationships. Facts become automatic for students through repeated exposure
+        and practice. When a student recalls facts, the answer should be produced without resorting to inefficient
+        means, such as counting. When facts are automatic, students are no longer using strategies to retrieve them from
+        memory.
+    </p>
+    <div class="right-align">
+        <button class="transparent link small-round" onclick="ui('#ME-dialog')">
+            <span>Close</span>
+        </button>
+    </div>
+</dialog>
+
+<dialog class="right medium-width" id="PS-dialog">
+    <div class="row no-padding no-margin">
+        <i>lightbulb</i>
+        <h5 class="max">Problem Solving [PS]</h5>
+    </div>
+    <p>
+        Students are expected to develop and apply new mathematical knowledge through problem solving.
+    </p>
+    <p>
+        ”Problem solving is an integral part of all mathematics learning” (NCTM, Problem Solving). Learning through
+        problem solving should be the focus of mathematics at all grade levels. Students develop a true understanding of
+        mathematical concepts and procedures when they solve problems in meaningful contexts. Problem solving is to be
+        employed throughout all of mathematics and should be embedded throughout all the topics.
+    </p>
+    <p>
+        When students encounter new situations and respond to questions of the type, How would you...? or How could
+        you..?, the problem-solving approach is being modelled. Students develop their own problem-solving strategies by
+        listening to, discussing, and trying different strategies.
+    </p>
+    <p>
+        In order for an activity to be based on problem solving, it must ask students to determine a way to get from
+        what is known to what is sought. If students have already been given ways to solve the problem, it is not a
+        problem, but practice. Students should not know the answer immediately. A true problem requires students to use
+        prior knowledge in new ways and contexts. Problem solving requires and builds depth of conceptual understanding
+        and student engagement. Students will be engaged if the problems relate to their lives, cultures, interests,
+        families, or current events.
+    </p>
+    <p>
+        Both conceptual understanding and student engagement are fundamental in moulding students’ willingness to
+        persevere in future problem-solving tasks.
+    </p>
+    <p>
+        Problems are not just simple computations embedded in a story, nor are they contrived. They are tasks that are
+        rich and open-ended, so there may be more than one way of arriving at a solution or there may be multiple
+        answers. Good problems should allow for every student in the class to demonstrate their knowledge, skill, or
+        understanding. Problem solving can vary from being an individual activity to a class (or beyond) undertaking.
+    </p>
+    <p>
+        In a mathematics class, there are two distinct types of problem solving: solving contextual problems outside of
+        mathematics and solving mathematical problems. Finding the maximum profit given manufacturing constraints is an
+        example of a contextual problem, while seeking and developing a general formula to solve a quadratic equation is
+        an example of a mathematical problem.
+    </p>
+    <p>
+        Problem solving can also be considered in terms of engaging students in both inductive and deductive reasoning
+        strategies. As students make sense of the problem, they will be creating conjectures and looking for patterns
+        that they may be able to generalize. This part of the problem-solving process often involves inductive
+        reasoning. As students use approaches to solving the problem they often move into mathematical reasoning that is
+        deductive in nature. It is crucial that students be encouraged to engage in both types of reasoning and be given
+        the opportunity to consider the approaches and strategies used by others in solving similar problems.
+    </p>
+    <p>
+        Problem solving is a powerful teaching tool that fosters multiple creative and innovative solutions. Creating an
+        environment where students openly look for, and engage in, finding a variety of strategies for solving problems
+        empowers students to explore alternatives and develops confident, cognitive mathematical risk-takers.
+    </p>
+    <div class="right-align">
+        <button class="transparent link small-round" onclick="ui('#PS-dialog')">
+            <span>Close</span>
+        </button>
+    </div>
+</dialog>
+
+<dialog class="right medium-width" id="R-dialog">
+    <div class="row no-padding no-margin">
+        <i>psychology</i>
+        <h5 class="max">Reasoning [R]</h5>
+    </div>
+    <p>
+        Students are expected to develop mathematical reasoning.
+    </p>
+    <p>
+        Mathematical reasoning helps students think logically and make sense of mathematics. Students need to develop
+        confidence in their abilities to reason and justify their mathematical thinking. Questions that challenge
+        students to think, analyze, and synthesize help them develop an understanding of mathematics. All students need
+        to be challenged to answer questions such as “Why do you believe that’s true/correct?” or “What
+        would happen if…?”.
+    </p>
+    <p>
+        Mathematical experiences provide opportunities for students to engage in inductive and deductive reasoning.
+        Students use inductive reasoning when they explore and record results, analyze observations, make
+        generalizations from patterns, and test these generalizations. Students use deductive reasoning when they reach
+        new conclusions based upon the application of what is already known or assumed to be true. The thinking skills
+        developed by focusing on reasoning can be used in daily life in a wide variety of contexts and disciplines.
+    </p>
+    <p>
+        When explaining ideas, students should be encouraged to use concrete, pictorial, symbolic, graphical, verbal,
+        and written representations of their mathematical ideas.
+    </p>
+    <div class="right-align">
+        <button class="transparent link small-round" onclick="ui('#R-dialog')">
+            <span>Close</span>
+        </button>
+    </div>
+</dialog>
+
+<dialog class="right medium-width" id="T-dialog">
+    <div class="row no-padding no-margin">
+        <i>devices</i>
+        <h5 class="max">Technology [T]</h5>
+    </div>
+    <p>
+        Students are expected to select and use technology as a tool for learning and solving problems.
+    </p>
+    <p>
+        Technology can be used effectively to contribute to and support the learning of a wide range of mathematical
+        learning outcomes. Technology enables students to explore and create patterns, examine relationships, test
+        conjectures, and solve problems. Students in Grades 9 to 12 are expected to have consistent access to technology
+        for their mathematics courses.
+    </p>
+    <p>
+        Technology has the potential to enhance the teaching and learning of mathematics. It can be used to
+        <li>
+            explore and demonstrate mathematical relationships and patterns
+        </li>
+        <li>
+            organize and display data
+        </li>
+        <li>
+            generate and test inductive conjectures
+        </li>
+        <li>
+            extrapolate and interpolate
+        </li>
+        <li>
+            assist with calculation procedures as part of solving problems
+        </li>
+        <li>
+            increase the focus on conceptual understanding by decreasing the time spent on repetitive procedures
+        </li>
+        <li>
+            reinforce the learning of basic facts
+        </li>
+        <li>
+            develop personal procedures for mathematical operations
+        </li>
+        <li>
+            model situations
+        </li>
+        <li>
+            develop number and spatial sense
+        </li>
+        <li>
+            create geometric figures
+        </li>
+    </p>
+    <p>
+        Technology contributes to a learning environment in which the curiosity of students can lead to rich
+        mathematical discoveries at all grade levels.
+    </p>
+    <p>
+        Students need to know when it is appropriate to use technology such as a calculator and when to apply their
+        mental computation, reasoning, and estimation skills to predict and check answers. The use of technology can
+        enhance, although it should not replace, conceptual
+        understanding, procedural thinking, and problem solving.
+    </p>
+    <div class="right-align">
+        <button class="transparent link small-round" onclick="ui('#T-dialog')">
+            <span>Close</span>
+        </button>
+    </div>
+</dialog>
+
+<dialog class="right medium-width" id="V-dialog">
+    <div class="row no-padding no-margin">
+        <i>visibility</i>
+        <h5 class="max">Visualization [V]</h5>
+    </div>
+    <p>
+        Students are expected to develop visualization skills to assist in processing information, making connections,
+        and solving problems.
+    </p>
+    <p>
+        Visualization “involves thinking in pictures and images, and the ability to perceive, transform and recreate
+        different aspects of the visual-spatial world” (Armstrong 10). The use of visualization in the study of
+        mathematics provides students with opportunities to understand mathematical concepts and make connections among
+        them.
+    </p>
+    <p>
+        Visual images and visual reasoning are important components of number, spatial, and measurement sense. Number
+        visualization occurs when students create mental representations of numbers.
+    </p>
+    <p>
+        Being able to create, interpret, and describe a visual representation is part of spatial sense and spatial
+        reasoning. Spatial visualization and spatial reasoning enable students to describe the relationships among and
+        between 3-D objects and 2-D shapes.
+    </p>
+    <p>
+        Measurement visualization goes beyond the acquisition of specific measurement skills. Measurement sense includes
+        the ability to determine when to measure and when to estimate and involves knowledge of several estimation
+        strategies (Shaw and Cliatt 150).
+    </p>
+    <p>
+        Visualization is fostered through the use of concrete materials, technology, and a variety of visual
+        representations. It is through visualization that abstract concepts can be understood concretely by the student.
+        Visualization is a foundation to the development of abstract understanding, confidence, and fluency.
+    </p>
+    <div class="right-align">
+        <button class="transparent link small-round" onclick="ui('#V-dialog')">
+            <span>Close</span>
+        </button>
+    </div>
+</dialog>
+
+</html>

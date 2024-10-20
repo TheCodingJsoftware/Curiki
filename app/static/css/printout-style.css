@@ -1,0 +1,71 @@
+html,
+body,
+div,
+article,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+span,
+a,
+button,
+input,
+textarea,
+select,
+details,
+details[open],
+summary,
+footer,
+nav {
+    transition: background-color 0.3s ease-in-out, color 0.1s ease;
+}
+
+
+::selection {
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
+::-moz-selection {
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
+details {
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    background-color: var(--primary);
+    padding: 5px;
+    border-radius: 0.45rem;
+    margin: 5px;
+}
+
+.page-break-inside{
+    page-break-inside: avoid !important;
+}
+
+@media print {
+    header{
+        display: none !important;
+    }
+    body{
+        background-color: white !important;
+        background: white !important;
+    }
+    .delete-row-button{
+        display: none !important;
+    }
+    #add-row-button{
+        display: none !important;
+    }
+    #add-curricular-outcome{
+        display: none !important;
+    }
+}

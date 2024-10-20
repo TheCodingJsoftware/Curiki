@@ -1,0 +1,1224 @@
+{
+    "units": {
+        "11": {
+            "1": "Wellness and Homeostasis",
+            "2": "Digestion and Nutrition",
+            "3": "Transportation and Respiration",
+            "4": "Excretion and Waste Management",
+            "5": "Protection and Control",
+            "6": "Wellness and Homeostatic Changes"
+        },
+        "12": {
+            "1": "Understanding Biological Inheritance",
+            "2": "Mechanisms of Inheritance",
+            "3": "Evolutionary Theory and Biodiversity",
+            "4": "Organizing Biodiversity",
+            "5": "Conservation of Biodiversity"
+        }
+    },
+    "general_learning_outcomes": {
+        "A1": "recognize both the power and limitations of science as a way of answering questions about  the  world and explaining natural phenomena",
+        "A2": "recognize that scientific knowledge is based on evidence, models, and explanations, and evolves as new evidence appears and new conceptualizations develop",
+        "A3": "distinguish critically between science and technology in terms of their respective contexts, goals, methods, products, and values",
+        "A4": "identify and appreciate contributions made by women and men from many societies and cultural backgrounds towards increasing our understanding of the world and in bringing about technological innovations",
+        "A5": "recognize that science and technology interact with and advance one another",
+        "B1": "describe scientific and technological developments, past and present, and appreciate their impact on individuals, societies, and the environment, both locally and globally",
+        "B2": "recognize  that  scientific  and  technological endeavours have been and continue to be influenced by human needs and the societal context of the time",
+        "B3": "identify the factors that affect health, and explain the relationships among personal habits, lifestyle choices, and human health, both individual and social",
+        "B4": "demonstrate a knowledge of and personal consideration for a range of possible science- and technology-related interests, hobbies, and careers",
+        "B5": "identify and demonstrate actions that promote a sustainable environment, society, and economy, both locally and globally",
+        "C1": "recognize safety symbols and practices related to scientific and technological activities and to their daily lives, and apply this knowledge in appropriate situations",
+        "C2": "demonstrate appropriate scientific inquiry skills when seeking answers to questions",
+        "C3": "demonstrate appropriate problem-solving  skills while seeking solutions to technological challenges",
+        "C4": "demonstrate appropriate critical thinking and decision-making skills when choosing a course of action based on scientific and technological information",
+        "C5": "demonstrate curiosity, skepticism, creativity, open- mindedness, accuracy, precision, honesty, and persistence, and appreciate their importance as scientific and technological habits of mind",
+        "C6": "employ effective communication skills and utilize information technology to gather and share scientific and technological ideas and data",
+        "C7": "work cooperatively and value the ideas and contributions of others while carrying out scientific and technological activities",
+        "C8": "evaluate, from a scientific perspective, information and ideas encountered during investigations and in daily life",
+        "D1": "understand essential life structures and processes pertaining to a wide variety of organisms, including humans",
+        "D2": "understand various biotic and abiotic components of ecosystems, as well as their interaction and interdependence within ecosystems and within the biosphere as a whole",
+        "D3": "understand the properties and structures of matter as well as various common manifestations and applications of the actions and interactions of matter",
+        "D4": "understand how stability, motion, forces, and energy transfers and transformations play a role in a wide range of natural and constructed contexts",
+        "D5": "understand the composition of the Earth's atmosphere, hydrosphere, and lithosphere, as well as the processes involved within and among them",
+        "D6": "understand the composition of the universe, the interactions within it, and the impacts of humankind's continued attempts to understand and explore it",
+        "E1": "describe and appreciate the similarity and diversity of forms, functions, and patterns within the natural and constructed world",
+        "E2": "describe and appreciate how the natural and constructed world is made up of systems and how interactions take place within and among these systems",
+        "E3": "recognize that characteristics of materials and systems can remain constant or change over time, and describe the conditions and processes involved",
+        "E4": "recognize that energy, whether transmitted or transformed, is the driving force of both movement and change, and is inherent within materials and in the interactions among them"
+    },
+    "learning_outcomes": [
+        {
+            "specific_learning_outcome": "Increase awareness of personal wellness, as well as personal and family health history.",
+            "general_learning_outcomes": [
+                "B3"
+            ],
+            "grade": "11",
+            "unit": "1",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Develop a personal wellness plan.",
+            "general_learning_outcomes": [
+                "B3",
+                "B5"
+            ],
+            "grade": "11",
+            "unit": "1",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Recognize how individual wellness choices affect others. Examples: community, family...",
+            "general_learning_outcomes": [
+                "B3",
+                "B5"
+            ],
+            "grade": "11",
+            "unit": "1",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Describe how the body attempts to maintain an internal balance called homeostasis, recognizing that the conditions in which life processes can occur are limited. Include: thermoregulation (maintenance of body temperature), osmoregulation (water balance), and waste management.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2",
+                "E3"
+            ],
+            "grade": "11",
+            "unit": "1",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Explain the principle of negative feedback and identify how the body stabilizes systems against excessive change. Include: role of receptors and effectors.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2",
+                "E3"
+            ],
+            "grade": "11",
+            "unit": "1",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Identify life processes that individual cells, as well as complex organisms, need to manage. Include: obtain food, convert energy, eliminate wastes, reproduce, grow and repair, and transport substances.",
+            "general_learning_outcomes": [
+                "D1",
+                "E1"
+            ],
+            "grade": "11",
+            "unit": "1",
+            "id": "06"
+        },
+        {
+            "specific_learning_outcome": "Explain how cell membranes regulate movement of materials into and out of cells, and recognize the importance of this regulation in managing life processes and maintaining homeostasis. Include: passive transport, active transport, and endo/exocytosis.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2",
+                "E3"
+            ],
+            "grade": "11",
+            "unit": "1",
+            "id": "07"
+        },
+        {
+            "specific_learning_outcome": "Identify factors that influence movement of substances across a membrane, recognizing that movement of these substances is important for the internal balance of the cell. Examples: size of molecule, concentration gradient, temperature, polarity of molecule, surface area...",
+            "general_learning_outcomes": [
+                "D1",
+                "E2",
+                "E3"
+            ],
+            "grade": "11",
+            "unit": "1",
+            "id": "08"
+        },
+        {
+            "specific_learning_outcome": "Explain the role of energy in maintaining an internal balance in the cell. Include: role of adenosine triphosphate (ATP) in metabolism.",
+            "general_learning_outcomes": [
+                "D1",
+                "D4",
+                "E4"
+            ],
+            "grade": "11",
+            "unit": "1",
+            "id": "09"
+        },
+        {
+            "specific_learning_outcome": "Identify major structures and functions of the human digestive system from a diagram, model, or specimen. Include: tongue, teeth, salivary glands, epiglottis, esophagus, pharynx, sphincters, stomach, small intestine, large intestine, rectum, anus, appendix, liver, gallbladder, pancreas, and uvula.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Describe the processes of mechanical digestion that take place at various sites along the alimentary canal. Include: chewing in the mouth, peristalsis along the tract, muscle contractions in the stomach, and emulsification by bile in the small intestine.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Identify functions of secretions along the digestive tract. Include: to lubricate and to protect.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Identify sites of chemical digestion along the alimentary canal, as well as the type of nutrient being digested. Include: starch in the mouth; proteins in the stomach; and carbohydrates, lipids, and proteins in the small intestine.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Explain the role of enzymes in the chemical digestion of nutrients and identify factors that influence their action. Examples: pH, temperature, coenzymes, inhibitors, surface area...",
+            "general_learning_outcomes": [
+                "D1",
+                "E2"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Describe the processes of absorption that take place at various sites along the alimentary canal. Include: uptake of nutrients by villi in the small intestine and uptake of water in the large intestine.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "06"
+        },
+        {
+            "specific_learning_outcome": "Describe the homeostatic role of the liver with respect to the regulation of nutrient levels in the blood and nutrient storage. Include: carbohydrate metabolism.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2",
+                "E3"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "07"
+        },
+        {
+            "specific_learning_outcome": "Describe the functions of each of the six basic types of nutrients— carbohydrates, lipids, proteins, vitamins, minerals, and water. Include: ATP production, construction/repair, and regulating.",
+            "general_learning_outcomes": [
+                "B3",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "08"
+        },
+        {
+            "specific_learning_outcome": "Identify dietary sources for each of the six basic types of nutrients— carbohydrates, lipids, proteins, vitamins, minerals, and water.",
+            "general_learning_outcomes": [
+                "B3",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "09"
+        },
+        {
+            "specific_learning_outcome": "Evaluate personal food intake and related food decisions. Examples: percentage of daily values of nutrients, portion size, nutrient labels, balance between lifestyle and consumption.",
+            "general_learning_outcomes": [
+                "B3",
+                "C4",
+                "C8"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "10"
+        },
+        {
+            "specific_learning_outcome": "Investigate and describe conditions/disorders that affect the digestive process.",
+            "general_learning_outcomes": [
+                "B3",
+                "C6",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "11"
+        },
+        {
+            "specific_learning_outcome": "Use the decision-making process to investigate an issue related to digestion and nutrition.",
+            "general_learning_outcomes": [
+                "B3",
+                "C4",
+                "C5",
+                "C8"
+            ],
+            "grade": "11",
+            "unit": "2",
+            "id": "12"
+        },
+        {
+            "specific_learning_outcome": "Design and execute an experiment to investigate an aspect of the transportation or respiratory system. Examples: the effect of exercise on heart and/or respiratory rate; the effect of adrenalin on blood pressure; carbon dioxide production as an indicator of metabolism...",
+            "general_learning_outcomes": [
+                "C2",
+                "D1",
+                "E2"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Compare the characteristics of blood components in terms of appearance, origin, numbers, relative size, and function in the body. Include: plasma, erythrocytes (red blood cells), leukocytes (white blood cells), and thrombocytes (platelets).",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Compare and contrast the characteristics of different blood groups. Include: ABO and Rh factor.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Predict the physiological consequences of blood transfusions involving different blood groups.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Describe the blood donation process and investigate related issues. Examples: compatible blood groups, screening procedure, frequency of donation, use of donated blood products, blood-borne diseases...",
+            "general_learning_outcomes": [
+                "B3",
+                "C4",
+                "C5",
+                "C6",
+                "C8"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Compare the structure and function of blood vessels. Examples: diameter, elasticity, muscle layers, valves, what they transport...",
+            "general_learning_outcomes": [
+                "D1",
+                "E1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "06"
+        },
+        {
+            "specific_learning_outcome": "Identify the materials transported between cells and capillaries. Include: carbon dioxide, oxygen, hormones, nutrients, and nitrogenous wastes.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "07"
+        },
+        {
+            "specific_learning_outcome": "Describe the cardiac cycle. Include: systole and diastole.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "08"
+        },
+        {
+            "specific_learning_outcome": "Describe, in general terms, the nervous and chemical control of heartbeat.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "09"
+        },
+        {
+            "specific_learning_outcome": "Explain the meaning of blood pressure readings and identify the normal range. Include: given as a ratio of systolic over diastolic.",
+            "general_learning_outcomes": [
+                "B3",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "10"
+        },
+        {
+            "specific_learning_outcome": "Identify factors that affect blood pressure or cardiac function and describe their effects. Examples of factors: exercise, caffeine, nicotine, shock, beta blockers, diuretics, hormones, stress. Examples of effects: low blood pressure, high blood pressure, increased heart rate...",
+            "general_learning_outcomes": [
+                "B3",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "11"
+        },
+        {
+            "specific_learning_outcome": "Explain how transport systems help to maintain homeostasis in the body. Include: transport nutrients, oxygen, carbon dioxide, wastes, and hormones; help maintain fluid balance; regulate body temperature; and assist in the defence of the body against invading organisms.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "12"
+        },
+        {
+            "specific_learning_outcome": "Distinguish between cellular respiration, internal respiration, and external respiration.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "13"
+        },
+        {
+            "specific_learning_outcome": "Identify major structures and functions of the human respiratory system from a diagram, model, or specimen. Include: lungs, pleura, nasal cavity, epiglottis, bronchi and bronchioles, alveoli, pulmonary capillaries, diaphragm, pharynx, larynx, trachea, uvula, ribs, and intercostal muscles.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "14"
+        },
+        {
+            "specific_learning_outcome": "Describe how breathing is controlled to help maintain homeostasis in the human body. Include: chemoreceptor and medulla oblongata.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "15"
+        },
+        {
+            "specific_learning_outcome": "Investigate and describe conditions/disorders associated with transportation and/or respiration in the human body. Examples: cardiovascular diseases...",
+            "general_learning_outcomes": [
+                "B3",
+                "C6",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "16"
+        },
+        {
+            "specific_learning_outcome": "Identify personal lifestyle choices that contribute to cardiovascular and respiratory wellness. Examples: active lifestyle, not smoking...",
+            "general_learning_outcomes": [
+                "B3",
+                "C4",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "3",
+            "id": "17"
+        },
+        {
+            "specific_learning_outcome": "Identify the primary metabolic wastes produced in the human body and the source of each. Include: ammonia, urea, mineral salts, carbon dioxide, and water.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "4",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Describe the roles of the major excretory structures in eliminating wastes and helping the body maintain homeostasis. Include: kidneys, lungs, skin, and intestines.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2"
+            ],
+            "grade": "11",
+            "unit": "4",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Describe the important role of the liver in the process of excretion and the maintenance of homeostasis.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2"
+            ],
+            "grade": "11",
+            "unit": "4",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Identify structures of the human urinary system from a diagram, model, or specimen, and describe the function of each. Include: kidneys, renal cortex, renal medulla, renal pelvis, renal arteries and veins, ureters, urinary bladder, urethra, and urinary sphincters.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "4",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Explain the processes of filtration, reabsorption, and secretion in the nephron.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "4",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Describe the feedback mechanisms associated with water and salt balance and their role in the maintenance of homeostasis in the human body. Include: antidiuretic hormone (ADH) and aldosterone.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2"
+            ],
+            "grade": "11",
+            "unit": "4",
+            "id": "06"
+        },
+        {
+            "specific_learning_outcome": "Describe what types of information can be gained through urinalysis. Examples: performance-enhancing drugs, diabetes, recreational drugs, pregnancy, infections, kidney failure or damage...",
+            "general_learning_outcomes": [
+                "B3",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "4",
+            "id": "07"
+        },
+        {
+            "specific_learning_outcome": "Investigate and describe issues related to kidney failure and treatment options available. Examples: organ transplant, personal lifestyle, dialysis...",
+            "general_learning_outcomes": [
+                "B3",
+                "C6",
+                "C8",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "4",
+            "id": "08"
+        },
+        {
+            "specific_learning_outcome": "Describe the body’s defence mechanisms for protection from foreign agents. Include: non-specific and specific defences.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Describe the body’s response to allergens, vaccines, and viruses/bacteria. Include: inflammatory response and immune response.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Explain the role of the lymphatic system in protecting the human body. Include: lymph vessels, lymph nodes, and lymph.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Investigate issues related to the immune system and the protection of public health. Examples: immunization policies, travel bans and advisories, epidemics...",
+            "general_learning_outcomes": [
+                "B3",
+                "C4",
+                "C5",
+                "C6",
+                "C8",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Describe the major organization of the nervous system. Include: central nervous system and peripheral nervous system (autonomic and somatic).",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Identify the functional regions of the brain. Examples: general anatomy such as cerebellum, specific regions responsible for speech and other functions, left-brain/right-brain concept...",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "06"
+        },
+        {
+            "specific_learning_outcome": "Explain how a nerve impulse travels a particular pathway using chemical and electrical signals. Include: synapse.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "07"
+        },
+        {
+            "specific_learning_outcome": "Compare the general roles of nervous and hormonal controls, recognizing that the nervous and endocrine systems interact to maintain homeostasis in the human body. Include: communication, speed, duration, target pathway, and action.",
+            "general_learning_outcomes": [
+                "D1",
+                "E2",
+                "E3"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "08"
+        },
+        {
+            "specific_learning_outcome": "Explain the effects of a concussion on brain function and the implications of multiple concussions. Include: second impact syndrome.",
+            "general_learning_outcomes": [
+                "B3",
+                "C8",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "09"
+        },
+        {
+            "specific_learning_outcome": "Describe how personal lifestyle choices can influence the functioning of protection and/or control systems. Examples: impact of recreational drugs, use of anabolic steroids, lack of sleep, poor diet, non-use of protective equipment...",
+            "general_learning_outcomes": [
+                "B3",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "10"
+        },
+        {
+            "specific_learning_outcome": "Investigate and describe conditions/disorders that affect protection and/or control in the human body.",
+            "general_learning_outcomes": [
+                "B3",
+                "C6",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "5",
+            "id": "11"
+        },
+        {
+            "specific_learning_outcome": "Analyze examples of how different body systems work together to maintain homeostasis under various conditions. Examples: cold weather, organ transplant...",
+            "general_learning_outcomes": [
+                "D1",
+                "E2",
+                "E3"
+            ],
+            "grade": "11",
+            "unit": "6",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Recognize that aging is a progressive failure of the body’s homeostatic responses and describe some changes that take place in different body systems as we age. Examples: less blood and oxygen delivered to muscles and other tissues due to decreased efficiency of heart and lungs; lower calorie requirement due to decreased metabolic rate; increased susceptibility to autoimmune diseases due to fall in number of T cells and decreased activity of B cells...",
+            "general_learning_outcomes": [
+                "D1",
+                "E2",
+                "E3"
+            ],
+            "grade": "11",
+            "unit": "6",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Recognize the difficulties faced in defining 'death' and identify some of the different definitions in use today. Examples: medical definition, legal definition, religious viewpoint...",
+            "general_learning_outcomes": [
+                "C8",
+                "D1"
+            ],
+            "grade": "11",
+            "unit": "6",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Identify and analyze social issues related to the process of dying. Examples: euthanasia, advanced directive, choice of treatments, organ donation, availability of palliative care...",
+            "general_learning_outcomes": [
+                "B3",
+                "C4",
+                "C5",
+                "C8"
+            ],
+            "grade": "11",
+            "unit": "6",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Describe how technology has allowed us to control our wellness, and describe the ethical dilemmas that the use of technology can create. Examples: reproductive technologies, stem-cell research, surgery, anaesthetic, pharmaceuticals...",
+            "general_learning_outcomes": [
+                "B1",
+                "B2",
+                "B3",
+                "C5",
+                "C8"
+            ],
+            "grade": "11",
+            "unit": "6",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Outline Gregor Mendel’s principles of inheritance, stating their importance to the understanding of heredity. Include: principles of segregation, dominance, and independent assortment.",
+            "general_learning_outcomes": [
+                "A1",
+                "A2",
+                "B1",
+                "D1"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Explain what is meant by the terms heterozygous and homozygous.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Distinguish between genotype and phenotype, and use these terms appropriately when discussing the outcomes of genetic crosses.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Use Punnett squares to solve a variety of autosomal inheritance problems, and justify the results using appropriate terminology. Include: monohybrid cross, dihybrid cross, testcross, P generation, F1 generation, F2 generation, phenotypic ratio, genotypic ratio, dominant alleles, recessive alleles, purebred, hybrid, and carrier.",
+            "general_learning_outcomes": [
+                "D1",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Describe examples of and solve problems involving the inheritance of phenotypic traits that do not follow a dominant-recessive pattern. Examples: co-dominance, incomplete dominance, multiple alleles, lethal genes...",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Explain the basis for sex determination in humans. Include: XX and XY chromosomes.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "06"
+        },
+        {
+            "specific_learning_outcome": "Describe examples of and solve problems involving sex-linked genes. Examples: red-green colour-blindness, hemophilia, Duchenne muscular dystrophy...",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "07"
+        },
+        {
+            "specific_learning_outcome": "Use pedigree charts to illustrate the inheritance of genetically determined traits in a family tree and to determine the probability of certain offspring having particular traits. Include: symbols and notations used.",
+            "general_learning_outcomes": [
+                "C8",
+                "D1"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "08"
+        },
+        {
+            "specific_learning_outcome": "Discuss ethical issues that may arise as a result of genetic testing for inherited conditions or disorders.",
+            "general_learning_outcomes": [
+                "A3",
+                "B1",
+                "B2",
+                "C4"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "09"
+        },
+        {
+            "specific_learning_outcome": "Discuss the role of meiosis and sexual reproduction in producing genetic variability in offspring. Include: crossing over and randomness.",
+            "general_learning_outcomes": [
+                "D1",
+                "E3"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "10"
+        },
+        {
+            "specific_learning_outcome": "Explain how chromosome mutations may arise during meiosis. Include: nondisjunction.",
+            "general_learning_outcomes": [
+                "D1",
+                "E3"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "11"
+        },
+        {
+            "specific_learning_outcome": "Identify monosomy and trisomy chromosome mutations from karyotypes. Examples: Down syndrome, Turner syndrome, Klinefelter syndrome.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "12",
+            "unit": "1",
+            "id": "12"
+        },
+        {
+            "specific_learning_outcome": "Outline significant scientific contributions/discoveries that led to the current understanding of the structure and function of the DNA molecule. Include: timeline, individual contributions, multidisciplinary collaboration, and competitive environment.",
+            "general_learning_outcomes": [
+                "A2",
+                "A4",
+                "A5",
+                "B1",
+                "B2"
+            ],
+            "grade": "12",
+            "unit": "2",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Describe the structure of a DNA nucleotide. Include: deoxyribose sugar, phosphate group, and nitrogenous bases.",
+            "general_learning_outcomes": [
+                "D1",
+                "D3"
+            ],
+            "grade": "12",
+            "unit": "2",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Describe the structure of a DNA molecule. Include: double helix, nucleotides, base pairing, and gene.",
+            "general_learning_outcomes": [
+                "D1",
+                "D3"
+            ],
+            "grade": "12",
+            "unit": "2",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Describe the process of DNA replication. Include: template, semi-conservative replication, and role of enzymes.",
+            "general_learning_outcomes": [
+                "D1",
+                "D3"
+            ],
+            "grade": "12",
+            "unit": "2",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Compare DNA and RNA in terms of their structure, use, and location in the cell.",
+            "general_learning_outcomes": [
+                "D1",
+                "D3"
+            ],
+            "grade": "12",
+            "unit": "2",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Outline the steps involved in protein synthesis. Include: mRNA, codon, amino acid, transcription, tRNA, anticodon, ribosome, and translation.",
+            "general_learning_outcomes": [
+                "D1",
+                "D3"
+            ],
+            "grade": "12",
+            "unit": "2",
+            "id": "06"
+        },
+        {
+            "specific_learning_outcome": "Relate the consequences of gene mutation to the final protein product. Examples: point mutation in sickle-cell anemia, frameshift mutation in β-thalassemia.",
+            "general_learning_outcomes": [
+                "D1",
+                "D3"
+            ],
+            "grade": "12",
+            "unit": "2",
+            "id": "07"
+        },
+        {
+            "specific_learning_outcome": "Discuss implications of gene mutation for genetic variation. Include: source of new alleles.",
+            "general_learning_outcomes": [
+                "D1",
+                "E1",
+                "E3"
+            ],
+            "grade": "12",
+            "unit": "2",
+            "id": "08"
+        },
+        {
+            "specific_learning_outcome": "Investigate an issue related to the application of gene technology in bioresources. Include: understanding the technology/processes involved, economic implications, a variety of perspectives, and personal/societal/global implications.",
+            "general_learning_outcomes": [
+                "A3",
+                "A5",
+                "B1",
+                "B2",
+                "C4",
+                "C5"
+            ],
+            "grade": "12",
+            "unit": "2",
+            "id": "09"
+        },
+        {
+            "specific_learning_outcome": "Investigate an issue related to the application of gene technology in humans. Include: understanding the technology/processes involved, ethical and legal implications, a variety of perspectives, and personal/societal/global implications.",
+            "general_learning_outcomes": [
+                "A3",
+                "A5",
+                "B1",
+                "B2",
+                "C4",
+                "C5"
+            ],
+            "grade": "12",
+            "unit": "2",
+            "id": "10"
+        },
+        {
+            "specific_learning_outcome": "Define the term evolution, explaining how evolution has led to biodiversity by altering populations and not individuals. Include: gene pool and genome.",
+            "general_learning_outcomes": [
+                "D1",
+                "E3"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Describe and explain the process of discovery that led Charles Darwin to formulate his theory of evolution by natural selection. Include: the voyage of the Beagle, Darwin’s observations of South American fossils, the impact of the Galapagos Islands on his thinking, and the work of other scientists.",
+            "general_learning_outcomes": [
+                "A2",
+                "A4",
+                "B1",
+                "B2"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Outline the main points of Darwin’s theory of evolution by natural selection. Include: overproduction, competition, variation, adaptation, natural selection, and speciation.",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Demonstrate, through examples, what the term fittest means in the phrase 'survival of the fittest.' Examples: stick insects blending with their environment, sunflowers bending toward sunlight, antibiotic-resistant bacteria...",
+            "general_learning_outcomes": [
+                "D1"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Explain how natural selection leads to changes in populations. Examples: industrial melanism, antibiotic-resistant bacteria, pesticide-resistant insects...",
+            "general_learning_outcomes": [
+                "D1",
+                "E3"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Describe how disruptive, stabilizing, and directional natural selection act on variation.",
+            "general_learning_outcomes": [
+                "D1",
+                "E3"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "06"
+        },
+        {
+            "specific_learning_outcome": "Distinguish between natural selection and artificial selection.",
+            "general_learning_outcomes": [
+                "D1",
+                "E1",
+                "E3"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "07"
+        },
+        {
+            "specific_learning_outcome": "Outline how scientists determine whether a gene pool has changed, according to the criteria for genetic equilibrium. Include: large population, random mating, no gene flow, no mutation, and no natural selection.",
+            "general_learning_outcomes": [
+                "D1",
+                "E3"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "08"
+        },
+        {
+            "specific_learning_outcome": "Discuss how genetic variation in a gene pool can be altered. Examples: natural selection, gene flow, genetic drift, non-random mating, mutation...",
+            "general_learning_outcomes": [
+                "D1",
+                "E1",
+                "E3"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "09"
+        },
+        {
+            "specific_learning_outcome": "Describe how populations can become reproductively isolated. Examples: geographic isolation, niche differentiation, altered behaviour, altered physiology...",
+            "general_learning_outcomes": [
+                "D1",
+                "E2"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "10"
+        },
+        {
+            "specific_learning_outcome": "With the use of examples, differentiate between convergent evolution and divergent evolution (adaptive radiation).",
+            "general_learning_outcomes": [
+                "D1",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "11"
+        },
+        {
+            "specific_learning_outcome": "Distinguish between the two models for the pace of evolutionary change: punctuated equilibrium and gradualism.",
+            "general_learning_outcomes": [
+                "D1",
+                "E3"
+            ],
+            "grade": "12",
+            "unit": "3",
+            "id": "12"
+        },
+        {
+            "specific_learning_outcome": "Define the concept of biodiversity in terms of ecosystem, species, and genetic diversity.",
+            "general_learning_outcomes": [
+                "D2",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Explain why it is difficult to determine a definition of species. Examples: hybrids such as mules, phenotypic variations in a species, non-interbreeding subpopulations...",
+            "general_learning_outcomes": [
+                "A1",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Describe the dynamic nature of classification. Include: different systems and current debates.",
+            "general_learning_outcomes": [
+                "A1",
+                "A2"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Describe types of evidence used to classify organisms and determine evolutionary relationships. Examples: fossil record, DNA analysis, biochemistry, embryology, morphology...",
+            "general_learning_outcomes": [
+                "A2",
+                "A5"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Compare the characteristics of the domains of life. Include: Archaea (Archaebacteria), Bacteria (Eubacteria), and Eukarya.",
+            "general_learning_outcomes": [
+                "D1",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Compare the characteristics of the kingdoms in the Eukarya domain. Include: cell structure, major mode of nutrition, cell number, and motility.",
+            "general_learning_outcomes": [
+                "D1",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "06"
+        },
+        {
+            "specific_learning_outcome": "Investigate an evolutionary trend in a group of organisms. Examples: hominid evolution, vascularization in plants, animal adaptations for life on land...",
+            "general_learning_outcomes": [
+                "C2",
+                "C5",
+                "C6",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "07"
+        },
+        {
+            "specific_learning_outcome": "Define the concept of biodiversity in terms of ecosystem, species, and genetic diversity.",
+            "general_learning_outcomes": [
+                "D2",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Explain why it is difficult to determine a definition of species. Examples: hybrids such as mules, phenotypic variations in a species, non-interbreeding subpopulations...",
+            "general_learning_outcomes": [
+                "A1",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Describe the dynamic nature of classification. Include: different systems and current debates.",
+            "general_learning_outcomes": [
+                "A1",
+                "A2"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Describe types of evidence used to classify organisms and determine evolutionary relationships. Examples: fossil record, DNA analysis, biochemistry, embryology, morphology...",
+            "general_learning_outcomes": [
+                "A2",
+                "A5"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "04"
+        },
+        {
+            "specific_learning_outcome": "Compare the characteristics of the domains of life. Include: Archaea (Archaebacteria), Bacteria (Eubacteria), and Eukarya.",
+            "general_learning_outcomes": [
+                "D1",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "05"
+        },
+        {
+            "specific_learning_outcome": "Compare the characteristics of the kingdoms in the Eukarya domain. Include: cell structure, major mode of nutrition, cell number, and motility.",
+            "general_learning_outcomes": [
+                "D1",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "06"
+        },
+        {
+            "specific_learning_outcome": "Investigate an evolutionary trend in a group of organisms. Examples: hominid evolution, vascularization in plants, animal adaptations for life on land...",
+            "general_learning_outcomes": [
+                "C2",
+                "C5",
+                "C6",
+                "E1"
+            ],
+            "grade": "12",
+            "unit": "4",
+            "id": "07"
+        },
+        {
+            "specific_learning_outcome": "Discuss a variety of reasons for maintaining biodiversity. Include: maintaining a diverse gene pool, economic value, and sustainability of an ecosystem.",
+            "general_learning_outcomes": [
+                "B2",
+                "B5",
+                "D2"
+            ],
+            "grade": "12",
+            "unit": "5",
+            "id": "01"
+        },
+        {
+            "specific_learning_outcome": "Describe strategies used to conserve biodiversity. Examples: habitat preservation, wildlife corridors, species preservation programs, public education.",
+            "general_learning_outcomes": [
+                "B2",
+                "B5",
+                "D2"
+            ],
+            "grade": "12",
+            "unit": "5",
+            "id": "02"
+        },
+        {
+            "specific_learning_outcome": "Select and use appropriate tools or procedures to determine and monitor biodiversity in an area. Examples: field guides, dichotomous keys, quadrats, transects, mark and recapture.",
+            "general_learning_outcomes": [
+                "C1",
+                "C2",
+                "C7"
+            ],
+            "grade": "12",
+            "unit": "5",
+            "id": "03"
+        },
+        {
+            "specific_learning_outcome": "Investigate an issue related to the conservation of biodiversity. Examples: heritage seeds, water quality in Lake Winnipeg, land-use designations, hydroelectric development.",
+            "general_learning_outcomes": [
+                "C4",
+                "C6",
+                "C8",
+                "D2",
+                "E2"
+            ],
+            "grade": "12",
+            "unit": "5",
+            "id": "04"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+dist
+node_modules
+.env
+.venv
+package-lock.json
+.vscode
+input_file.txt
+harvester.py
+output.json

@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jared Gross">
+    <meta name="description" content="A collection of curriculums made into a comprehensive web page for ease-of-use.">
+    <meta name="keywords" content="gradiance, education, grading, content, platform, curriki, wiki, curriculum, math, mathematics, science, ela, social studies, physics, chemistry, biology">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/static/icons/curriki.png">
+    <title>Curriki</title>
+</head>
+
+<header class="fixed no-padding">
+    <nav class="inverse-surface left-padding right-padding">
+        <button class="circle transparent" onclick="ui('#about-dialog')">
+            <img class="responsive icon" fetchpriority="low" loading="lazy" src="/static/icons/curriki.png" alt="" width="32"
+                height="32">
+        </button>
+        <h5 class="max small">Curriki</h5>
+        <button class="circle transparent" id="theme-toggle">
+            <i id="theme-icon">dark_mode</i>
+        </button>
+    </nav>
+</header>
+
+<body class="light">
+    <main class="responsive">
+        <div class="grid">
+            <article class="no-padding s12 m6 l6">
+                <div class="grid no-space blue-background">
+                    <div class="s1 blue-banner"></div>
+                    <div class="s11">
+                        <div class="padding">
+                            <h5>Manitoba Mathematics Curriculum</h5>
+                            <p>Kindergarten to Grade 12 Mathematics.</p>
+                            <nav>
+                                <a href="/manitobaMathematicsCurriculum.html">
+                                    <i class="mdi mdi-notebook"></i>
+                                    <span>Open</span>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="no-padding s12 m6 l6">
+                <div class="grid no-space blue-background">
+                    <div class="s1 blue-banner"></div>
+                    <div class="s11">
+                        <div class="padding">
+                            <h5>Manitoba Physics Curriculum</h5>
+                            <p>Grade 11 to 12 Physics.</p>
+                            <nav>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="no-padding s12 m6 l6">
+                <div class="grid no-space pink-background">
+                    <div class="s1 pink-banner"></div>
+                    <div class="s11">
+                        <div class="padding">
+                            <h5>Manitoba ELA Curriculum</h5>
+                            <p>Kindergarted to Grade 12 ELA.</p>
+                            <nav>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="no-padding s12 m6 l6">
+                <div class="grid no-space green-background">
+                    <div class="s1 green-banner"></div>
+                    <div class="s11">
+                        <div class="padding">
+                            <h5>Manitoba Science Curriculum</h5>
+                            <p>Kindergarten to Grade 10 Science.</p>
+                            <nav>
+                                <a href="/manitobaScienceCurriculum.html">
+                                    <i class="mdi mdi-notebook"></i>
+                                    <span>Open</span>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="no-padding s12 m6 l6">
+                <div class="grid no-space green-background">
+                    <div class="s1 green-banner"></div>
+                    <div class="s11">
+                        <div class="padding">
+                            <h5>Manitoba Biology Curriculum</h5>
+                            <p>Grade 11 to 12 Biology.</p>
+                            <nav>
+                                <a href="/manitobaBiologyCurriculum.html">
+                                    <i class="mdi mdi-notebook"></i>
+                                    <span>Open</span>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="no-padding s12 m6 l6">
+                <div class="grid no-space orange-background">
+                    <div class="s1 orange-banner"></div>
+                    <div class="s11">
+                        <div class="padding">
+                            <h5>Manitoba Social Studies Curriculum</h5>
+                            <p>Kindergarten to Grade 8 Social Studies.</p>
+                            <nav>
+                                <a href="/manitobaSocialStudiesCurriculum.html">
+                                    <i class="mdi mdi-notebook"></i>
+                                    <span>Open</span>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+
+<div class="overlay blur"></div>
+<dialog class="left" id="about-dialog">
+    <div class="row max center-align">
+        <img class="icon responsive circle border" style="max-width: 150px; height: auto;" fetchpriority="low" loading="lazy" src="/static/icons/curriki.png" alt="" width="128" height="128">
+    </div>
+    <div class="padding">
+        <h5 class="small center-align">Curriki</h5>
+        <p class="center-align  medium-width">
+            A comprehensive web page for accessing curriculums.
+        <p class="center-align">Developed with <i>favorite</i> by <a class="link" href="https://thecodingjsoftware.github.io/">TheCodingJ's</a></p>
+    </div>
+    <article class="border" style="margin-top: auto;">
+        <p class="center-align medium-width">
+            For questions, comments, suggestions,
+            or concerns about this service please
+            email: <a class="link" href="mailto:jared@pinelandfarms.ca">jared@pinelandfarms.ca</a>.
+        </p>
+    </article>
+    <nav class="right-align no-space">
+        <button class="transparent link small-round" onclick="ui('#about-dialog')">
+            <span>Close</span>
+        </button>
+    </nav>
+</dialog>
+
+</html>

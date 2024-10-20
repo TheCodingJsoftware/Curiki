@@ -1,0 +1,43 @@
+{
+    "dependencies": {
+        "@mdi/font": "^7.4.47",
+        "@mdi/svg": "^7.4.47",
+        "@mdi/util": "^0.3.2",
+        "@supabase/supabase-js": "^2.45.4",
+        "beercss": "^3.7.8",
+        "remixicon": "^4.3.0",
+        "remixicons": "^1.0.0"
+    },
+    "devDependencies": {
+        "copy-webpack-plugin": "^12.0.2",
+        "css-loader": "^7.1.2",
+        "html-webpack-plugin": "^5.6.0",
+        "material-dynamic-colors": "^1.1.2",
+        "mini-css-extract-plugin": "^2.9.1",
+        "style-loader": "^4.0.0",
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.5.4",
+        "webpack": "^5.94.0",
+        "webpack-bundle-analyzer": "^4.10.2",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^5.0.4"
+    },
+    "name": "gradiance",
+    "description": "A platform for educational content.",
+    "version": "1.0.0",
+    "main": "webpack.config.js",
+    "scripts": {
+        "run": "python main.py",
+        "build": "webpack"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TheCodingJsoftware/Gradiance.git"
+    },
+    "author": "Jared Gross",
+    "license": "GPL-3.0-only",
+    "bugs": {
+        "url": "https://github.com/TheCodingJsoftware/Gradiance/issues"
+    },
+    "homepage": "https://github.com/TheCodingJsoftware/Gradiance#readme"
+}

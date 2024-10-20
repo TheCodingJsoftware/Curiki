@@ -1,0 +1,154 @@
+html,
+body,
+div,
+article,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+span,
+a,
+button,
+input,
+textarea,
+select,
+details,
+details[open],
+summary,
+footer,
+nav {
+    transition: background-color 0.3s ease-in-out, color 0.1s ease;
+}
+
+
+::selection {
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
+::-moz-selection {
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
+details {
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    background-color: var(--primary);
+    padding: 5px;
+    border-radius: 0.45rem;
+    margin: 5px;
+}
+
+summary {
+    outline: none;
+    font-size: 1.15em;
+}
+
+details summary::-webkit-details-marker,
+details summary::marker {
+    display: none;
+    content: "";
+}
+
+summary:before {
+    content: "⯈";
+    color: var(--on-primary);
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 0.5em 0 0.25em;
+}
+
+details[open] > summary:before {
+    content: "⯆";
+    color: var(--primary);
+}
+
+details:not([open]) summary button{
+    color: var(--on-primary);
+}
+
+details[open] summary button{
+    color: var(--primary);
+}
+
+details.learning-outcome{
+    padding: 8px;
+}
+
+details.specific-learning-outcome,
+details.general-learning-outcomes {
+    padding: 5px;
+}
+
+details[open] {
+    height: auto;
+    max-height: 99em !important;
+    border: 0.0625rem solid var(--primary) !important;
+    background-color: var(--surface);
+}
+
+details.specific-learning-outcome:not([open]) summary,
+details.general-learning-outcomes:not([open]) summary {
+    color: var(--on-primary) !important;
+}
+
+details.learning-outcome:not([open]) summary {
+    color: var(--on-primary);
+}
+
+details.specific-learning-outcome[open] summary,
+details.general-learning-outcomes[open] summary{
+    color: var(--primary);
+}
+details.learning-outcome[open] summary   {
+    color: var(--primary);
+}
+
+details.specific-learning-outcome[open],
+details.general-learning-outcomes[open] {
+    color: var(--on-surface);
+}
+
+details.learning-outcome[open] {
+    color: var(--on-surface);
+}
+
+span.highlight {
+    color: var(--on-primary) !important;
+    background-color: var(--primary) !important;
+    border-radius: 4px;
+    padding-left: 1px;
+    padding-right: 1px;
+    display: inline-block !important;
+}
+
+.hidden{
+    display: none !important;
+}
+
+dialog p{
+    line-height: normal;
+}
+
+#content{
+    max-height: calc(100vh - 300px);
+}
+
+article div{
+    height: 100%;
+}
+
+/* WHen movile use max heihgt */
+@media screen and (max-width: 600px) {
+    #content{
+        max-height: 500px;
+    }
+}
