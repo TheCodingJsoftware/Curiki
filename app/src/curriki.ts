@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             blueBackgrounds.forEach(background => {
                 background.style.backgroundColor = '#f9f9fc';
+                background.style.border = '1px solid #006493';
             });
 
             pinkBanners.forEach(banner => {
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             pinkBackgrounds.forEach(background => {
                 background.style.backgroundColor = '#fff7fa';
+                background.style.border = '1px solid #9a25ae';
             });
 
             greenBanners.forEach(banner => {
@@ -48,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             greenBackgrounds.forEach(background => {
                 background.style.backgroundColor = '#f9faf4';
+                background.style.border = '1px solid #78dc77';
             });
 
             orangeBanners.forEach(banner => {
@@ -55,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             orangeBackgrounds.forEach(background => {
                 background.style.backgroundColor = '#fff8f6';
+                background.style.border = '1px solid #ffb5a0';
             });
         } else {
             icons.forEach(icon => {
@@ -65,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             blueBackgrounds.forEach(background => {
                 background.style.backgroundColor = '#111416';
+                background.style.border = '1px solid #006493';
             });
 
             pinkBanners.forEach(banner => {
@@ -72,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             pinkBackgrounds.forEach(background => {
                 background.style.backgroundColor = '#161215';
+                background.style.border = '1px solid #9a25ae';
             });
 
             greenBanners.forEach(banner => {
@@ -79,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             greenBackgrounds.forEach(background => {
                 background.style.backgroundColor = '#121411';
+                background.style.border = '1px solid #78dc77';
             });
 
             orangeBanners.forEach(banner => {
@@ -86,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             orangeBackgrounds.forEach(background => {
                 background.style.backgroundColor = '#181210';
+                background.style.border = '1px solid #ffb5a0';
             });
         }
     }

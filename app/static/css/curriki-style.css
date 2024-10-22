@@ -28,3 +28,53 @@ nav {
 article div{
     height: 100%;
 }
+
+details {
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    background-color: var(--on-surface);
+    padding: 5px;
+    border-radius: 0.45rem;
+    margin: 5px;
+}
+
+details[open] {
+    height: auto;
+    max-height: 99em !important;
+    border: 0.0625rem solid var(--on-surface) !important;
+    background-color: var(--surface);
+}
+
+summary {
+    outline: none;
+    font-size: 1.15em;
+}
+
+details summary::-webkit-details-marker,
+details summary::marker {
+    display: none;
+    content: "";
+}
+
+summary:before {
+    content: "⯈";
+    color: var(--surface);
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 0.5em 0 0.25em;
+}
+
+details[open] > summary:before {
+    content: "⯆";
+    color: var(--on-surface);
+}
+
+details:not([open]) summary{
+    color: var(--surface);
+}
+
+details[open] summary{
+    color: var(--on-surface);
+}
