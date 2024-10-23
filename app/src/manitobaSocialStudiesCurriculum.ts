@@ -578,16 +578,16 @@ class FilterManager {
 
                 const skillDiv = document.createElement('div');
 
-                if ('cluster' in learningOutcome && learningOutcome.cluster){
+                if ('grade' in learningOutcome && 'cluster' in learningOutcome && learningOutcome.cluster){
                     const clusterButton = document.createElement('button');
                     const clusterName = this.curriculumManager.clusters[activeGrade.replace("#grade_", "")][learningOutcome.cluster]
                     clusterButton.classList.add('tiny-margin', 'chip');
                     if (this.getActiveClusters().includes(learningOutcome.cluster)) {
                         clusterButton.classList.add('fill');
                     }
-                    // button.onclick = function () {
-                    //     ui(`#${skill}-dialog`);
-                    // }
+                    clusterButton.onclick = function () {
+                        ui(`#C${learningOutcome.grade}${learningOutcome.cluster}-dialog`);
+                    }
 
                     const clusterIcon = document.createElement('i');
                     clusterIcon.classList.add('primary-text');
@@ -631,9 +631,9 @@ class FilterManager {
                     if (this.getActiveGeneralOutcomes().includes(learningOutcome.generalLearningOutcome)) {
                         generalLearningOutcomeButton.classList.add('fill');
                     }
-                    // button.onclick = function () {
-                    //     ui(`#${skill}-dialog`);
-                    // }
+                    generalLearningOutcomeButton.onclick = function () {
+                        ui(`#${learningOutcome.generalLearningOutcome}-dialog`);
+                    }
 
                     const generalLearningOutcomeIcon = document.createElement('i');
                     generalLearningOutcomeIcon.classList.add('primary-text');
@@ -681,9 +681,9 @@ class FilterManager {
                         skillTypeButton.classList.add('fill');
                     }
 
-                    // button.onclick = function () {
-                    //     ui(`#${skill}-dialog`);
-                    // }
+                    skillTypeButton.onclick = function () {
+                        ui(`#S${learningOutcome.skillType}-dialog`);
+                    }
 
                     const skillTypeIcon = document.createElement('i');
                     skillTypeIcon.classList.add('primary-text');
@@ -699,7 +699,6 @@ class FilterManager {
                 }
 
                 details.appendChild(skillDiv);
-
                 const sloContent = searchQuery ? learningOutcome.specificLearningOutcome.replace(new RegExp(searchQuery, 'gi'), (match) => `<span class="highlight">${match}</span>`) : learningOutcome.specificLearningOutcome;
 
                 const sloText = document.createElement('p');
@@ -707,6 +706,23 @@ class FilterManager {
                 sloText.innerHTML = 'It is expected that students will: ' + sloContent;
 
                 details.appendChild(sloText);
+                let glossaryAdded = false;
+
+                Object.keys(this.curriculumManager.glossaryTerms).forEach(term => {
+                    if (learningOutcome.specificLearningOutcome.includes(term)) {
+                        if (!glossaryAdded) {
+                            const glossaryTerm = document.createElement('h6');
+                            glossaryTerm.textContent = 'Glossary';
+                            details.appendChild(glossaryTerm);
+                            glossaryAdded = true;
+                        }
+
+                        const glossaryDefinition = document.createElement('p');
+                        glossaryDefinition.classList.add('no-line', 'bottom-margin');
+                        glossaryDefinition.textContent = term + ': ' + this.curriculumManager.glossaryTerms[term];
+                        details.appendChild(glossaryDefinition);
+                    }
+                });
 
                 const buttonRowDiv = document.createElement('div');
                 buttonRowDiv.classList.add('row');

@@ -115,33 +115,41 @@ export const socialStudiesClustersIconDictionary: { [key: string]: string } = {
     'Me': 'person', // Represents the individual
     'The People around Me': 'people', // Represents a group or community
     'The World around Me': 'public', // Represents the world or globe
+
     'I Belong': 'emoji_people', // Represents a sense of belonging
     'My Environment': 'nature', // Represents the natural environment
     'Connecting with Others': 'connect_without_contact', // Represents social connections
+
     'Our Local Community': 'location_city', // Represents a community
     'Communities in Canada': 'map', // Represents mapping communities
     'The Canadian Community': 'flag', // Represents Canada
+
     'Connecting with Canadians': 'groups', // Represents interaction with others
     'Exploring the World': 'explore', // Represents exploration
     'Communities of the World': 'language', // Represents global communities
     'Exploring an Ancient Society': 'history_edu', // Represents historical exploration
+
     'Geography of Canada': 'terrain', // Represents physical geography
     'Living in Canada': 'home', // Represents living environment
     'Living in Manitoba': 'place', // Represents a specific location
     'History of Manitoba': 'history', // Represents history
     'Canada\'s North': 'ac_unit', // Represents cold or northern regions
+
     'First Peoples': 'emoji_nature', // Represents Indigenous heritage and connection to nature
     'Early European Colonization (1600 to 1763)': 'sailing', // Represents early exploration
     'Fur Trade': 'storefront', // Represents trade and commerce
     'From British Colony to Confederation': 'gavel', // Represents governance and law
+
     'Building a Nation (1867 to 1914)': 'account_balance', // Represents nation-building and institutions
     'An Emerging Nation (1914 to 1945)': 'military_tech', // Represents wars and national development
     'Shaping Contemporary Canada (1945 to Present)': 'timeline', // Represents ongoing changes
     'Canada Today: Democracy, Diversity, and the Influence of the Past': 'gavel', // Represents democracy and law
+
     'World Geography': 'public', // Represents global geography
     'Global Quality of Life': 'thumb_up', // Represents well-being
     'Ways of Life in Asia, Africa, or Australasia': 'local_florist', // Represents diverse ways of life
     'Human Impact in Europe or the Americas': 'eco', // Represents environmental impact
+
     'Understanding Societies Past and Present': 'history', // Represents historical understanding
     'Early Societies of Mesopotamia, Egypt, or the Indus Valley': 'landscape', // Represents ancient societies
     'Ancient Societies of Greece and Rome': 'architecture', // Represents ancient architecture

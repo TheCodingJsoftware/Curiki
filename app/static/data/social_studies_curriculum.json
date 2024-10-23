@@ -78,6 +78,38 @@
         "CT": "Creative and Critical Thinking",
         "C": "Communication"
     },
+    "glossary": {
+        "Aboriginal": "First Nations, Inuit, and Métis peoples.",
+        "civilization": "A society or group of societies with a developed culture and advanced social and political institutions that endures over a long period of time.",
+        "community": "Refers to a group of people with commonalities that may include culture, language, values and beliefs, interests, practices and ways of life, history, or shared space. In some instances, community refers to a geographically defined space (e.g., a prairie community, the town of Willow Bunch in Saskatchewan).",
+        "consensus": "The achievement of agreement through a process of communication in which all parties affected by a decision have equal power and equal voice. Consensus is achieved when all parties to a decision have been thoroughly consulted; all parties have been given all available information on the matter; adequate time for reflection has been provided; debate has been conducted in a manner respectful to all parties; and there is common agreement on a plan of action. Consensus may, under some circumstances, provide for the recording of dissenting opinions.",
+        "culture": "The collective beliefs, values, socially transmitted behaviours and traditions, language, arts, and other human endeavours considered to be characteristic of a particular community, period, or people.",
+        "democratic ideals": "Pertain to rule by the people, including ideals that favour citizen voice and participation in government; the principle of equality of rights, opportunity, and treatment of citizens; equity and justice; freedom of expression, opinion, belief, and association; the principle of the rule of law; and balance between individual and collective responsibilities and rights.",
+        "First Nations": "A term that came into common usage in the 1970s to replace the word 'Indian,' which many people found offensive. Although the term First Nation is widely used, no legal definition of it exists. Among its uses, the term 'First Nations peoples' refers to the Indian people in Canada, both Status and Non-Status.",
+        "First Peoples": "A collective term used to describe the inhabitants of the land now known as Canada prior to European contact.",
+        "globalization": "The integration and interdependence of economies and cultures around the world through trade and financial flows across national boundaries and through the movement and exchange of people, knowledge, culture, and technologies.",
+        "historical consciousness": "How people today think about and understand the past, as well as how they use this understanding to inform their actions in the present and their plans for the future. Historical consciousness may be individual or collective, and may or may not reflect accurate factual knowledge or defensible historical interpretations.",
+        "humanism": "A belief system based on the inherent dignity and worth of human beings and their potential for self-fulfillment and morality independent of religious doctrine.",
+        "indigenous peoples": "A term used worldwide to identify the original people of all countries, such as Aboriginal peoples in Canada.",
+        "interdisciplinary": "An approach that connects interdependent skills, knowledge, and values from more than one subject area to examine a central theme, issue, problem, topic, or experience; an interdisciplinary approach stresses connections between concepts and across disciplines.",
+        "Inuit": "An Aboriginal people in northern Canada, who live above the tree line in Nunavut, the Northwest Territories, Northern Quebec and Labrador. The word means 'people' in the Inuit language—Inuktitut. The singular of Inuit is Inuk.",
+        "inuksuit": "(Plural for inuksuk) may be translated as 'replicas of people.' Inuksuit are structures built from various types of rocks and are intended for specific purposes, such as indicating navigation routes, good hunting areas, migration routes, or sacred places. Inuksuit have different shapes and names, depending on their purposes.",
+        "land": "The totality of the natural environment, including earth, water, and sky, which both gives and sustains life.",
+        "Métis": "People of mixed and European ancestry who identify themselves as Métis people, as distinct from First Nations people, Inuit or non-Aboriginal people.",
+        "nation-state": "An independent, self-governing nation as a modern unit of political organization.",
+        "oral tradition": "Includes narratives, accounts, songs and dances, stories and legends, knowledge, and laws that are passed from one generation to another.",
+        "place": "The tangible and intangible characteristics of a location or region that distinguish it from any other location and make it unique.",
+        "region": "A geographic area with homogeneous physical, human, or cultural characteristics. Geographers identify regions in order to divide the world into manageable units of study.",
+        "resource list": "An alphabetical list of primary and secondary information sources, including print texts, journals, interviews, and websites, with publication data provided where applicable.",
+        "society": "A group of people with common interests in a particular place and time, who have joined together to meet their material and non-material needs.",
+        "spiritual": "Refers, in the general sense, to beliefs, values, practices, or questions concerning the fundamental meaning and purpose of human life beyond its physical manifestations. From an Aboriginal perspective, spirituality refers to a way of seeing the world as created by a principle that is ever present and always active. This perspective involves a total way of life and affirms balance and harmony with the land.",
+        "spirituality": "Refers, in the general sense, to beliefs, values, practices, or questions concerning the fundamental meaning and purpose of human life beyond its physical manifestations. From an Aboriginal perspective, spirituality refers to a way of seeing the world as created by a principle that is ever present and always active. This perspective involves a total way of life and affirms balance and harmony with the land.",
+        "stewardship": "The shared responsibility of human beings as caretakers of the natural environment. Stewardship involves the equitable management of the environment, the economy, and society for the benefit of present and future generations.",
+        "story": "An oral or written narrative, or a drama or dance, that relates the experiences of an individual or group. The narrative relates a truth from a personal perspective, which may or may not be historically verifiable.",
+        "sustainability": "A recognition of the interdependence of social health and well-being, the environment, and economic development, and a consciousness of the impact of this relationship on quality of life today and for future generations.",
+        "technology": "An encompassing term that includes tools, instruments, machines, systems, processes, and environments developed by humans to live in or manage the physical environment.",
+        "worldview": "The overall perspective from which one sees, interprets, and makes sense of the world; a comprehensive collection of beliefs and values about life and the universe held by an individual or group."
+    },
     "skills": [
         {
             "specific_learning_outcome": "Cooperate and collaborate with others. Examples: take turns, share space and resources...",
@@ -1589,6 +1621,249 @@
             "id": "028",
             "distinctive_learning_outcome": "",
             "cluster": "2"
+        },
+        {
+            "specific_learning_outcome": "",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "E",
+            "id": "028",
+            "distinctive_learning_outcome": "",
+            "cluster": "2"
+        },
+        {
+            "specific_learning_outcome": "Appreciate the beauty and benefits that the natural environment brings to their lives.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "L",
+            "id": "007",
+            "distinctive_learning_outcome": "",
+            "cluster": "2"
+        },
+        {
+            "specific_learning_outcome": "Value the special relationships Aboriginal people have with the natural environment.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "L",
+            "id": "007",
+            "distinctive_learning_outcome": "A",
+            "cluster": "2"
+        },
+        {
+            "specific_learning_outcome": "Respect neighbourhood and community places and landmarks. Examples: do not litter or vandalize...",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "L",
+            "id": "008",
+            "distinctive_learning_outcome": "",
+            "cluster": "2"
+        },
+        {
+            "specific_learning_outcome": "Respect differences between their own and others' needs and wants.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "E",
+            "id": "013",
+            "distinctive_learning_outcome": "",
+            "cluster": "2"
+        },
+        {
+            "specific_learning_outcome": "Describe their responsibilities and rights in the school and community.",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "C",
+            "id": "005",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Describe various ways in which people depend upon and help one another.",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "C",
+            "id": "006",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Give examples of diverse ways in which people live and express themselves. Examples: language, clothing, food, art, celebrations...",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "I",
+            "id": "010",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Identify similarities between diverse communities. Examples: cultural, social, geographic...",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "I",
+            "id": "011",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Recognize that people all over the world have similar concerns, needs, and relationships.",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "G",
+            "id": "020",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Identify relationships or connections they have with people in other places in the world.",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "G",
+            "id": "021",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Give examples of decision making in their daily lives. Examples: families, schools, communities...",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "P",
+            "id": "022",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Describe how other people may influence their lives and how they may influence the lives of others.",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "P",
+            "id": "023",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Explain purposes of rules and laws in the school and community.",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "P",
+            "id": "024",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Give examples of causes of interpersonal conflict and solutions to interpersonal conflict in the school and community.",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "P",
+            "id": "025",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Identify ways to deal with bullying.",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "P",
+            "id": "026",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Describe ways in which work may be shared in families, schools, and communities.",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "E",
+            "id": "029",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Recognize the need to care for personal property.",
+            "grade": "1",
+            "outcome_type": "K",
+            "general_learning_outcome": "E",
+            "id": "030",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Respect the needs and rights of others.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "C",
+            "id": "001",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Be willing to contribute to their groups and communities.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "C",
+            "id": "002",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Appreciate the importance of relationships and connections to others.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "I",
+            "id": "004",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Value diversity among their peers and community members.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "I",
+            "id": "006",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Be willing to consider the needs of people elsewhere in the world. Examples: Project Love, UNICEF...",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "G",
+            "id": "010",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Respect rules and laws in their school and community.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "P",
+            "id": "011",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Respect the traditional laws of their Aboriginal community.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "P",
+            "id": "011",
+            "distinctive_learning_outcome": "A",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Be willing to help resolve interpersonal conflicts peacefully.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "P",
+            "id": "012",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
+        },
+        {
+            "specific_learning_outcome": "Respect their own and others' property.",
+            "grade": "1",
+            "outcome_type": "V",
+            "general_learning_outcome": "E",
+            "id": "014",
+            "distinctive_learning_outcome": "",
+            "cluster": "3"
         },
         {
             "specific_learning_outcome": "Recognize that all members of communities have responsibilities and rights.",

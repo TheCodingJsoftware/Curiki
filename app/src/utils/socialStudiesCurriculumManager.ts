@@ -10,6 +10,7 @@ export default class SocialStudiesCurriculumManager extends CurriculumManager {
     distinctiveLearningOutcomes: { [key: string]: string }
     outcomeTypes: { [key: string]: string }
     skillTypes: { [key: string]: string }
+    glossaryTerms: { [key: string]: string }
 
     constructor() {
         super();
@@ -19,6 +20,7 @@ export default class SocialStudiesCurriculumManager extends CurriculumManager {
         this.distinctiveLearningOutcomes = {}
         this.outcomeTypes = {}
         this.skillTypes = {}
+        this.glossaryTerms = {}
         this.loadCurriculum();
     }
 
@@ -66,6 +68,7 @@ export default class SocialStudiesCurriculumManager extends CurriculumManager {
                 this.outcomeTypes = data["outcome_types"];
                 this.skillTypes = data["skill_types"];
                 this.distinctiveLearningOutcomes = data["distinctive_learning_outcomes"];
+                this.glossaryTerms = data["glossary"];
             } else {
                 console.error('Failed to load learning outcomes:', response.statusText);
             }
@@ -141,6 +144,10 @@ export default class SocialStudiesCurriculumManager extends CurriculumManager {
         grade = grade?.replace('#grade_', '');
 
         return [...new Set(this.learningOutcomes.filter(outcome => outcome.grade === grade).map(outcome => outcome.distinctiveLearningOutcome).flat())].filter(Boolean);
+    }
+
+    public getGlossaryTerm(term: string): string | undefined {
+        return this.glossaryTerms[term] || undefined;
     }
 
     public async load(): Promise<void> {
