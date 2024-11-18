@@ -4,9 +4,13 @@ import '../static/css/printout-style.css';
 import '../static/css/theme.css';
 import '@mdi/font/css/materialdesignicons.min.css';
 import MathCurriculumManager from "./utils/mathCurriculumManager";
+import BiologyCurriculumManager from "./utils/biologyCurriculumManager";
 import ScienceCurriculumManager from "./utils/scienceCurriculumManager";
+import SocialStudiesCurriculumManager from "./utils/socialStudiesCurriculumManager";
 import { MathLearningOutcome } from './utils/mathLearningOutcome';
 import { ScienceLearningOutcome } from './utils/scienceLearningOutcome';
+import { BiologyLearningOutcome } from './utils/biologyLearningOutcome';
+import { SocialStudiesLearningOutcome } from './utils/socialStudiesLearningOutcome';
 import { scienceClustersIconDictionary, skillsIconDictionary } from './utils/icons';
 
 const gradeNames: { [key: string]: string } = {
@@ -65,6 +69,8 @@ class LessonPlan {
     reflections: HTMLTextAreaElement;
     mathCurriculumManager: MathCurriculumManager;
     scienceCurriculumManager: ScienceCurriculumManager;
+    biologyCurriculumManager: BiologyCurriculumManager;
+    socialStudiesCurriculumManager: SocialStudiesCurriculumManager;
     outcomes: OutCome[];
 
     constructor() {
@@ -83,6 +89,8 @@ class LessonPlan {
         this.reflections = document.getElementById('reflections') as HTMLTextAreaElement;
         this.mathCurriculumManager = new MathCurriculumManager();
         this.scienceCurriculumManager = new ScienceCurriculumManager();
+        this.biologyCurriculumManager = new BiologyCurriculumManager();
+        this.socialStudiesCurriculumManager = new SocialStudiesCurriculumManager();
         this.outcomes = [];
     }
     init() {
@@ -96,8 +104,7 @@ class LessonPlan {
 
             if (outcomes.length > 0 && curriculum) {
                 outcomes.forEach(outcome => {
-                    let selectedLearningOutcome: MathLearningOutcome | ScienceLearningOutcome | undefined;
-
+                    let selectedLearningOutcome: MathLearningOutcome | ScienceLearningOutcome | BiologyLearningOutcome | SocialStudiesLearningOutcome | undefined;
                     if (curriculum === 'math') {
                         selectedLearningOutcome = this.mathCurriculumManager.getLearningOutcomeByID(outcome) as MathLearningOutcome;
                         if (selectedLearningOutcome) {
@@ -116,6 +123,26 @@ class LessonPlan {
                                 selectedLearningOutcome.specificLearningOutcome,
                                 selectedLearningOutcome.getID(),
                                 selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.scienceCurriculumManager.getGeneralOutcomeByCode(outcome))
+                            );
+                            this.outcomes.push(outcome);
+                        }
+                    } else if (curriculum === 'biology') {
+                        selectedLearningOutcome = this.biologyCurriculumManager.getLearningOutcomeByID(outcome) as BiologyLearningOutcome;
+                        if (selectedLearningOutcome) {
+                            const outcome = new OutCome(
+                                selectedLearningOutcome.specificLearningOutcome,
+                                selectedLearningOutcome.getID(),
+                                selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.biologyCurriculumManager.getGeneralOutcomeByCode(outcome))
+                            );
+                            this.outcomes.push(outcome);
+                        }
+                    } else if (curriculum === 'socials_studies') {
+                        selectedLearningOutcome = this.socialStudiesCurriculumManager.getLearningOutcomeByID(outcome) as SocialStudiesLearningOutcome;
+                        if (selectedLearningOutcome) {
+                            const outcome = new OutCome(
+                                selectedLearningOutcome.specificLearningOutcome,
+                                selectedLearningOutcome.getID(),
+                                selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.socialStudiesCurriculumManager.getGeneralOutcomeByCode(outcome))
                             );
                             this.outcomes.push(outcome);
                         }

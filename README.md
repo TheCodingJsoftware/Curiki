@@ -1,20 +1,20 @@
 <p align="center">
-    <img src="/app/static/icons/curriki.png" width="200"  style="border-radius: 50%; width: 200px; border: 1px solid gray;">
+    <img src="/app/static/icons/Curiki.png" width="200"  style="border-radius: 50%; width: 200px; border: 1px solid gray;">
 </p>
 
-# Curriki
+# Curiki
 
 A collection of curriculums made into a comprehensive web page for ease-of-use.
 
 ## Status
 
 <p align="left">
-    <a><img src="https://img.shields.io/github/created-at/Curriki/Curriki"/></a>
-    <a><img src="https://img.shields.io/github/license/Curriki/Curriki"/></a>
-    <a><img src="https://img.shields.io/github/repo-size/Curriki/Curriki?label=Size"/></a>
-    <a><img src="https://img.shields.io/github/commit-activity/m/Curriki/Curriki"/></a>
-    <a><img src="https://img.shields.io/github/languages/count/Curriki/Curriki"></a>
-    <a><img src="https://img.shields.io/github/languages/top/Curriki/Curriki"></a>
+    <a><img src="https://img.shields.io/github/created-at/Curiki/Curiki"/></a>
+    <a><img src="https://img.shields.io/github/license/Curiki/Curiki"/></a>
+    <a><img src="https://img.shields.io/github/repo-size/Curiki/Curiki?label=Size"/></a>
+    <a><img src="https://img.shields.io/github/commit-activity/m/Curiki/Curiki"/></a>
+    <a><img src="https://img.shields.io/github/languages/count/Curiki/Curiki"></a>
+    <a><img src="https://img.shields.io/github/languages/top/Curiki/Curiki"></a>
     <a><img src="https://img.shields.io/badge/python-3.12-blue"></a>
 </p>
 

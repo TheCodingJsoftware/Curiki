@@ -730,7 +730,7 @@ class FilterManager {
                 createLessonPlanButton.classList.add('small-round');
                 createLessonPlanButton.textContent = 'Create Lesson Plan';
                 createLessonPlanButton.onclick = function () {
-                    window.open(`/lessonPlan.html?curriculum=math&outcome=${learningOutcome.getID(activeGrade.replace("#grade_", ""))}`, '_blank');
+                    window.open(`/lessonPlan.html?curriculum=social_studies&outcome=${learningOutcome.getID(activeGrade.replace("#grade_", ""))}`, '_blank');
                 }
                 buttonRowDiv.appendChild(createLessonPlanButton);
                 details.appendChild(buttonRowDiv);

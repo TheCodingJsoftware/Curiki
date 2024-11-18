@@ -1,7 +1,7 @@
 import 'beercss';
 import 'material-dynamic-colors';
-import '../static/css/curriki-style.css';
-import '../static/css/curriki-theme.css';
+import '../static/css/Curiki-style.css';
+import '../static/css/Curiki-theme.css';
 import '@mdi/font/css/materialdesignicons.min.css';
 
 document.addEventListener('DOMContentLoaded', function () {
