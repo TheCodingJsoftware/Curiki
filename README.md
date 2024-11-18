@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="/app/static/icons/Curiki.png" width="200"  style="border-radius: 50%; width: 200px; border: 1px solid gray;">
+    <img src="/app/static/icons/curiki.png" width="200"  style="border-radius: 50%; width: 200px; border: 1px solid gray;">
 </p>
 
 # Curiki
