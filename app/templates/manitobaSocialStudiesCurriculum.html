@@ -17,7 +17,7 @@
 
 <header class="fixed no-padding">
     <nav class="primary left-padding right-padding">
-        <button class="circle transparent " onclick='window.location.href="/Curiki.html"'>
+        <button class="circle transparent " onclick='window.location.href="/curiki.html"'>
             <i class="mdi mdi-arrow-left"></i>
         </button>
         <h5 class="max small">K-8 Manitoba Social Studies Curriculum</h5>
@@ -63,44 +63,50 @@
         <div class="snackbar primary" id="copy-outcome-snackbar">
             <span>Outcome copied to clipboard</span>
         </div>
-        <div class=grid>
-            <div class="s12 m12 l7">
-                <div class="field label prefix border">
-                    <i>search</i>
-                    <input type="text" id="search">
-                    <label>Search</label>
-                    <span class="helper">You can search by the outcomes' ID or specific learning outcomes.</span>
-                </div>
-                <br>
-                <h6>Learning outcomes</h6>
-                <label class="checkbox">
-                    <input type="checkbox" id="always-open-outcome">
-                    <span>Always open outcome</span>
-                </label>
-                <div class="grid tiny-padding scroll small-round tiny-space" id="content">
+        <div class="row">
+            <div class="field label prefix border max">
+                <i>search</i>
+                <input type="text" id="search">
+                <label>Search</label>
+                <span class="helper no-line">You can search by the outcomes' ID or specific learning outcomes.</span>
+            </div>
+            <button class="small-round" onclick="ui('#filter-dialog')">
+                <i>filter_list</i>
+                <span>Filter</span>
+            </button>
+        </div>
+        <br>
+        <h6>Learning outcomes</h6>
+        <label class="checkbox">
+            <input type="checkbox" id="always-open-outcome">
+            <span>Always open outcome</span>
+        </label>
+        <div class="grid tiny-padding scroll small-round tiny-space" id="content">
 
-                </div>
-            </div>
-            <div class="s12 m12 l5">
-                <h6 class="top-padding">Choose clusters</h6>
-                <div class="padding" style="max-height: 250px; overflow-y: auto;" id="clusters-container"></div>
-                <hr>
-                <h6 class="top-padding">Choose general outcomes</h6>
-                <div class="padding" style="max-height: 250px; overflow-y: auto;" id="general-outcomes-container"></div>
-                <hr>
-                <h6 class="top-padding">Choose outcome types</h6>
-                <div class="padding" style="max-height: 250px; overflow-y: auto;" id="outcome-types-container"></div>
-                <hr>
-                <h6 class="top-padding">Choose skill types</h6>
-                <div class="padding" style="max-height: 250px; overflow-y: auto;" id="skill-types-container"></div>
-                <hr>
-                <h6 class="top-padding">Choose distinctive learning outcomes</h6>
-                <div class="padding" style="max-height: 250px; overflow-y: auto;" id="distinctive-learning-container">
-                </div>
-            </div>
         </div>
     </main>
 </body>
+
+<dialog id="filter-dialog" class="right large-width">
+    <button class="link transparent circle" onclick="ui('#filter-dialog')">
+        <i>close</i>
+    </button>
+    <h6>Choose clusters</h6>
+    <div class="padding" id="clusters-container"></div>
+    <hr>
+    <h6 class="top-padding">Choose general outcomes</h6>
+    <div class="padding" id="general-outcomes-container"></div>
+    <hr>
+    <h6 class="top-padding">Choose outcome types</h6>
+    <div class="padding" id="outcome-types-container"></div>
+    <hr>
+    <h6 class="top-padding">Choose skill types</h6>
+    <div class="padding" id="skill-types-container"></div>
+    <hr>
+    <h6 class="top-padding">Choose distinctive learning outcomes</h6>
+    <div class="padding" id="distinctive-learning-container">
+    </div>
+</dialog>
 
 <!-- Skills Dialogs from Curriculum -->
 

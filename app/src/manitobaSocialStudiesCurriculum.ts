@@ -95,7 +95,7 @@ class FilterManager {
         mergedClusters.forEach(cluster => {
             const button = document.createElement('button');
             const clusterName = this.curriculumManager.clusters[activeGrade][cluster];
-            button.classList.add('tiny-margin', 'surface', 'border', 'round');
+            button.classList.add('tiny-margin', 'surface', 'border', 'round', 'large');
 
             const clusterIcon = document.createElement('i');
             clusterIcon.innerText = socialStudiesClustersIconDictionary[clusterName];
@@ -526,7 +526,7 @@ class FilterManager {
             filteredOutcomes.forEach(learningOutcome => {
                 contentAdded = true;
                 const details = document.createElement('details');
-                details.classList.add('s12', 'm12', 'l12', 'learning-outcome');
+                details.classList.add('s12', 'm6', 'l4', 'learning-outcome');
 
                 if (alwaysOpenOutcome || (searchQuery && (learningOutcome.specificLearningOutcome.toLowerCase().includes(searchQuery.toLowerCase())))) {
                     details.setAttribute('open', '');
