@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const entries = {
     policy: './app/src/policy.ts',
     curiki: './app/src/curiki.ts',
+    manitobaCurriculumOverview: './app/src/manitobaCurriculumOverview.ts',
     manitobaMathematicsCurriculum: './app/src/manitobaMathematicsCurriculum.ts',
     manitobaScienceCurriculum: './app/src/manitobaScienceCurriculum.ts',
     manitobaBiologyCurriculum: './app/src/manitobaBiologyCurriculum.ts',

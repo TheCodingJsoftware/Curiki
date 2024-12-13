@@ -52,6 +52,13 @@ class CurikiHandler(tornado.web.RequestHandler):
         self.write(rendered_template)
 
 
+class ManitobaCurriculumOverviewHandler(tornado.web.RequestHandler):
+    def get(self):
+        template = env.get_template("manitobaCurriculumOverview.html")
+        rendered_template = template.render()
+        self.write(rendered_template)
+
+
 class ManitobaMathematicsCurriculumHandler(tornado.web.RequestHandler):
     def get(self):
         template = env.get_template("manitobaMathematicsCurriculum.html")
@@ -98,6 +105,7 @@ def make_app():
             (r"/", CurikiHandler),
             (r"/policy.html", PolicyHandler),
             (r"/curiki.html", CurikiHandler),
+            (r"/manitobaCurriculumOverview.html", ManitobaCurriculumOverviewHandler),
             (r"/manitobaMathematicsCurriculum.html", ManitobaMathematicsCurriculumHandler),
             (r"/manitobaScienceCurriculum.html", ManitobaScienceCurriculumHandler),
             (r"/manitobaBiologyCurriculum.html", ManitobaBiologyCurriculumHandler),

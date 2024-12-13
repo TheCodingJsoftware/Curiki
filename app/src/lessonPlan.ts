@@ -102,55 +102,11 @@ class LessonPlan {
 
             this.topicTitle.value = curriculum;
 
+            this.setGradeLevel(curriculum, outcomes[0]);
+
             if (outcomes.length > 0 && curriculum) {
                 outcomes.forEach(outcome => {
-                    let selectedLearningOutcome: MathLearningOutcome | ScienceLearningOutcome | BiologyLearningOutcome | SocialStudiesLearningOutcome | undefined;
-                    if (curriculum === 'math') {
-                        selectedLearningOutcome = this.mathCurriculumManager.getLearningOutcomeByID(outcome) as MathLearningOutcome;
-                        if (selectedLearningOutcome) {
-                            const outcome = new OutCome(
-                                selectedLearningOutcome.specificLearningOutcome,
-                                selectedLearningOutcome.getID(),
-                                [selectedLearningOutcome.generalLearningOutcomes.join('\n')],
-                                selectedLearningOutcome.skills.map(skill => skillsIconDictionary[skill])
-                            );
-                            this.outcomes.push(outcome);
-                        }
-                    } else if (curriculum === 'science') {
-                        selectedLearningOutcome = this.scienceCurriculumManager.getLearningOutcomeByID(outcome) as ScienceLearningOutcome;
-                        if (selectedLearningOutcome) {
-                            const outcome = new OutCome(
-                                selectedLearningOutcome.specificLearningOutcome,
-                                selectedLearningOutcome.getID(),
-                                selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.scienceCurriculumManager.getGeneralOutcomeByCode(outcome))
-                            );
-                            this.outcomes.push(outcome);
-                        }
-                    } else if (curriculum === 'biology') {
-                        selectedLearningOutcome = this.biologyCurriculumManager.getLearningOutcomeByID(outcome) as BiologyLearningOutcome;
-                        if (selectedLearningOutcome) {
-                            const outcome = new OutCome(
-                                selectedLearningOutcome.specificLearningOutcome,
-                                selectedLearningOutcome.getID(),
-                                selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.biologyCurriculumManager.getGeneralOutcomeByCode(outcome))
-                            );
-                            this.outcomes.push(outcome);
-                        }
-                    } else if (curriculum === 'socials_studies') {
-                        selectedLearningOutcome = this.socialStudiesCurriculumManager.getLearningOutcomeByID(outcome) as SocialStudiesLearningOutcome;
-                        if (selectedLearningOutcome) {
-                            const outcome = new OutCome(
-                                selectedLearningOutcome.specificLearningOutcome,
-                                selectedLearningOutcome.getID(),
-                                selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.socialStudiesCurriculumManager.getGeneralOutcomeByCode(outcome))
-                            );
-                            this.outcomes.push(outcome);
-                        }
-                    }
-
-                    if (selectedLearningOutcome) {
-                        this.gradeLevel.value = gradeNames[selectedLearningOutcome.grade];
-                    }
+                    this.outcomes.push(this.getOutcome(curriculum, outcome));
                 });
             }
 
@@ -159,8 +115,108 @@ class LessonPlan {
         this.addAssessmentEvidenceRow.addEventListener('click', () => {
             this.addAssessmentEvidenceRowFunction();
         });
+        this.addCurricularOutcome.addEventListener('click', () => {
+            this.addCurricularOutcomeFunction();
+        });
         this.addAssessmentEvidenceRowFunction();
     }
+
+    setGradeLevel(curriculum: string, outcomeId: string) {
+        let selectedLearningOutcome: MathLearningOutcome | ScienceLearningOutcome | BiologyLearningOutcome | SocialStudiesLearningOutcome | undefined;
+        if (curriculum === 'math') {
+            selectedLearningOutcome = this.mathCurriculumManager.getLearningOutcomeByID(outcomeId) as MathLearningOutcome;
+        } else if (curriculum === 'science') {
+            selectedLearningOutcome = this.scienceCurriculumManager.getLearningOutcomeByID(outcomeId) as ScienceLearningOutcome;
+        } else if (curriculum === 'biology') {
+            selectedLearningOutcome = this.biologyCurriculumManager.getLearningOutcomeByID(outcomeId) as BiologyLearningOutcome;
+        } else if (curriculum === 'socials_studies') {
+            selectedLearningOutcome = this.socialStudiesCurriculumManager.getLearningOutcomeByID(outcomeId) as SocialStudiesLearningOutcome;
+        }
+        if (selectedLearningOutcome) {
+            this.gradeLevel.value = gradeNames[selectedLearningOutcome.grade];
+        }
+    }
+
+    getOutcome(curriculum: string, outcomeId: string): OutCome {
+        let selectedLearningOutcome: MathLearningOutcome | ScienceLearningOutcome | BiologyLearningOutcome | SocialStudiesLearningOutcome | undefined;
+        if (curriculum === 'math') {
+            selectedLearningOutcome = this.mathCurriculumManager.getLearningOutcomeByID(outcomeId) as MathLearningOutcome;
+            if (selectedLearningOutcome) {
+                return new OutCome(
+                    selectedLearningOutcome.specificLearningOutcome,
+                    selectedLearningOutcome.getID(),
+                    [selectedLearningOutcome.generalLearningOutcomes.join('\n')],
+                    selectedLearningOutcome.skills.map(skill => skillsIconDictionary[skill])
+                );
+            }
+        } else if (curriculum === 'science') {
+            selectedLearningOutcome = this.scienceCurriculumManager.getLearningOutcomeByID(outcomeId) as ScienceLearningOutcome;
+            if (selectedLearningOutcome) {
+                return new OutCome(
+                    selectedLearningOutcome.specificLearningOutcome,
+                    selectedLearningOutcome.getID(),
+                    selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.scienceCurriculumManager.getGeneralOutcomeByCode(outcome))
+                );
+            }
+        } else if (curriculum === 'biology') {
+            selectedLearningOutcome = this.biologyCurriculumManager.getLearningOutcomeByID(outcomeId) as BiologyLearningOutcome;
+            if (selectedLearningOutcome) {
+                return new OutCome(
+                    selectedLearningOutcome.specificLearningOutcome,
+                    selectedLearningOutcome.getID(),
+                    selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.biologyCurriculumManager.getGeneralOutcomeByCode(outcome))
+                );
+            }
+        } else if (curriculum === 'socials_studies') {
+            selectedLearningOutcome = this.socialStudiesCurriculumManager.getLearningOutcomeByID(outcomeId) as SocialStudiesLearningOutcome;
+            if (selectedLearningOutcome) {
+                return new OutCome(
+                    selectedLearningOutcome.specificLearningOutcome,
+                    selectedLearningOutcome.getID(),
+                    selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.socialStudiesCurriculumManager.getGeneralOutcomeByCode(outcome))
+                );
+            }
+        }
+
+        return new OutCome(
+            outcomeId,
+            outcomeId,
+            []
+        );
+    }
+
+    addCurricularOutcomeFunction() {
+        // Determine the selected curriculum from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const curriculum = urlParams.get('curriculum');
+
+        if (!curriculum) {
+            console.error("Curriculum not specified in the URL.");
+            return;
+        }
+
+        // Fetch the first curricular outcome based on the curriculum
+        let firstOutcomeId = this.getOutcomesIDByCurriculum(curriculum)[0];
+        let firstOutcome = this.getOutcome(curriculum, firstOutcomeId);
+
+        if (!firstOutcome) {
+            console.error("No outcomes found for the selected curriculum.");
+            return;
+        }
+
+        // Add the first outcome to the `this.outcomes` list
+        this.outcomes.push(firstOutcome);
+
+        // Update the URL to include the new outcome
+        const existingOutcomes = this.outcomes.map(o => o.id);
+        urlParams.set('outcome', existingOutcomes.join(','));
+        const updatedUrl = `${window.location.pathname}?${urlParams.toString()}`;
+        history.pushState(null, '', updatedUrl);
+
+        // Reload the outcomes in the UI
+        this.loadLearningOutcomes();
+    }
+
 
     addAssessmentEvidenceRowFunction() {
         const newRow = document.createElement('tr') as HTMLTableRowElement;
@@ -203,6 +259,21 @@ class LessonPlan {
         this.assessmentEvidence.appendChild(newRow);
     }
 
+    getOutcomesIDByCurriculum(curriculum: string): string[] {
+        let outcomesList: string[] = [];
+
+        if (curriculum === 'math') {
+            outcomesList = this.mathCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
+        } else if (curriculum === 'science') {
+            outcomesList = this.scienceCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
+        } else if (curriculum === 'biology') {
+            outcomesList = this.biologyCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
+        } else if (curriculum === 'socials_studies') {
+            outcomesList = this.socialStudiesCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
+        }
+        return outcomesList;
+    }
+
     loadLearningOutcomes() {
         this.curricularOutcomes.innerHTML = "";
 
@@ -214,11 +285,7 @@ class LessonPlan {
 
             // Create <summary> element
             const summary = document.createElement('summary');
-            summary.classList.add('none');
-
-            // Create <a> element for summary content
-            const summaryContent = document.createElement('a');
-            summaryContent.classList.add('row', 'padding', 'wave');
+            summary.classList.add('row', 'padding');
 
             // Create <button> for the learning outcome ID
             const outcomeButton = document.createElement('button');
@@ -244,12 +311,9 @@ class LessonPlan {
             });
 
             // Append button, title, and icons to the summary content
-            summaryContent.appendChild(outcomeButton);
-            summaryContent.appendChild(maxDiv);
-            summaryContent.appendChild(label); // Append icons
-
-            // Append summary content to summary element
-            summary.appendChild(summaryContent);
+            summary.appendChild(outcomeButton);
+            summary.appendChild(maxDiv);
+            summary.appendChild(label); // Append icons
 
             // Create <div> for content under the summary
             const contentDiv = document.createElement('div');
@@ -268,8 +332,72 @@ class LessonPlan {
             // Create <textarea> for general learning outcomes
             const textarea = document.createElement('textarea');
             textarea.id = 'general-learning-outcomes';
-            textarea.value = outcome.generalLearningOutcomes.join('\n');  // Join the general learning outcomes by line
+            textarea.value = outcome.generalLearningOutcomes.join('\n');
             textareaDiv.appendChild(textarea);
+
+            outcomeButton.addEventListener('click', () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const curriculum = urlParams.get('curriculum') || "";
+                let outcomesList: string[] = [];
+
+                outcomesList = this.getOutcomesIDByCurriculum(curriculum);
+
+                const modal = document.createElement('dialog');
+                modal.classList.add('modal'); // Ensure you have corresponding CSS styles for the modal.
+                modal.id = 'outcome-selector-modal';
+                modal.innerHTML = `
+                    <div>
+                        <h3>Select a New Outcome</h3>
+                        <select id="outcome-selector">
+                            ${outcomesList.map(outcomeId => `<option value="${outcomeId}">${outcomeId}</option>`).join('')}
+                        </select>
+                        <div class="modal-actions">
+                            <button id="confirm-outcome">Confirm</button>
+                            <button id="cancel-outcome">Cancel</button>
+                        </div>
+                    </div>
+                `;
+
+                document.body.appendChild(modal);
+
+                modal.showModal();
+
+                const confirmButton = modal.querySelector('#confirm-outcome') as HTMLButtonElement;
+                const cancelButton = modal.querySelector('#cancel-outcome') as HTMLButtonElement;
+                const outcomeSelector = modal.querySelector('#outcome-selector') as HTMLSelectElement;
+
+                confirmButton.addEventListener('click', () => {
+                    const selectedOutcomeId = outcomeSelector.value;
+                    if (selectedOutcomeId) {
+
+                        // Remove the current outcome and add the new one
+                        const currentIndex = this.outcomes.findIndex(o => o.id === outcome.id);
+                        if (currentIndex !== -1) {
+                            this.outcomes.splice(currentIndex, 1); // Remove the old outcome
+                        }
+
+                        let newOucome = this.getOutcome(curriculum, selectedOutcomeId);
+                        this.outcomes.push(newOucome);
+
+                        const existingOutcomes = this.outcomes.map(o => o.id);
+                        urlParams.set('outcome', existingOutcomes.join(','));
+                        const updatedUrl = `${window.location.pathname}?${urlParams.toString()}`;
+                        history.pushState(null, '', updatedUrl);
+
+                        // Reload the outcomes UI
+                        this.loadLearningOutcomes();
+
+                        // Close the modal
+                        document.body.removeChild(modal);
+                        modal.close();
+                    }
+                });
+
+                cancelButton.addEventListener('click', () => {
+                    document.body.removeChild(modal);
+                    modal.close();
+                });
+            });
 
             // Append the textarea div to the content div
             contentDiv.appendChild(textareaDiv);
