@@ -42,3 +42,4 @@ A collection of curriculums made into a comprehensive web page for ease-of-use.
 4. Run `npm run build` in the root directory
 5. Create a virtual environment and activate it with `python -m venv venv`
 6. Run `pip install -r requirements.txt` in the root directory
+7. Push to firebase with `firebase deploy --only hosting:curiki`

@@ -128,24 +128,24 @@ span.highlight {
     display: inline-block !important;
 }
 
-.hidden{
+.hidden {
     display: none !important;
 }
 
-dialog p{
+dialog p {
     line-height: normal;
 }
 
-#content{
+#content {
     max-height: calc(100vh - 320px);
     align-items: start;
 }
 
-article div{
+article div {
     height: 100%;
 }
 
-/* WHen movile use max heihgt */
+/* hHen mobile use max height to make the content scrollable */
 @media screen and (max-width: 600px) {
     #content{
         max-height: 500px;

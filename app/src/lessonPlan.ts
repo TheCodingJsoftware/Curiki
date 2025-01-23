@@ -11,41 +11,17 @@ import { MathLearningOutcome } from './utils/mathLearningOutcome';
 import { ScienceLearningOutcome } from './utils/scienceLearningOutcome';
 import { BiologyLearningOutcome } from './utils/biologyLearningOutcome';
 import { SocialStudiesLearningOutcome } from './utils/socialStudiesLearningOutcome';
-import { scienceClustersIconDictionary, skillsIconDictionary } from './utils/icons';
+import { distinctiveLearningOutcomesIconDictionary, generalLearningOutcomesIconDictionary, outcomeTypesIconDictionary, scienceClustersIconDictionary, skillsIconDictionary, skillTypesIconDictionary, socialStudiesClustersIconDictionary, unitIconDictionary } from './utils/icons';
+import { SocialStudiesSkill } from './utils/socialStudiesSkill';
+import { gradeNames } from './utils/grades'
 
-const gradeNames: { [key: string]: string } = {
-    'K': 'Kindergarten',
-    '1': 'Grade 1',
-    '2': 'Grade 2',
-    '3': 'Grade 3',
-    '4': 'Grade 4',
-    '5': 'Grade 5',
-    '6': 'Grade 6',
-    '7': 'Grade 7',
-    '8': 'Grade 8',
-    '9': 'Grade 9',
-    '10': 'Grade 10',
-    '11': 'Grade 11',
-    '12': 'Grade 12',
-    'S1': 'S1',
-    'S2': 'S2',
-    '10E': '10 Essential',
-    '10I': '10 Introduction to Applied and Pre-Calculus',
-    '11A': '11 Applied',
-    '11E': '11 Essential',
-    '11P': '11 Pre-Calculus',
-    '12A': '12 Applied',
-    '12E': '12 Essential',
-    '12P': '12 Pre-Calculus',
-}
 
 class OutCome {
     id: string;
     specificLearningOutcome: string;
     generalLearningOutcomes: string[];
-    icons: string[];
-
-    constructor(specificLearningOutcome: string, id: string, generalLearningOutcomes: string[], icons?: string[]) {
+    icons: { title: string; name: string }[];
+    constructor(specificLearningOutcome: string, id: string, generalLearningOutcomes: string[], icons?: { title: string; name: string }[]) {
         this.id = id;
         this.specificLearningOutcome = specificLearningOutcome;
         this.generalLearningOutcomes = generalLearningOutcomes;
@@ -61,17 +37,29 @@ class LessonPlan {
     curricularOutcomes: HTMLElement;
     addCurricularOutcome: HTMLButtonElement;
     crossCurricularConnections: HTMLTextAreaElement;
-    assessmentEvidence: HTMLTableElement;
+    assessmentEvidence: HTMLTableSectionElement;
     addAssessmentEvidenceRow: HTMLButtonElement;
     materialsConsidered: HTMLTextAreaElement;
     studentSpecificPlanning: HTMLTextAreaElement;
     learningPlan: HTMLTableElement;
+    activate: HTMLTextAreaElement;
+    activateTimeLength: HTMLSelectElement;
+    acquire: HTMLTextAreaElement;
+    acquireTimeLength: HTMLSelectElement;
+    apply: HTMLTextAreaElement;
+    applyTimeLength: HTMLSelectElement;
+    closure: HTMLTextAreaElement;
+    closureTimeLength: HTMLSelectElement;
     reflections: HTMLTextAreaElement;
     mathCurriculumManager: MathCurriculumManager;
     scienceCurriculumManager: ScienceCurriculumManager;
     biologyCurriculumManager: BiologyCurriculumManager;
     socialStudiesCurriculumManager: SocialStudiesCurriculumManager;
+    saveButton: HTMLButtonElement;
     outcomes: OutCome[];
+    allOutcomes: OutCome[];
+    private db: IDBDatabase | null = null;
+    private usesChromeStorage: boolean = false;
 
     constructor() {
         this.topicTitle = document.getElementById('topic-title') as HTMLInputElement;
@@ -81,99 +69,299 @@ class LessonPlan {
         this.curricularOutcomes = document.getElementById('curricular-outcomes') as HTMLElement;
         this.addCurricularOutcome = document.getElementById('add-curricular-outcome') as HTMLButtonElement;
         this.crossCurricularConnections = document.getElementById('cross-curricular-connections') as HTMLTextAreaElement;
-        this.assessmentEvidence = document.getElementById('assessment-evidence') as HTMLTableElement;
+        this.assessmentEvidence = document.querySelector('#assessment-evidence tbody') as HTMLTableSectionElement;
         this.addAssessmentEvidenceRow = document.getElementById('add-row-button') as HTMLButtonElement;
         this.materialsConsidered = document.getElementById('materials-considered') as HTMLTextAreaElement;
         this.studentSpecificPlanning = document.getElementById('student-specific-planning') as HTMLTextAreaElement;
         this.learningPlan = document.getElementById('learning-plan') as HTMLTableElement;
+        this.activate = document.getElementById('activate') as HTMLTextAreaElement;
+        this.activateTimeLength = document.getElementById('activate-time-length') as HTMLSelectElement;
+        this.acquire = document.getElementById('acquire') as HTMLTextAreaElement;
+        this.acquireTimeLength = document.getElementById('acquire-time-length') as HTMLSelectElement;
+        this.apply = document.getElementById('apply') as HTMLTextAreaElement;
+        this.applyTimeLength = document.getElementById('apply-time-length') as HTMLSelectElement;
+        this.closure = document.getElementById('closure') as HTMLTextAreaElement;
+        this.closureTimeLength = document.getElementById('closure-time-length') as HTMLSelectElement;
         this.reflections = document.getElementById('reflections') as HTMLTextAreaElement;
+        this.saveButton = document.getElementById('save-button') as HTMLButtonElement;
         this.mathCurriculumManager = new MathCurriculumManager();
         this.scienceCurriculumManager = new ScienceCurriculumManager();
         this.biologyCurriculumManager = new BiologyCurriculumManager();
         this.socialStudiesCurriculumManager = new SocialStudiesCurriculumManager();
         this.outcomes = [];
+        this.allOutcomes = [];
     }
+
     init() {
         this.date.value = new Date().toISOString().split('T')[0];
-        Promise.all([this.mathCurriculumManager.load(), this.scienceCurriculumManager.load()]).then(() => {
-            const url = new URL(window.location.href);
-            const outcomes = url.searchParams.get('outcome')?.split(',') || [];  // Split IDs by commas
-            const curriculum = url.searchParams.get('curriculum') || "";
-
-            this.topicTitle.value = curriculum;
-
-            this.setGradeLevel(curriculum, outcomes[0]);
-
-            if (outcomes.length > 0 && curriculum) {
-                outcomes.forEach(outcome => {
-                    this.outcomes.push(this.getOutcome(curriculum, outcome));
-                });
-            }
-
-            this.loadLearningOutcomes();
+        Promise.all([
+            this.mathCurriculumManager.load(),
+            this.scienceCurriculumManager.load(),
+            this.biologyCurriculumManager.load(),
+            this.socialStudiesCurriculumManager.load()
+        ]).then(() => {
+            this.loadAllOutcomes().then(() => {
+                const hash = window.location.hash.replace('#', '');
+                if (hash){
+                    this.loadLessonPlanByHash(hash);
+                }
+            });
         });
         this.addAssessmentEvidenceRow.addEventListener('click', () => {
-            this.addAssessmentEvidenceRowFunction();
+            this.addNewAssessmentEvidenceRowFunction();
         });
         this.addCurricularOutcome.addEventListener('click', () => {
             this.addCurricularOutcomeFunction();
         });
-        this.addAssessmentEvidenceRowFunction();
+        this.saveButton.addEventListener('click', () => {
+            this.saveLessonPlan();
+        });
+        this.initDB();
     }
 
-    setGradeLevel(curriculum: string, outcomeId: string) {
-        let selectedLearningOutcome: MathLearningOutcome | ScienceLearningOutcome | BiologyLearningOutcome | SocialStudiesLearningOutcome | undefined;
-        if (curriculum === 'math') {
-            selectedLearningOutcome = this.mathCurriculumManager.getLearningOutcomeByID(outcomeId) as MathLearningOutcome;
-        } else if (curriculum === 'science') {
-            selectedLearningOutcome = this.scienceCurriculumManager.getLearningOutcomeByID(outcomeId) as ScienceLearningOutcome;
-        } else if (curriculum === 'biology') {
-            selectedLearningOutcome = this.biologyCurriculumManager.getLearningOutcomeByID(outcomeId) as BiologyLearningOutcome;
-        } else if (curriculum === 'socials_studies') {
-            selectedLearningOutcome = this.socialStudiesCurriculumManager.getLearningOutcomeByID(outcomeId) as SocialStudiesLearningOutcome;
-        }
-        if (selectedLearningOutcome) {
-            this.gradeLevel.value = gradeNames[selectedLearningOutcome.grade];
+    private initDB() {
+        const request = indexedDB.open('LessonPlansDB', 1);
+
+        request.onerror = (event) => {
+            console.error('Error opening IndexedDB:', event);
+        };
+
+        request.onupgradeneeded = (event) => {
+            const db = (event.target as IDBOpenDBRequest).result;
+            if (!db.objectStoreNames.contains('lessonPlans')) {
+                db.createObjectStore('lessonPlans', { keyPath: 'id' });
+            }
+        };
+
+        request.onsuccess = (event) => {
+            this.db = (event.target as IDBOpenDBRequest).result;
+        };
+    }
+
+    async saveLessonPlan() {
+        // Generate unique hashtag using current timestamp
+        const hashtag = window.location.hash.replace('#', '');
+        let assessmentEvidence: { description: string, forLearning: boolean, asLearning: boolean, ofLearning: boolean }[] = [];
+        let outcomes = this.outcomes.map(outcome => outcome.id);
+        this.assessmentEvidence.querySelectorAll('tr').forEach(row => {
+            const description = row.querySelector('#description') as HTMLInputElement;
+            const forLearning = row.querySelector('#for-learning') as HTMLInputElement;
+            const asLearning = row.querySelector('#as-learning') as HTMLInputElement;
+            const ofLearning = row.querySelector('#of-learning') as HTMLInputElement;
+            assessmentEvidence.push({
+                description: description.value,
+                forLearning: forLearning.checked,
+                asLearning: asLearning.checked,
+                ofLearning: ofLearning.checked
+            });
+        });
+
+        // Create lesson plan object
+        const lessonPlan = {
+            id: hashtag,
+            topicTitle: this.topicTitle.value,
+            gradeLevel: this.gradeLevel.value,
+            timeLength: this.timeLength.value,
+            date: this.date.value,
+            outcomes: outcomes,
+            crossCurricularConnections: this.crossCurricularConnections.value,
+            materialsConsidered: this.materialsConsidered.value,
+            studentSpecificPlanning: this.studentSpecificPlanning.value,
+            reflections: this.reflections.value,
+            activate: this.activate.value,
+            activateTime: this.activateTimeLength.value,
+            acquire: this.acquire.value,
+            acquireTime: this.acquireTimeLength.value,
+            apply: this.apply.value,
+            applyTime: this.applyTimeLength.value,
+            closure: this.closure.value,
+            closureTime: this.closureTimeLength.value,
+            assessmentEvidence: assessmentEvidence
+            // Add any other fields you want to save
+        };
+
+        // Save to local storage (IndexedDB or Chrome Storage)
+        if (this.usesChromeStorage) {
+            chrome.storage.sync.set({ [hashtag]: lessonPlan }, () => {
+                console.log(`Lesson plan saved locally with ID: ${hashtag}`);
+            });
+        } else {
+            if (!this.db) {
+                console.error('Database not initialized');
+                return;
+            }
+
+            const transaction = this.db.transaction(['lessonPlans'], 'readwrite');
+            const store = transaction.objectStore('lessonPlans');
+            const request = store.put(lessonPlan);
+
+            request.onsuccess = () => {
+                console.log(`Lesson plan saved locally with ID: ${hashtag}`);
+            };
+
+            request.onerror = (event) => {
+                console.error('Error saving lesson plan locally:', event);
+            };
         }
     }
 
-    getOutcome(curriculum: string, outcomeId: string): OutCome {
-        let selectedLearningOutcome: MathLearningOutcome | ScienceLearningOutcome | BiologyLearningOutcome | SocialStudiesLearningOutcome | undefined;
+    loadLessonPlanByHash(hashtag: string) {
+        if (this.usesChromeStorage) {
+            // Load using Chrome Storage API
+            chrome.storage.sync.get([hashtag], (result) => {
+                const plan = result[hashtag];
+                if (plan) {
+                    this.populateLessonPlan(plan);
+                }
+            });
+        } else {
+            // Fallback to IndexedDB
+            if (!this.db) {
+                console.error('Database not initialized');
+                return;
+            }
+
+            const transaction = this.db.transaction(['lessonPlans'], 'readonly');
+            const store = transaction.objectStore('lessonPlans');
+            const request = store.get(hashtag);
+
+            request.onsuccess = () => {
+                const plan = request.result;
+                if (plan) {
+                    this.populateLessonPlan(plan);
+                }
+            };
+
+            request.onerror = (event) => {
+                console.error('Error loading lesson plan:', event);
+            };
+        }
+    }
+
+    // Helper method to populate the form with lesson plan data
+    private populateLessonPlan(plan: any) {
+        this.topicTitle.value = plan.topicTitle;
+        this.gradeLevel.value = plan.gradeLevel;
+        this.timeLength.value = plan.timeLength;
+        this.date.value = plan.date;
+        this.crossCurricularConnections.value = plan.crossCurricularConnections;
+        this.materialsConsidered.value = plan.materialsConsidered;
+        this.studentSpecificPlanning.value = plan.studentSpecificPlanning;
+        this.activate.value = plan.activate;
+        this.activateTimeLength.value = plan.activateTime;
+        this.acquire.value = plan.acquire;
+        this.acquireTimeLength.value = plan.acquireTime;
+        this.apply.value = plan.apply;
+        this.applyTimeLength.value = plan.applyTime;
+        this.closure.value = plan.closure;
+        this.closureTimeLength.value = plan.closureTime;
+        this.reflections.value = plan.reflections;
+        this.outcomes = this.allOutcomes.filter(outcome => plan.outcomes.includes(outcome.id));
+        if (plan.assessmentEvidence.length === 0) {
+            this.addNewAssessmentEvidenceRowFunction();
+        }else{
+            plan.assessmentEvidence.forEach((evidence: { description: string, forLearning: boolean, asLearning: boolean, ofLearning: boolean }) => {
+                this.addAssessmentEvidenceRowFunction(evidence.description, evidence.forLearning, evidence.asLearning, evidence.ofLearning);
+            });
+        }
+
+        this.loadLearningOutcomes();
+    }
+
+    async loadAllOutcomes(): Promise<void> {
+        const mathOutcomesIDs = this.mathCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
+        const scienceOutcomesIDs = this.scienceCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
+        const biologyOutcomesIDs = this.biologyCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
+        const socialStudiesOutcomesIDs = this.socialStudiesCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
+        let socialStudiesSkillOutcomesIDs: string[] = [];
+        const socialStudiesSkills = this.socialStudiesCurriculumManager.skills;
+        socialStudiesSkills.forEach(skill => {
+            skill.grades.forEach(grade => {
+                socialStudiesSkillOutcomesIDs.push(skill.getID(grade));
+            })
+        });
+
+        await Promise.all([
+            ...mathOutcomesIDs.map(outcomeID => this.getOutcome('math', outcomeID)),
+            ...scienceOutcomesIDs.map(outcomeID => this.getOutcome('science', outcomeID)),
+            ...biologyOutcomesIDs.map(outcomeID => this.getOutcome('biology', outcomeID)),
+            ...socialStudiesOutcomesIDs.map(outcomeID => this.getOutcome('social_studies', outcomeID)),
+            ...socialStudiesSkillOutcomesIDs.map(skillID => this.getOutcome('social_studies', skillID))
+        ]).then(outcomes => {
+            this.allOutcomes.push(...outcomes);
+        });
+    }
+
+    private getOutcome(curriculum: string, outcomeId: string): OutCome {
+        let selectedLearningOutcome: MathLearningOutcome | ScienceLearningOutcome | BiologyLearningOutcome | SocialStudiesLearningOutcome | SocialStudiesSkill | undefined;
+        let icons: { title: string; name: string }[] = [];
         if (curriculum === 'math') {
             selectedLearningOutcome = this.mathCurriculumManager.getLearningOutcomeByID(outcomeId) as MathLearningOutcome;
+            icons = selectedLearningOutcome.skills.map(skill => ({
+                title: this.mathCurriculumManager.skills[skill],
+                name: skillsIconDictionary[skill]
+            }));
             if (selectedLearningOutcome) {
                 return new OutCome(
                     selectedLearningOutcome.specificLearningOutcome,
                     selectedLearningOutcome.getID(),
                     [selectedLearningOutcome.generalLearningOutcomes.join('\n')],
-                    selectedLearningOutcome.skills.map(skill => skillsIconDictionary[skill])
+                    icons
                 );
             }
         } else if (curriculum === 'science') {
             selectedLearningOutcome = this.scienceCurriculumManager.getLearningOutcomeByID(outcomeId) as ScienceLearningOutcome;
+            icons.push({
+                title: this.scienceCurriculumManager.clusters[selectedLearningOutcome.grade][selectedLearningOutcome.cluster],
+                name: scienceClustersIconDictionary[this.scienceCurriculumManager.clusters[selectedLearningOutcome.grade][selectedLearningOutcome.cluster]]
+            });
             if (selectedLearningOutcome) {
                 return new OutCome(
                     selectedLearningOutcome.specificLearningOutcome,
                     selectedLearningOutcome.getID(),
-                    selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.scienceCurriculumManager.getGeneralOutcomeByCode(outcome))
+                    selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.scienceCurriculumManager.getGeneralOutcomeByCode(outcome)),
+                    icons
                 );
             }
         } else if (curriculum === 'biology') {
             selectedLearningOutcome = this.biologyCurriculumManager.getLearningOutcomeByID(outcomeId) as BiologyLearningOutcome;
+            icons.push({
+                title:this.biologyCurriculumManager.units[selectedLearningOutcome.grade][selectedLearningOutcome.unit],
+                name: unitIconDictionary[this.biologyCurriculumManager.units[selectedLearningOutcome.grade][selectedLearningOutcome.unit]]
+            });
             if (selectedLearningOutcome) {
                 return new OutCome(
                     selectedLearningOutcome.specificLearningOutcome,
                     selectedLearningOutcome.getID(),
-                    selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.biologyCurriculumManager.getGeneralOutcomeByCode(outcome))
+                    selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.biologyCurriculumManager.getGeneralOutcomeByCode(outcome)),
+                    icons
                 );
             }
-        } else if (curriculum === 'socials_studies') {
+        } else if (curriculum === 'social_studies') {
             selectedLearningOutcome = this.socialStudiesCurriculumManager.getLearningOutcomeByID(outcomeId) as SocialStudiesLearningOutcome;
             if (selectedLearningOutcome) {
+                icons.push({title: this.socialStudiesCurriculumManager.generalOutcomes[selectedLearningOutcome.generalLearningOutcome], name: generalLearningOutcomesIconDictionary[this.socialStudiesCurriculumManager.generalOutcomes[selectedLearningOutcome.generalLearningOutcome]] });
+                icons.push({title: this.socialStudiesCurriculumManager.clusters[selectedLearningOutcome.grade][selectedLearningOutcome.cluster], name: socialStudiesClustersIconDictionary[this.socialStudiesCurriculumManager.clusters[selectedLearningOutcome.grade][selectedLearningOutcome.cluster]] });
+                icons.push({title: this.socialStudiesCurriculumManager.outcomeTypes[selectedLearningOutcome.outcomeType], name: outcomeTypesIconDictionary[this.socialStudiesCurriculumManager.outcomeTypes[selectedLearningOutcome.outcomeType]] });
+                if (selectedLearningOutcome.distinctiveLearningOutcome) {
+                    icons.push({title: this.socialStudiesCurriculumManager.distinctiveLearningOutcomes[selectedLearningOutcome.distinctiveLearningOutcome], name: distinctiveLearningOutcomesIconDictionary[this.socialStudiesCurriculumManager.distinctiveLearningOutcomes[selectedLearningOutcome.distinctiveLearningOutcome]] });
+                }
                 return new OutCome(
                     selectedLearningOutcome.specificLearningOutcome,
                     selectedLearningOutcome.getID(),
-                    selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.socialStudiesCurriculumManager.getGeneralOutcomeByCode(outcome))
+                    selectedLearningOutcome.generalLearningOutcomes.map(outcome => this.socialStudiesCurriculumManager.getGeneralOutcomeByCode(outcome)),
+                    icons
+                );
+            }
+            let selectedSkill = this.socialStudiesCurriculumManager.getSkillByID(outcomeId) as SocialStudiesSkill;
+            if (selectedSkill) {
+                icons.push({title: this.socialStudiesCurriculumManager.skillTypes[selectedSkill.skillType], name: skillTypesIconDictionary[this.socialStudiesCurriculumManager.skillTypes[selectedSkill.skillType]] });
+                icons.push({title: this.socialStudiesCurriculumManager.outcomeTypes[selectedSkill.outcomeType], name: outcomeTypesIconDictionary[this.socialStudiesCurriculumManager.outcomeTypes[selectedSkill.outcomeType]] });
+                return new OutCome(
+                    selectedSkill.specificLearningOutcome,
+                    selectedSkill.getIDs().join(', '),
+                    [selectedSkill.generalLearningOutcome],
+                    icons
                 );
             }
         }
@@ -186,62 +374,68 @@ class LessonPlan {
     }
 
     addCurricularOutcomeFunction() {
-        // Determine the selected curriculum from the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const curriculum = urlParams.get('curriculum');
-
-        if (!curriculum) {
-            console.error("Curriculum not specified in the URL.");
-            return;
-        }
-
-        // Fetch the first curricular outcome based on the curriculum
-        let firstOutcomeId = this.getOutcomesIDByCurriculum(curriculum)[0];
-        let firstOutcome = this.getOutcome(curriculum, firstOutcomeId);
+        let firstOutcome = this.allOutcomes[0];
 
         if (!firstOutcome) {
             console.error("No outcomes found for the selected curriculum.");
             return;
         }
 
-        // Add the first outcome to the `this.outcomes` list
         this.outcomes.push(firstOutcome);
 
-        // Update the URL to include the new outcome
         const existingOutcomes = this.outcomes.map(o => o.id);
-        urlParams.set('outcome', existingOutcomes.join(','));
-        const updatedUrl = `${window.location.pathname}?${urlParams.toString()}`;
-        history.pushState(null, '', updatedUrl);
 
-        // Reload the outcomes in the UI
+        if (window.location.hash) {
+            if (this.usesChromeStorage) {
+                chrome.storage.sync.get([window.location.hash], (result) => {
+                    const plan = result[window.location.hash];
+                    if (plan) {
+                        plan.outcomes = existingOutcomes;
+                        chrome.storage.sync.set({ [window.location.hash]: plan });
+                    }
+                });
+            } else if (this.db) {
+                const transaction = this.db.transaction(['lessonPlans'], 'readwrite');
+                const store = transaction.objectStore('lessonPlans');
+                const request = store.get(window.location.hash);
+
+                request.onsuccess = () => {
+                    const plan = request.result;
+                    if (plan) {
+                        plan.outcomes = existingOutcomes;
+                        store.put(plan);
+                    }
+                };
+            }
+        }
+
         this.loadLearningOutcomes();
     }
 
-
-    addAssessmentEvidenceRowFunction() {
+    addNewAssessmentEvidenceRowFunction() {
         const newRow = document.createElement('tr') as HTMLTableRowElement;
 
         newRow.innerHTML = `
             <td>
-                <div class="field border textarea extra">
-                    <textarea></textarea>
+                <div class="field border textarea extra min">
+                    <textarea id="description"></textarea>
                 </div>
             </td>
             <td>
                 <label class="checkbox">
-                    <input type="checkbox">
+                    <input id="for-learning" type="checkbox">
                     <span></span>
                 </label>
             </td>
             <td>
                 <label class="checkbox">
-                    <input type="checkbox">
+                    <input id="as-learning" type="checkbox">
                     <span></span>
                 </label>
             </td>
             <td>
                 <label class="checkbox">
-                    <input type="checkbox">
+                    <input id="of-learning" type="checkbox">
                     <span></span>
                 </label>
             </td>
@@ -259,19 +453,18 @@ class LessonPlan {
         this.assessmentEvidence.appendChild(newRow);
     }
 
-    getOutcomesIDByCurriculum(curriculum: string): string[] {
-        let outcomesList: string[] = [];
+    addAssessmentEvidenceRowFunction(description: string, forLearning: boolean, asLearning: boolean, ofLearning: boolean) {
+        this.addNewAssessmentEvidenceRowFunction();
+        const newRow = this.assessmentEvidence.querySelector('tr:last-child') as HTMLTableRowElement;
+        const descriptionInput = newRow.querySelector('#description') as HTMLInputElement;
+        const forLearningInput = newRow.querySelector('#for-learning') as HTMLInputElement;
+        const asLearningInput = newRow.querySelector('#as-learning') as HTMLInputElement;
+        const ofLearningInput = newRow.querySelector('#of-learning') as HTMLInputElement;
 
-        if (curriculum === 'math') {
-            outcomesList = this.mathCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
-        } else if (curriculum === 'science') {
-            outcomesList = this.scienceCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
-        } else if (curriculum === 'biology') {
-            outcomesList = this.biologyCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
-        } else if (curriculum === 'socials_studies') {
-            outcomesList = this.socialStudiesCurriculumManager.learningOutcomes.map(outcome => outcome.getID());
-        }
-        return outcomesList;
+        descriptionInput.value = description;
+        forLearningInput.checked = forLearning;
+        asLearningInput.checked = asLearning;
+        ofLearningInput.checked = ofLearning;
     }
 
     loadLearningOutcomes() {
@@ -280,7 +473,7 @@ class LessonPlan {
         this.outcomes.forEach(outcome => {
             // Create <details> element and set it to be open by default
             const details = document.createElement('details');
-            details.classList.add('no-padding', 'bottom-margin', 'border');
+            details.classList.add('no-padding', 'bottom-margin', 'border', 'page-break-inside');
             details.setAttribute('open', '');
 
             // Create <summary> element
@@ -302,22 +495,43 @@ class LessonPlan {
             // Append title to max div
             maxDiv.appendChild(title);
 
-            // Create <label> for the icons
-            const label = document.createElement('label');
-            outcome.icons.forEach(iconClass => {
+            // Create <div> for the icons
+            const iconContainer = document.createElement('div');
+            outcome.icons.forEach(icon => {
+                const chip = document.createElement('button');
+                chip.classList.add('chip', 'small-round', 'tiny-margin');
                 const iconElement = document.createElement('i');
-                iconElement.innerText = iconClass;
-                label.appendChild(iconElement);
+                const chipText = document.createElement('span');
+                chipText.textContent = icon.title;
+                iconElement.innerText = icon.name;
+                chip.appendChild(iconElement);
+                chip.appendChild(chipText);
+                iconContainer.appendChild(chip);
             });
+
+            const deleteButton = document.createElement('button');
+            const deleteButtonIcon = document.createElement('i');
+            deleteButtonIcon.innerText = "delete"
+            deleteButton.classList.add('square', 'round', 'delete-row-button')
+            deleteButton.appendChild(deleteButtonIcon);
+            deleteButton.addEventListener('click', () =>{
+                const index = this.outcomes.findIndex(out => out.id === outcome.id);
+                if (index > -1) {
+                    this.outcomes.splice(index, 1);
+                    this.loadLearningOutcomes();
+                }
+            })
 
             // Append button, title, and icons to the summary content
             summary.appendChild(outcomeButton);
             summary.appendChild(maxDiv);
-            summary.appendChild(label); // Append icons
+            summary.appendChild(deleteButton)
 
             // Create <div> for content under the summary
             const contentDiv = document.createElement('div');
             contentDiv.classList.add('padding');
+
+            contentDiv.appendChild(iconContainer)
 
             // Create <p> for the description
             const description = document.createElement('p');
@@ -327,7 +541,7 @@ class LessonPlan {
 
             // Create <div> for the textarea
             const textareaDiv = document.createElement('div');
-            textareaDiv.classList.add('field', 'border', 'textarea', 'extra', 'no-margin');
+            textareaDiv.classList.add('field', 'border', 'textarea', 'extra', 'min', 'no-margin');
 
             // Create <textarea> for general learning outcomes
             const textarea = document.createElement('textarea');
@@ -336,24 +550,22 @@ class LessonPlan {
             textareaDiv.appendChild(textarea);
 
             outcomeButton.addEventListener('click', () => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const curriculum = urlParams.get('curriculum') || "";
-                let outcomesList: string[] = [];
-
-                outcomesList = this.getOutcomesIDByCurriculum(curriculum);
-
                 const modal = document.createElement('dialog');
                 modal.classList.add('modal'); // Ensure you have corresponding CSS styles for the modal.
                 modal.id = 'outcome-selector-modal';
                 modal.innerHTML = `
                     <div>
-                        <h3>Select a New Outcome</h3>
-                        <select id="outcome-selector">
-                            ${outcomesList.map(outcomeId => `<option value="${outcomeId}">${outcomeId}</option>`).join('')}
-                        </select>
-                        <div class="modal-actions">
-                            <button id="confirm-outcome">Confirm</button>
-                            <button id="cancel-outcome">Cancel</button>
+                        <h5>Select a New Outcome</h5>
+
+                        <div class="field border label">
+                            <select id="outcome-selector">
+                                ${this.allOutcomes.map(outcomeId => `<option value="${outcomeId.id}">${outcomeId.id}</option>`).join('')}
+                            </select>
+                            <label>Select an outcome</label>
+                        </div>
+                        <div class="grid">
+                            <button class="s6" id="confirm-outcome">Confirm</button>
+                            <button class="s6" id="cancel-outcome">Cancel</button>
                         </div>
                     </div>
                 `;
@@ -369,25 +581,17 @@ class LessonPlan {
                 confirmButton.addEventListener('click', () => {
                     const selectedOutcomeId = outcomeSelector.value;
                     if (selectedOutcomeId) {
-
-                        // Remove the current outcome and add the new one
                         const currentIndex = this.outcomes.findIndex(o => o.id === outcome.id);
                         if (currentIndex !== -1) {
                             this.outcomes.splice(currentIndex, 1); // Remove the old outcome
                         }
 
-                        let newOucome = this.getOutcome(curriculum, selectedOutcomeId);
-                        this.outcomes.push(newOucome);
-
-                        const existingOutcomes = this.outcomes.map(o => o.id);
-                        urlParams.set('outcome', existingOutcomes.join(','));
-                        const updatedUrl = `${window.location.pathname}?${urlParams.toString()}`;
-                        history.pushState(null, '', updatedUrl);
-
-                        // Reload the outcomes UI
+                        let newOutcome = this.allOutcomes.find(o => o.id === selectedOutcomeId);
+                        if (!newOutcome) {
+                            return;
+                        }
+                        this.outcomes.push(newOutcome);
                         this.loadLearningOutcomes();
-
-                        // Close the modal
                         document.body.removeChild(modal);
                         modal.close();
                     }
@@ -408,6 +612,40 @@ class LessonPlan {
             // Append the details element to the main container
             this.curricularOutcomes.appendChild(details);
         });
+    }
+
+    async getAllLessonPlans(): Promise<any[]> {
+        if (this.usesChromeStorage) {
+            return new Promise((resolve, reject) => {
+                chrome.storage.sync.get(null, (items) => {
+                    if (chrome.runtime.lastError) {
+                        reject(chrome.runtime.lastError);
+                    } else {
+                        resolve(Object.values(items));
+                    }
+                });
+            });
+        } else {
+            // Existing IndexedDB implementation
+            return new Promise((resolve, reject) => {
+                if (!this.db) {
+                    reject('Database not initialized');
+                    return;
+                }
+
+                const transaction = this.db.transaction(['lessonPlans'], 'readonly');
+                const store = transaction.objectStore('lessonPlans');
+                const request = store.getAll();
+
+                request.onsuccess = () => {
+                    resolve(request.result);
+                };
+
+                request.onerror = () => {
+                    reject('Error fetching lesson plans');
+                };
+            });
+        }
     }
 }
 

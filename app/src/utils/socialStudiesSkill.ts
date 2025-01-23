@@ -24,4 +24,8 @@ export class SocialStudiesSkill {
     getID(grade: string): string {
         return `${grade}-S-${this.id}`;
     }
+
+    getIDs(): string[] {
+        return this.grades.map(grade => this.getID(grade));
+    }
 }

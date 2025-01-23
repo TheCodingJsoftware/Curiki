@@ -10,6 +10,10 @@
         "strict": true,
         "sourceMap": true,
         "resolveJsonModule": true,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./app/src/types"
+        ]
     },
     "exclude": ["./dist"]
 }

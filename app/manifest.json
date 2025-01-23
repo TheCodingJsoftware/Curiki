@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Lesson Plan Generator",
+  "version": "1.0",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ]
+}

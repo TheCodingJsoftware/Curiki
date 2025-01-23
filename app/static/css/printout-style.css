@@ -41,7 +41,6 @@ details {
     width: auto;
     height: auto;
     overflow: hidden;
-    background-color: var(--primary);
     padding: 5px;
     border-radius: 0.45rem;
     margin: 5px;
@@ -51,11 +50,15 @@ details {
     page-break-inside: avoid !important;
 }
 
+.field.min > textarea {
+    max-block-size: 100rem !important;
+}
+
 @media print {
     header{
         display: none !important;
     }
-    body{
+    details, details summary, body{
         background-color: white !important;
         background: white !important;
     }
@@ -68,4 +71,7 @@ details {
     #add-curricular-outcome{
         display: none !important;
     }
+    /* details:not([open]){
+        display: none !important;
+    } */
 }

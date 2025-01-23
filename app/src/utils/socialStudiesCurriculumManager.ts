@@ -120,6 +120,10 @@ export default class SocialStudiesCurriculumManager extends CurriculumManager {
         return this.learningOutcomes.find(outcome => outcome.getID() === id) || undefined;
     }
 
+    public getSkillByID(id: string): SocialStudiesSkill | undefined {
+        return this.skills.find(skill => skill.getIDs().includes(id)) || undefined;
+    }
+
     public getGeneralOutcomeByCode(code: string): string {
         return this.generalOutcomes[code];
     }
@@ -144,6 +148,7 @@ export default class SocialStudiesCurriculumManager extends CurriculumManager {
 
         return [...new Set(this.learningOutcomes.filter(outcome => outcome.grade === grade).map(outcome => outcome.generalLearningOutcome).flat())].filter(Boolean);
     }
+
     public getDistinctiveLearningOutcome(grade: string): string[] {
         grade = grade?.replace('#grade_', '');
 

@@ -7,6 +7,7 @@ import MathCurriculumManager from "./utils/mathCurriculumManager"
 import CookieManager from './utils/cookieManager';
 import { MathLearningOutcome } from "./utils/mathLearningOutcome";
 import { skillsIconDictionary, strandIconDictionary } from './utils/icons';
+import { gradeNames } from './utils/grades';
 
 const quickSearchKeyWords: string[] = [
     "3-D Object",
@@ -570,7 +571,50 @@ class FilterManager {
                 createLessonPlanButton.classList.add('small-round');
                 createLessonPlanButton.textContent = 'Create Lesson Plan';
                 createLessonPlanButton.onclick = function () {
-                    window.open(`/lessonPlan.html?curriculum=math&outcome=${learningOutcome.getID()}`, '_blank');
+                    const lessonPlan = {
+                        id: "",
+                        topicTitle: `Mathematics`,
+                        gradeLevel: gradeNames[activeGrade.replace('#grade_', '')],
+                        timeLength: "~ 60 minutes",
+                        date: new Date().toISOString().split('T')[0],
+                        outcomes: [learningOutcome.getID()],
+                        activate: "",
+                        activateTime: "~ 5 minutes",
+                        acquire: "",
+                        acquireTime: "~ 15 minutes",
+                        apply: "",
+                        applyTime: "~ 30 minutes",
+                        closure: "",
+                        closureTime: "~ 10 minutes",
+                        assessmentEvidence: [],
+                        materialsConsidered: "",
+                        studentSpecificPlanning: "",
+                        reflections: "",
+                        crossCurricularConnections: "",
+                    };
+
+                    const transaction = indexedDB.open('LessonPlansDB', 1);
+                    transaction.onupgradeneeded = function(event) {
+                        const db = (event.target as IDBOpenDBRequest).result;
+                        if (!db.objectStoreNames.contains('lessonPlans')) {
+                            db.createObjectStore('lessonPlans', { keyPath: 'id' });
+                        }
+                    };
+
+                    transaction.onsuccess = function(event) {
+                        const db = (event.target as IDBOpenDBRequest).result;
+                        const timestamp = new Date().getTime();
+                        const hashtag = `${timestamp}`;
+                        lessonPlan.id = hashtag;
+
+                        const store = db.transaction('lessonPlans', 'readwrite').objectStore('lessonPlans');
+                        const request = store.put(lessonPlan);
+
+                        request.onsuccess = function() {
+                            const newUrl = `/lessonPlan.html#${hashtag}`;
+                            window.open(newUrl, '_blank');
+                        };
+                    };
                 }
                 buttonRowDiv.appendChild(createLessonPlanButton);
                 details.appendChild(buttonRowDiv);

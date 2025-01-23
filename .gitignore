@@ -7,3 +7,13 @@ package-lock.json
 input_file.txt
 harvester.py
 output.json
+.firebase
+.firebaserc
+public
+dataconnect
+dataconnect-generated
+firebase.json
+apphosting.yaml
+copy_to_public.py
+database.rules.json
+storage.rules

@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const { exec } = require('child_process');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -58,5 +59,18 @@ module.exports = {
             filename: 'css/[name].bundle.css',
         }),
         ...htmlPlugins, // Include all the dynamically generated HtmlWebpackPlugin instances
+        {
+            apply: (compiler) => {
+                compiler.hooks.afterEmit.tap('CopyToPublic', (compilation) => {
+                    exec('python copy_to_public.py', (err, stdout, stderr) => {
+                        if (err) {
+                            console.error('Error copying files to public:', err);
+                            return;
+                        }
+                        console.log('Successfully copied files to public directory');
+                    });
+                });
+            }
+        }
     ],
 };

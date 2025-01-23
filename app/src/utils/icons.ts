@@ -176,6 +176,9 @@ export const outcomeTypesIconDictionary: { [key: string]: string } = {
     'Skills': 'build', // Represents skill-building
     'Knowledge': 'school', // Represents knowledge acquisition
     'Values': 'favorite', // Represents values and beliefs
+    'S': 'build', // Represents skill-building
+    'K': 'school', // Represents knowledge acquisition
+    'V': 'favorite', // Represents values and beliefs
 }
 
 export const skillTypesIconDictionary: { [key: string]: string } = {
