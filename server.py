@@ -1,6 +1,5 @@
 import os
 import secrets
-from datetime import datetime
 
 from dotenv import load_dotenv
 import jinja2
@@ -16,26 +15,6 @@ load_dotenv()
 
 loader = jinja2.FileSystemLoader("dist/html")
 env = jinja2.Environment(loader=loader)
-
-VERSION = "0.0.1"
-
-
-connected_clients = {}
-POSTGRES_USER = os.environ.get("POSTGRES_USER")
-POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
-POSTGRES_DB = os.environ.get("POSTGRES_DB")
-POSTGRES_HOST = os.environ.get("POSTGRES_HOST")
-POSTGRES_PORT = os.environ.get("POSTGRES_PORT")
-
-
-def connect_db():
-    return psycopg2.connect(
-        dbname=POSTGRES_DB,
-        user=POSTGRES_USER,
-        password=POSTGRES_PASSWORD,
-        host=POSTGRES_HOST,
-        port=POSTGRES_PORT,
-    )
 
 
 class PolicyHandler(tornado.web.RequestHandler):
@@ -94,11 +73,6 @@ class LessonPlanHandler(tornado.web.RequestHandler):
         self.write(rendered_template)
 
 
-class VersionHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write({"version": VERSION})
-
-
 def make_app():
     return tornado.web.Application(
         [
@@ -118,15 +92,8 @@ def make_app():
     )
 
 
-def check_inactive_sessions():
-    now = datetime.now()
-
-
 if __name__ == "__main__":
     options.parse_command_line()
     app = tornado.httpserver.HTTPServer(make_app())
     app.listen(int(os.getenv("PORT", default=5500)))
-    tornado.ioloop.PeriodicCallback(
-        check_inactive_sessions, 60 * 60 * 1000
-    ).start()  # Check every hour
     tornado.ioloop.IOLoop.instance().start()

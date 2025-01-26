@@ -2,7 +2,6 @@ import 'beercss';
 import 'material-dynamic-colors';
 import '../static/css/printout-style.css';
 import '../static/css/theme.css';
-import '@mdi/font/css/materialdesignicons.min.css';
 import MathCurriculumManager from "./utils/mathCurriculumManager";
 import BiologyCurriculumManager from "./utils/biologyCurriculumManager";
 import ScienceCurriculumManager from "./utils/scienceCurriculumManager";
@@ -34,6 +33,7 @@ class LessonPlan {
     gradeLevel: HTMLSelectElement;
     timeLength: HTMLInputElement;
     date: HTMLInputElement;
+    authorName: HTMLInputElement;
     curricularOutcomes: HTMLElement;
     addCurricularOutcome: HTMLButtonElement;
     crossCurricularConnections: HTMLTextAreaElement;
@@ -56,6 +56,8 @@ class LessonPlan {
     biologyCurriculumManager: BiologyCurriculumManager;
     socialStudiesCurriculumManager: SocialStudiesCurriculumManager;
     saveButton: HTMLButtonElement;
+    shareButton: HTMLButtonElement;
+    publishButton: HTMLButtonElement;
     outcomes: OutCome[];
     allOutcomes: OutCome[];
     private db: IDBDatabase | null = null;
@@ -66,6 +68,7 @@ class LessonPlan {
         this.gradeLevel = document.getElementById('grade-level') as HTMLSelectElement;
         this.timeLength = document.getElementById('time-length') as HTMLInputElement;
         this.date = document.getElementById('date') as HTMLInputElement;
+        this.authorName = document.getElementById('author-name') as HTMLInputElement;
         this.curricularOutcomes = document.getElementById('curricular-outcomes') as HTMLElement;
         this.addCurricularOutcome = document.getElementById('add-curricular-outcome') as HTMLButtonElement;
         this.crossCurricularConnections = document.getElementById('cross-curricular-connections') as HTMLTextAreaElement;
@@ -84,6 +87,8 @@ class LessonPlan {
         this.closureTimeLength = document.getElementById('closure-time-length') as HTMLSelectElement;
         this.reflections = document.getElementById('reflections') as HTMLTextAreaElement;
         this.saveButton = document.getElementById('save-button') as HTMLButtonElement;
+        this.shareButton = document.getElementById('share-button') as HTMLButtonElement;
+        this.publishButton = document.getElementById('publish-button') as HTMLButtonElement;
         this.mathCurriculumManager = new MathCurriculumManager();
         this.scienceCurriculumManager = new ScienceCurriculumManager();
         this.biologyCurriculumManager = new BiologyCurriculumManager();
@@ -115,7 +120,19 @@ class LessonPlan {
         });
         this.saveButton.addEventListener('click', () => {
             this.saveLessonPlan();
+            ui('#snackbar-saved', 2000);
         });
+        this.shareButton.addEventListener('click', () => {
+            this.shareLessonPlan();
+        });
+        this.publishButton.addEventListener('click', () => {
+            this.publishLessonPlan();
+            ui('#snackbar-published', 2000);
+        });
+        this.authorName.addEventListener('input', () => {
+            localStorage.setItem('authorName', this.authorName.value);
+        });
+        this.authorName.value = localStorage.getItem('authorName') || '';
         this.initDB();
     }
 
@@ -138,7 +155,7 @@ class LessonPlan {
         };
     }
 
-    async saveLessonPlan() {
+    async saveLessonPlan(): Promise<any> {
         // Generate unique hashtag using current timestamp
         const hashtag = window.location.hash.replace('#', '');
         let assessmentEvidence: { description: string, forLearning: boolean, asLearning: boolean, ofLearning: boolean }[] = [];
@@ -159,6 +176,7 @@ class LessonPlan {
         // Create lesson plan object
         const lessonPlan = {
             id: hashtag,
+            authorName: this.authorName.value,
             topicTitle: this.topicTitle.value,
             gradeLevel: this.gradeLevel.value,
             timeLength: this.timeLength.value,
@@ -176,8 +194,8 @@ class LessonPlan {
             applyTime: this.applyTimeLength.value,
             closure: this.closure.value,
             closureTime: this.closureTimeLength.value,
-            assessmentEvidence: assessmentEvidence
-            // Add any other fields you want to save
+            assessmentEvidence: assessmentEvidence,
+            modifiedDate: new Date().toString()
         };
 
         // Save to local storage (IndexedDB or Chrome Storage)
@@ -188,7 +206,7 @@ class LessonPlan {
         } else {
             if (!this.db) {
                 console.error('Database not initialized');
-                return;
+                return lessonPlan;
             }
 
             const transaction = this.db.transaction(['lessonPlans'], 'readwrite');
@@ -203,42 +221,139 @@ class LessonPlan {
                 console.error('Error saving lesson plan locally:', event);
             };
         }
+        return lessonPlan;
     }
 
-    loadLessonPlanByHash(hashtag: string) {
-        if (this.usesChromeStorage) {
-            // Load using Chrome Storage API
-            chrome.storage.sync.get([hashtag], (result) => {
-                const plan = result[hashtag];
-                if (plan) {
-                    this.populateLessonPlan(plan);
-                }
-            });
-        } else {
-            // Fallback to IndexedDB
-            if (!this.db) {
-                console.error('Database not initialized');
-                return;
+    async shareLessonPlan() {
+        const hashtag = window.location.hash.replace('#', '');
+        const shareLink = `${window.location.origin}${window.location.pathname}#${hashtag}`;
+        await this.publishLessonPlan();
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: 'Lesson Plan',
+                    text: 'Check out this lesson plan by ' + this.authorName.value,
+                    url: shareLink
+                });
+            } catch (error) {
+                console.error('Error sharing content:', error);
             }
-
-            const transaction = this.db.transaction(['lessonPlans'], 'readonly');
-            const store = transaction.objectStore('lessonPlans');
-            const request = store.get(hashtag);
-
-            request.onsuccess = () => {
-                const plan = request.result;
-                if (plan) {
-                    this.populateLessonPlan(plan);
-                }
-            };
-
-            request.onerror = (event) => {
-                console.error('Error loading lesson plan:', event);
-            };
+        } else {
+            try {
+                await navigator.clipboard.writeText(shareLink);
+                ui('#snackbar-share', 2000);
+            } catch (error) {
+                console.error('Failed to copy link to clipboard:', error);
+            }
         }
     }
 
-    // Helper method to populate the form with lesson plan data
+    async uploadLessonPlan(lessonPlan: any): Promise<boolean> {
+        try {
+            const response = await fetch('https://pinecone.synology.me/curiki', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(lessonPlan)
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const result = await response.json();
+            if (result.status === 'success') {
+                return true;
+            } else {
+                throw new Error(result.message || 'Failed to upload lesson plan');
+            }
+        } catch (error) {
+            console.error('Error uploading lesson plan:', error);
+            ui('#snackbar-failed-upload', 2000);
+            return false;
+        }
+    }
+
+    async publishLessonPlan() {
+        this.saveLessonPlan().then(lessonPlan => {
+            if (lessonPlan) {
+                this.uploadLessonPlan(lessonPlan);
+            }
+        });
+    }
+    async loadLessonPlanByHash(hashtag: string) {
+        try {
+            let onlinePlan: any = null;
+            let localPlan: any = null;
+
+            // Fetch the online lesson plan
+            const response = await fetch(`https://pinecone.synology.me/curiki?id=${hashtag}`);
+            if (response.ok) {
+                const result = await response.json();
+                if (result.status === 'success' && result.data) {
+                    onlinePlan = result.data;
+                }
+            } else {
+                console.error(`HTTP error! status: ${response.status}`);
+            }
+
+
+            if (this.usesChromeStorage) {
+                localPlan = await new Promise((resolve) => {
+                    chrome.storage.sync.get([hashtag], (result) => {
+                        resolve(result[hashtag] || null);
+                    });
+                });
+            } else if (this.db) {
+                localPlan = await new Promise((resolve, reject) => {
+                    if (!this.db) {
+                        console.error('Database not initialized');
+                        return;
+                    }
+                    const transaction = this.db.transaction(['lessonPlans'], 'readonly');
+                    const store = transaction.objectStore('lessonPlans');
+                    const request = store.get(hashtag);
+
+                    request.onsuccess = () => resolve(request.result || null);
+                    request.onerror = () => reject('Error fetching from IndexedDB');
+                });
+            }
+
+            // Compare modified dates and populate the most recent plan
+            let selectedPlan = null;
+
+            if (onlinePlan && localPlan) {
+                const onlineDate = new Date(onlinePlan.modifiedDate).getTime();
+                const localDate = new Date(localPlan.modifiedDate).getTime();
+                selectedPlan = onlineDate > localDate ? onlinePlan : localPlan;
+            } else if (onlinePlan) {
+                selectedPlan = onlinePlan;
+            } else if (localPlan) {
+                selectedPlan = localPlan;
+            }
+
+            if (selectedPlan) {
+                this.populateLessonPlan(selectedPlan);
+
+                // Additional logic for author name
+                this.authorName.value = selectedPlan.authorName;
+                if (localStorage.getItem('authorName') !== selectedPlan.authorName) {
+                    this.authorName.disabled = true;
+                }
+
+                // Snackbar notifications
+                if (selectedPlan === onlinePlan) {
+                    ui('#snackbar-loaded-from-server', 2000);
+                } else {
+                    ui('#snackbar-loaded-from-local-storage', 2000);
+                }
+            } else {
+                console.error('No lesson plan found locally or online.');
+            }
+        } catch (error) {
+            console.error('Error loading lesson plan:', error);
+        }
+    }
+
     private populateLessonPlan(plan: any) {
         this.topicTitle.value = plan.topicTitle;
         this.gradeLevel.value = plan.gradeLevel;
@@ -418,7 +533,7 @@ class LessonPlan {
         newRow.innerHTML = `
             <td>
                 <div class="field border textarea extra min">
-                    <textarea id="description"></textarea>
+                    <textarea class="small-padding" id="description"></textarea>
                 </div>
             </td>
             <td>
@@ -439,7 +554,7 @@ class LessonPlan {
                     <span></span>
                 </label>
             </td>
-            <td>
+            <td class="delete-row-button">
                 <button class="square round delete-row-button"><i>delete</i></button>
             </td>
         `;
@@ -482,7 +597,7 @@ class LessonPlan {
 
             // Create <button> for the learning outcome ID
             const outcomeButton = document.createElement('button');
-            outcomeButton.classList.add('chip', 'small-round');
+            outcomeButton.classList.add('chip', );
             outcomeButton.textContent = outcome.id;
 
             // Create <div> for the title (Specific Learning Outcome)
@@ -499,7 +614,7 @@ class LessonPlan {
             const iconContainer = document.createElement('div');
             outcome.icons.forEach(icon => {
                 const chip = document.createElement('button');
-                chip.classList.add('chip', 'small-round', 'tiny-margin');
+                chip.classList.add('chip', 'tiny-margin');
                 const iconElement = document.createElement('i');
                 const chipText = document.createElement('span');
                 chipText.textContent = icon.title;
@@ -545,6 +660,7 @@ class LessonPlan {
 
             // Create <textarea> for general learning outcomes
             const textarea = document.createElement('textarea');
+            textarea.classList.add('small-padding');
             textarea.id = 'general-learning-outcomes';
             textarea.value = outcome.generalLearningOutcomes.join('\n');
             textareaDiv.appendChild(textarea);

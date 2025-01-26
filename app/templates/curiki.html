@@ -28,79 +28,56 @@
 
 <body class="light">
     <main class="responsive">
-        <div class="grid no-space">
-            <div class="s12 m4 l3">
-                <details class="small-padding" open>
-                    <summary>Completed Curriculums</summary>
-                    <nav class="vertical">
-                        <label class="checkbox">
-                            <input type="checkbox" checked disabled>
-                            <span>Manitoba Mathematics</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" checked disabled>
-                            <span>Manitoba Social Studies</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" checked disabled>
-                            <span>Manitoba Science</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" checked disabled>
-                            <span>Manitoba Biology</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" disabled>
-                            <span>Manitoba Physics</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" disabled>
-                            <span>Manitoba Chemistry</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" disabled>
-                            <span>Manitoba Psychology</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" disabled>
-                            <span>Manitoba ELA</span>
-                        </label>
-                    </nav>
-                </details>
-            </div>
-            <div class="s12 m8 l9">
-                <details class="small-padding" open>
-                    <summary>Manitoba Curriculums</summary>
-                    <div>
-                        <a class="small-round row wave padding small-margin grey"
-                            href="/manitobaCurriculumOverview.html">
-                            <i class="extra">team_dashboard</i>
-                            <span>Curriculum Overview<br>Kindergarten to Grade 8</span>
-                        </a>
-                        <a class="small-round row wave padding small-margin blue"
-                            href="/manitobaMathematicsCurriculum.html">
-                            <i class="extra">calculate</i>
-                            <span>Mathematics<br>Kindergarten to Grade 12</span>
-                        </a>
-                        <a class="small-round row wave padding small-margin green"
-                            href="/manitobaScienceCurriculum.html">
-                            <i class="extra">science</i>
-                            <span>Science<br>Kindergarten to Grade 10</span>
-                        </a>
-                        <a class="small-round row wave padding small-margin green"
-                            href="/manitobaBiologyCurriculum.html">
-                            <i class="extra">genetics</i>
-                            <span>Biology<br>Grade 11 to Grade 12</span>
-                        </a>
-                        <a class="small-round row wave padding small-margin red"
-                            href="/manitobaSocialStudiesCurriculum.html">
-                            <i class="extra">public</i>
-                            <span>Social Studies<br>Kindergarten to Grade 8</span>
-                        </a>
-                    </div>
-                </details>
+        <div class="tabs scroll">
+            <a class="active" data-ui="#manitoba-curriculums">
+                <i>school</i>
+                <span>Manitoba Curriculums</span>
+            </a>
+            <a data-ui="#saved-lesson-plans">
+                <i>storage</i>
+                <span>Saved Lesson Plans</span>
+            </a>
+            <a data-ui="#public-lesson-plans">
+                <i>globe</i>
+                <span>Public Lesson Plans</span>
+            </a>
+        </div>
+        <div id="manitoba-curriculums" class="page padding active">
+            <a class="row wave small-round padding small-margin grey"
+                href="/manitobaCurriculumOverview.html">
+                <i class="extra">team_dashboard</i>
+                <span><b>Curriculum Overview</b><br>Kindergarten to Grade 8</span>
+            </a>
+            <a class="row wave small-round padding small-margin blue"
+                href="/manitobaMathematicsCurriculum.html">
+                <i class="extra">calculate</i>
+                <span><b>Mathematics</b><br>Kindergarten to Grade 12</span>
+            </a>
+            <a class="row wave small-round padding small-margin green"
+                href="/manitobaScienceCurriculum.html">
+                <i class="extra">science</i>
+                <span><b>Science</b><br>Kindergarten to Grade 10</span>
+            </a>
+            <a class="row wave small-round padding small-margin green"
+                href="/manitobaBiologyCurriculum.html">
+                <i class="extra">genetics</i>
+                <span><b>Biology</b><br>Grade 11 to Grade 12</span>
+            </a>
+            <a class="row wave small-round padding small-margin red"
+                href="/manitobaSocialStudiesCurriculum.html">
+                <i class="extra">public</i>
+                <span><b>Social Studies</b><br>Kindergarten to Grade 8</span>
+            </a>
+        </div>
+        <div id="saved-lesson-plans" class="page padding">
+            <div id="saved-lesson-plans-container" class="grid">
             </div>
         </div>
+        <div id="public-lesson-plans" class="page padding">
+            <div id="public-lesson-plans-container" class="grid">
+            </div>
+        </div>
+        <div class="snackbar" id="snackbar-deleted-lesson-plan">Lesson plan deleted</div>
     </main>
 </body>
 
@@ -125,7 +102,7 @@
         </p>
     </article>
     <nav class="right-align no-space">
-        <button class="transparent link small-round" onclick="ui('#about-dialog')">
+        <button class="transparent link" onclick="ui('#about-dialog')">
             <span>Close</span>
         </button>
     </nav>

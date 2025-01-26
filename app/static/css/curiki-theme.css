@@ -1,8 +1,8 @@
 :root,
 body.light {
-    --primary:#bbbbbb;
+    --primary:#bc004b;
     --on-primary:#ffffff;
-    --primary-container:#ffffff;
+    --primary-container:#ffd9de;
     --on-primary-container:#400014;
     --secondary:#75565b;
     --on-secondary:#ffffff;
@@ -18,28 +18,28 @@ body.light {
     --on-error-container:#410002;
     --background:#fffbff;
     --on-background:#201a1b;
-    --surface:#f5f5f5;
-    --on-surface:#1e1e1e;
+    --surface:#fff8f7;
+    --on-surface:#201a1b;
     --surface-variant:#f3dddf;
     --on-surface-variant:#524345;
     --outline:#847375;
     --outline-variant:#d6c2c3;
     --shadow:#000000;
     --scrim:#000000;
-    --inverse-surface:#363636;
-    --inverse-on-surface:#f7f7f7;
+    --inverse-surface:#362f2f;
+    --inverse-on-surface:#fbeeee;
     --inverse-primary:#ffb2be;
     --surface-dim:#e3d7d8;
     --surface-bright:#fff8f7;
     --surface-container-lowest:#ffffff;
     --surface-container-low:#fdf1f1;
-    --surface-container:#e1e1e1;
+    --surface-container:#f8ebeb;
     --surface-container-high:#f2e5e6;
     --surface-container-highest:#ece0e0;
 }
 
 body.dark {
-    --primary:#eaeaea;
+    --primary:#ffb2be;
     --on-primary:#030303;
     --primary-container:#900038;
     --on-primary-container:#ffd9de;
@@ -57,22 +57,22 @@ body.dark {
     --on-error-container:#ffb4ab;
     --background:#201a1b;
     --on-background:#ece0e0;
-    --surface:#191919;
-    --on-surface:#ececec;
+    --surface:#181213;
+    --on-surface:#ece0e0;
     --surface-variant:#524345;
     --on-surface-variant:#d6c2c3;
     --outline:#9f8c8e;
     --outline-variant:#524345;
     --shadow:#000000;
     --scrim:#000000;
-    --inverse-surface:#e8e8e8;
-    --inverse-on-surface:#363636;
+    --inverse-surface:#ece0e0;
+    --inverse-on-surface:#362f2f;
     --inverse-primary:#bc004b;
     --surface-dim:#181213;
     --surface-bright:#3f3738;
     --surface-container-lowest:#120d0d;
     --surface-container-low:#201a1b;
-    --surface-container:#242424;
+    --surface-container:#241e1f;
     --surface-container-high:#2f2829;
     --surface-container-highest:#3a3334;
 }

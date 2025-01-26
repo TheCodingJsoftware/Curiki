@@ -25,6 +25,10 @@ nav {
     transition: background-color 0.3s ease-in-out, color 0.1s ease;
 }
 
+.hidden {
+    display: none !important;
+}
+
 article div{
     height: 100%;
 }

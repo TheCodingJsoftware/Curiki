@@ -1,6 +1,5 @@
 import 'beercss';
 import 'material-dynamic-colors';
-import '@mdi/font/css/materialdesignicons.min.css';
 import '../static/css/style.css';
 import '../static/css/manitoba-theme.css';
 

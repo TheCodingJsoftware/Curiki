@@ -2,7 +2,6 @@ import 'beercss';
 import 'material-dynamic-colors';
 import '../static/css/style.css';
 import '../static/css/science-theme.css';
-import '@mdi/font/css/materialdesignicons.min.css';
 import BiologyCurriculumManager from "./utils/biologyCurriculumManager"
 import CookieManager from './utils/cookieManager';
 import { BiologyLearningOutcome } from "./utils/biologyLearningOutcome";
@@ -233,10 +232,10 @@ class FilterManager {
                 summary.appendChild(summaryText);
 
                 const copyOutcomeButton = document.createElement('button');
-                copyOutcomeButton.classList.add('small-round', 'chip', 'no-border');
+                copyOutcomeButton.classList.add('chip', 'no-border');
 
                 const icon = document.createElement('i');
-                icon.classList.add('mdi', 'mdi-clipboard-outline');
+                icon.innerText = 'content_copy'
 
                 copyOutcomeButton.appendChild(icon);
                 copyOutcomeButton.onclick = function () {
@@ -245,10 +244,10 @@ class FilterManager {
                 }
 
                 const shareButton = document.createElement('button');
-                shareButton.classList.add('small-round', 'chip', 'no-border');
+                shareButton.classList.add('chip', 'no-border');
 
                 const shareIcon = document.createElement('i');
-                shareIcon.classList.add('mdi', 'mdi-share-variant');
+                shareIcon.innerText = 'share'
                 shareButton.appendChild(shareIcon);
                 shareButton.onclick = function () {
                     if (navigator.share) {
@@ -314,11 +313,12 @@ class FilterManager {
                 gloDetails.appendChild(gloList);
                 details.appendChild(gloDetails);
                 const createLessonPlanButton = document.createElement('button');
-                createLessonPlanButton.classList.add('small-round');
+                createLessonPlanButton.classList.add();
                 createLessonPlanButton.textContent = 'Create Lesson Plan';
                 createLessonPlanButton.onclick = function () {
                     const lessonPlan = {
                         id: "",
+                        authorName: localStorage.getItem('authorName') || '',
                         topicTitle: `Biology`,
                         gradeLevel: gradeNames[activeGrade.replace('#grade_', '')],
                         timeLength: "~ 60 minutes",
@@ -337,6 +337,7 @@ class FilterManager {
                         studentSpecificPlanning: "",
                         reflections: "",
                         crossCurricularConnections: "",
+                        modifiedDate: new Date().toString()
                     };
 
                     const transaction = indexedDB.open('LessonPlansDB', 1);

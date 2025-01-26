@@ -2,7 +2,6 @@ import 'beercss';
 import 'material-dynamic-colors';
 import '../static/css/style.css';
 import '../static/css/math-theme.css';
-import '@mdi/font/css/materialdesignicons.min.css';
 import MathCurriculumManager from "./utils/mathCurriculumManager"
 import CookieManager from './utils/cookieManager';
 import { MathLearningOutcome } from "./utils/mathLearningOutcome";
@@ -178,13 +177,13 @@ class FilterManager {
             button.appendChild(text);
 
             const icon = document.createElement('i');
-            icon.classList.add('mdi', 'hidden'); // default icon
+            icon.innerText = 'circle'
             button.appendChild(icon);
 
             // Check if this strand is active
             if (activeStrands.includes(strand)) {
                 button.classList.add('fill');
-                icon.classList.replace('hidden', 'mdi-check-circle');
+                icon.innerText = 'check_circle'
             }
 
             button.addEventListener('click', () => {
@@ -216,13 +215,13 @@ class FilterManager {
             button.appendChild(span);
 
             const icon = document.createElement('i');
-            icon.classList.add('mdi', 'hidden'); // default icon
+            icon.innerText = 'circle'
             button.appendChild(icon);
 
             // Check if this skill is active
             if (activeSkills.includes(skill)) {
                 button.classList.add('fill');
-                icon.classList.replace('hidden', 'mdi-check-circle');
+                icon.innerText = 'check_circle'
             }
 
             button.addEventListener('click', () => {
@@ -257,10 +256,10 @@ class FilterManager {
 
         sortedKeywords.forEach(keyword => {
             const button = document.createElement('button');
-            button.classList.add('tiny-margin', 'surface', 'border', 'small-round');
+            button.classList.add('tiny-margin', 'surface', 'border', );
 
             const icon = document.createElement('i');
-            icon.classList.add('mdi', 'mdi-magnify');
+            icon.innerText = 'search';
             button.appendChild(icon);
 
             const text = document.createElement('span');
@@ -282,11 +281,11 @@ class FilterManager {
         const icon = icons[1];
         if (button.classList.contains('fill')) {
             button.classList.remove('fill');
-            icon?.classList.replace('mdi-check-circle', 'hidden');
+            icon.innerText = 'circle';
             this.removeActiveStrand(strand);
         } else {
             button.classList.add('fill');
-            icon?.classList.replace('hidden', 'mdi-check-circle');
+            icon.innerText = 'check_circle';
             this.addActiveStrand(strand);
         }
         this.filterContent();
@@ -297,11 +296,11 @@ class FilterManager {
         const icon = icons[1]; // Get the second icon
         if (button.classList.contains('fill')) {
             button.classList.remove('fill');
-            icon?.classList.replace('mdi-check-circle', 'hidden');
+            icon.innerText = 'circle';
             this.removeActiveSkill(skill);
         } else {
             button.classList.add('fill');
-            icon?.classList.replace('hidden', 'mdi-check-circle');
+            icon.innerText = 'check_circle';
             this.addActiveSkill(skill);
         }
         this.filterContent();
@@ -459,10 +458,10 @@ class FilterManager {
                 summary.appendChild(summaryText);
 
                 const copyOutcomeButton = document.createElement('button');
-                copyOutcomeButton.classList.add('small-round', 'chip', 'no-border');
+                copyOutcomeButton.classList.add('chip', 'no-border');
 
                 const icon = document.createElement('i');
-                icon.classList.add('mdi', 'mdi-clipboard-outline');
+                icon.innerText = 'content_copy'
 
                 copyOutcomeButton.appendChild(icon);
                 copyOutcomeButton.onclick = function () {
@@ -471,10 +470,10 @@ class FilterManager {
                 }
 
                 const shareButton = document.createElement('button');
-                shareButton.classList.add('small-round', 'chip', 'no-border');
+                shareButton.classList.add('chip', 'no-border');
 
                 const shareIcon = document.createElement('i');
-                shareIcon.classList.add('mdi', 'mdi-share-variant');
+                shareIcon.innerText = 'share'
                 shareButton.appendChild(shareIcon);
                 shareButton.onclick = function () {
                     if (navigator.share) {
@@ -568,11 +567,12 @@ class FilterManager {
                 const buttonRowDiv = document.createElement('div');
                 buttonRowDiv.classList.add('row');
                 const createLessonPlanButton = document.createElement('button');
-                createLessonPlanButton.classList.add('small-round');
+                createLessonPlanButton.classList.add();
                 createLessonPlanButton.textContent = 'Create Lesson Plan';
                 createLessonPlanButton.onclick = function () {
                     const lessonPlan = {
                         id: "",
+                        authorName: localStorage.getItem('authorName') || '',
                         topicTitle: `Mathematics`,
                         gradeLevel: gradeNames[activeGrade.replace('#grade_', '')],
                         timeLength: "~ 60 minutes",
@@ -591,6 +591,7 @@ class FilterManager {
                         studentSpecificPlanning: "",
                         reflections: "",
                         crossCurricularConnections: "",
+                        modifiedDate: new Date().toString()
                     };
 
                     const transaction = indexedDB.open('LessonPlansDB', 1);

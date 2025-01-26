@@ -1,6 +1,7 @@
 export const gradeNames: { [key: string]: string } = {
     '0': 'Kindergarten',
     'K': 'Kindergarten',
+    'k': 'Kindergarten',
     '1': 'Grade 1',
     '2': 'Grade 2',
     '3': 'Grade 3',

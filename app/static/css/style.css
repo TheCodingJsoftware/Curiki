@@ -78,12 +78,14 @@ details[open] summary button{
 }
 
 details.learning-outcome{
-    padding: 8px;
+    padding: 10px;
+    border-radius: 1.5rem;
 }
 
 details.specific-learning-outcome,
 details.general-learning-outcomes {
     padding: 5px;
+    border-radius: 0.5rem;
 }
 
 details[open] {
