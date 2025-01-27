@@ -272,8 +272,8 @@ class FilterManager {
                 const strandIcon = document.createElement('i');
                 strandIcon.classList.add('primary-text');
                 const clusterText = document.createElement('span');
-                clusterText.textContent = this.curriculumManager.clusters[activeGrade.replace('#grade_', '')][learningOutcome.cluster];
-                strandIcon.innerText = scienceClustersIconDictionary[this.curriculumManager.clusters[activeGrade.replace('#grade_', '')][learningOutcome.cluster]];
+                clusterText.textContent = this.curriculumManager.clusters[activeGrade.replace('#grade_', '').toUpperCase()][learningOutcome.cluster];
+                strandIcon.innerText = scienceClustersIconDictionary[this.curriculumManager.clusters[activeGrade.replace('#grade_', '').toUpperCase()][learningOutcome.cluster]];
                 strandButton.appendChild(strandIcon);
                 strandButton.appendChild(clusterText);
 
