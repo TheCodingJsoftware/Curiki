@@ -68,42 +68,39 @@
         <div class="snackbar primary" id="copy-outcome-snackbar">
             <span>Outcome copied to clipboard</span>
         </div>
-        <div class=grid>
-            <div class="s12 m12 l8">
-                <div class="field label prefix border">
-                    <i>search</i>
-                    <input type="text" id="search">
-                    <label>Search</label>
-                    <span class="helper no-line">You can search by the outcomes' ID and specific or general learning
-                        outcomes.</span>
-                </div>
-                <br>
-                <h6>Learning outcomes</h6>
-                <div class="grid tiny-padding scroll tiny-space" id="content">
+        <div class="grid tiny-space">
+            <fieldset class="s12 m12 l8">
+                <legend>Choose clusters</legend>
+                <div class="no-padding" id="clusters-container"></div>
+            </fieldset>
+            <fieldset class="s12 m12 l4">
+                <legend>Select one or more settings</legend>
+                <nav class="vertical">
+                    <label class="checkbox">
+                        <input type="checkbox" id="always-open-outcome">
+                        <span>Open outcome</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" id="always-open-specific-learning-outcome">
+                        <span>Open specific learning outcome</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" id="always-open-general-learning-outcomes">
+                        <span>Open general learning outcomes</span>
+                    </label>
+                </nav>
+            </fieldset>
+        </div>
+        <div class="field label prefix border">
+            <i>search</i>
+            <input type="text" id="search">
+            <label>Search</label>
+            <span class="helper no-line">You can search by the outcomes' ID and specific or general learning
+                outcomes.</span>
+        </div>
+        <h6>Learning outcomes</h6>
+        <div class="grid tiny-padding scroll tiny-space" id="content">
 
-                </div>
-            </div>
-            <div class="s12 m12 l4">
-                <fieldset>
-                    <legend>Select one or more settings</legend>
-                    <nav class="vertical">
-                        <label class="checkbox">
-                            <input type="checkbox" id="always-open-outcome">
-                            <span>Always open outcome</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" id="always-open-specific-learning-outcome">
-                            <span>Always open specific learning outcome</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" id="always-open-general-learning-outcomes">
-                            <span>Always open general learning outcomes</span>
-                        </label>
-                    </nav>
-                </fieldset>
-                <h6>Choose clusters</h6>
-                <div class="padding" id="clusters-container"></div>
-            </div>
         </div>
     </main>
 </body>

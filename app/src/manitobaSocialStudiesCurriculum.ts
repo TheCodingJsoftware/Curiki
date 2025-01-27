@@ -106,13 +106,13 @@ class FilterManager {
             button.appendChild(text);
 
             const icon = document.createElement('i');
-            icon.classList.add('mdi', 'hidden'); // default icon
+            icon.innerText = 'circle'
             button.appendChild(icon);
 
             // Check if this strand is active
             if (activeClusters.includes(cluster)) {
                 button.classList.add('fill');
-                icon.classList.replace('hidden', 'mdi-check-circle');
+                icon.innerText = 'check_circle'
             }
 
             button.addEventListener('click', () => {
@@ -145,13 +145,13 @@ class FilterManager {
             button.appendChild(span);
 
             const icon = document.createElement('i');
-            icon.classList.add('mdi', 'hidden'); // default icon
+            icon.innerText = 'circle'
             button.appendChild(icon);
 
             // Check if this skill is active
             if (activeOutcomeTypes.includes(outcome)) {
                 button.classList.add('fill');
-                icon.classList.replace('hidden', 'mdi-check-circle');
+                icon.innerText = 'check_circle'
             }
 
             button.addEventListener('click', () => {
@@ -184,13 +184,13 @@ class FilterManager {
             button.appendChild(span);
 
             const icon = document.createElement('i');
-            icon.classList.add('mdi', 'hidden'); // default icon
+            icon.innerText = 'circle'
             button.appendChild(icon);
 
             // Check if this skill is active
             if (activeSkillTypes.includes(outcome)) {
                 button.classList.add('fill');
-                icon.classList.replace('hidden', 'mdi-check-circle');
+                icon.innerText = 'check_circle'
             }
 
             button.addEventListener('click', () => {
@@ -223,13 +223,13 @@ class FilterManager {
             button.appendChild(span);
 
             const icon = document.createElement('i');
-            icon.classList.add('mdi', 'hidden'); // default icon
+            icon.innerText = 'circle'
             button.appendChild(icon);
 
             // Check if this skill is active
             if (activeGeneralOutcomes.includes(outcome)) {
                 button.classList.add('fill');
-                icon.classList.replace('hidden', 'mdi-check-circle');
+                icon.innerText = 'check_circle'
             }
 
             button.addEventListener('click', () => {
@@ -262,13 +262,13 @@ class FilterManager {
             button.appendChild(span);
 
             const icon = document.createElement('i');
-            icon.classList.add('mdi', 'hidden'); // default icon
+            icon.innerText = 'circle'
             button.appendChild(icon);
 
             // Check if this skill is active
             if (activeDistinctiveLearningOutcomes.includes(outcome)) {
                 button.classList.add('fill');
-                icon.classList.replace('hidden', 'mdi-check-circle');
+                icon.innerText = 'check_circle'
             }
 
             button.addEventListener('click', () => {
@@ -284,11 +284,11 @@ class FilterManager {
         const icon = icons[1];
         if (button.classList.contains('fill')) {
             button.classList.remove('fill');
-            icon?.classList.replace('mdi-check-circle', 'hidden');
+            icon.innerText = 'circle';
             this.removeActiveCluster(strand);
         } else {
             button.classList.add('fill');
-            icon?.classList.replace('hidden', 'mdi-check-circle');
+            icon.innerText = 'check_circle';
             this.addActiveCluster(strand);
         }
         this.filterContent();
@@ -299,11 +299,11 @@ class FilterManager {
         const icon = icons[1]; // Get the second icon
         if (button.classList.contains('fill')) {
             button.classList.remove('fill');
-            icon?.classList.replace('mdi-check-circle', 'hidden');
+            icon.innerText = 'circle';
             this.removeOutcomeType(outcomeType);
         } else {
             button.classList.add('fill');
-            icon?.classList.replace('hidden', 'mdi-check-circle');
+            icon.innerText = 'check_circle';
             this.addOutcomeType(outcomeType);
         }
         this.filterContent();
@@ -314,11 +314,11 @@ class FilterManager {
         const icon = icons[1]; // Get the second icon
         if (button.classList.contains('fill')) {
             button.classList.remove('fill');
-            icon?.classList.replace('mdi-check-circle', 'hidden');
+            icon.innerText = 'circle';
             this.removeSkillType(skillType);
         } else {
             button.classList.add('fill');
-            icon?.classList.replace('hidden', 'mdi-check-circle');
+            icon.innerText = 'check_circle';
             this.addSkillType(skillType);
         }
         this.filterContent();
@@ -329,11 +329,11 @@ class FilterManager {
         const icon = icons[1]; // Get the second icon
         if (button.classList.contains('fill')) {
             button.classList.remove('fill');
-            icon?.classList.replace('mdi-check-circle', 'hidden');
+            icon.innerText = 'circle';
             this.removeGeneralOutcome(generalOutcome);
         } else {
             button.classList.add('fill');
-            icon?.classList.replace('hidden', 'mdi-check-circle');
+            icon.innerText = 'check_circle';
             this.addGeneralOutcome(generalOutcome);
         }
         this.filterContent();
@@ -344,11 +344,11 @@ class FilterManager {
         const icon = icons[1]; // Get the second icon
         if (button.classList.contains('fill')) {
             button.classList.remove('fill');
-            icon?.classList.replace('mdi-check-circle', 'hidden');
+            icon.innerText = 'circle';
             this.removeDistinctiveLearningOutcome(distingLearningOutcome);
         } else {
             button.classList.add('fill');
-            icon?.classList.replace('hidden', 'mdi-check-circle');
+            icon.innerText = 'check_circle';
             this.addDistinctiveLearningOutcome(distingLearningOutcome);
         }
         this.filterContent();

@@ -75,14 +75,12 @@
                 <span>Filter</span>
             </button>
         </div>
-        <br>
         <h6>Learning outcomes</h6>
         <label class="checkbox">
             <input type="checkbox" id="always-open-outcome">
-            <span>Always open outcome</span>
+            <span>Open outcome</span>
         </label>
         <div class="grid tiny-padding scroll tiny-space" id="content">
-
         </div>
     </main>
 </body>
@@ -91,21 +89,27 @@
     <button class="link transparent circle" onclick="ui('#filter-dialog')">
         <i>close</i>
     </button>
-    <h6>Choose clusters</h6>
-    <div class="padding" id="clusters-container"></div>
-    <hr>
-    <h6 class="top-padding">Choose general outcomes</h6>
-    <div class="padding" id="general-outcomes-container"></div>
-    <hr>
-    <h6 class="top-padding">Choose outcome types</h6>
-    <div class="padding" id="outcome-types-container"></div>
-    <hr>
-    <h6 class="top-padding">Choose skill types</h6>
-    <div class="padding" id="skill-types-container"></div>
-    <hr>
-    <h6 class="top-padding">Choose distinctive learning outcomes</h6>
-    <div class="padding" id="distinctive-learning-container">
-    </div>
+    <fieldset>
+        <legend>Choose clusters</legend>
+        <div class="no-padding" id="clusters-container"></div>
+    </fieldset>
+    <fieldset>
+        <legend>Choose general outcomes</legend>
+        <div class="no-padding" id="general-outcomes-container"></div>
+    </fieldset>
+    <fieldset>
+        <legend>Choose outcome types</legend>
+        <div class="no-padding" id="outcome-types-container"></div>
+    </fieldset>
+    <fieldset>
+        <legend>Choose skill types</legend>
+        <div class="no-padding" id="skill-types-container"></div>
+    </fieldset>
+    <fieldset>
+        <legend>Choose distinctive learning outcomes</legend>
+        <div class="no-padding" id="distinctive-learning-container">
+        </div>
+    </fieldset>
 </dialog>
 
 <!-- Skills Dialogs from Curriculum -->

@@ -125,12 +125,12 @@ class FilterManager {
             button.appendChild(text);
 
             const icon = document.createElement('i');
-            icon.classList.add('mdi', 'hidden'); // default icon
+            icon.innerText = 'circle'
             button.appendChild(icon);
 
             if (activeUnits.includes(unitKey)) {
                 button.classList.add('fill');
-                icon.classList.replace('hidden', 'mdi-check-circle');
+                icon.innerText = 'check_circle'
             }
 
             button.addEventListener('click', () => {
@@ -146,11 +146,11 @@ class FilterManager {
         const icon = icons[1];
         if (button.classList.contains('fill')) {
             button.classList.remove('fill');
-            icon?.classList.replace('mdi-check-circle', 'hidden');
+            icon.innerText = 'circle';
             this.removeActiveCluster(unit);
         } else {
             button.classList.add('fill');
-            icon?.classList.replace('hidden', 'mdi-check-circle');
+            icon.innerText = 'check_circle';
             this.addActiveUnit(unit);
         }
         this.filterContent();
@@ -197,10 +197,10 @@ class FilterManager {
             units: this.getActiveUnits(),
         });
 
-        this.renderContent(filteredData, activeGrade, searchQuery);
+        this.renderContent(filteredData, activeGrade, searchQuery, this.getActiveUnits());
     }
 
-    renderContent(learningOutcomes: BiologyLearningOutcome[], activeGrade: string, searchQuery: string) {
+    renderContent(learningOutcomes: BiologyLearningOutcome[], activeGrade: string, searchQuery: string, selectedUnits: string[]) {
         const contentDiv = document.getElementById('content');
         if (contentDiv) {
             contentDiv.innerHTML = ''; // Clear previous content
@@ -215,7 +215,7 @@ class FilterManager {
             learningOutcomes.forEach(learningOutcome => {
                 contentAdded = true;
                 const details = document.createElement('details');
-                details.classList.add('s12', 'm12', 'l12', 'learning-outcome');
+                details.classList.add('s12', 'm6', 'l4', 'learning-outcome');
 
                 if (alwaysOpenOutcome || (searchQuery && (learningOutcome.specificLearningOutcome.toLowerCase().includes(searchQuery.toLowerCase()) || alwaysOpenGLO || (searchQuery && learningOutcome.generalLearningOutcomes.some(glo => glo.toLowerCase().includes(searchQuery.toLowerCase())))))) {
                     details.setAttribute('open', '');
@@ -264,6 +264,26 @@ class FilterManager {
                 summary.appendChild(copyOutcomeButton);
 
                 details.appendChild(summary);
+
+                const skillDiv = document.createElement('div');
+
+                const strandButton = document.createElement('button');
+                strandButton.classList.add('tiny-margin', 'chip');
+                const strandIcon = document.createElement('i');
+                strandIcon.classList.add('primary-text');
+                const clusterText = document.createElement('span');
+                clusterText.textContent = this.curriculumManager.units[activeGrade.replace('#grade_', '')][learningOutcome.unit];
+                strandIcon.innerText = unitIconDictionary[this.curriculumManager.units[activeGrade.replace('#grade_', '')][learningOutcome.unit]];
+                strandButton.appendChild(strandIcon);
+                strandButton.appendChild(clusterText);
+
+                if (selectedUnits.includes(learningOutcome.unit)) {
+                    strandButton.classList.add('fill');
+                }
+
+                skillDiv.appendChild(strandButton);
+
+                details.appendChild(skillDiv);
 
                 const sloDetails = document.createElement('details');
                 sloDetails.classList.add('specific-learning-outcome');

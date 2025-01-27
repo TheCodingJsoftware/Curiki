@@ -110,8 +110,8 @@ class FilterManager {
         const grade = tabId.replace('#grade_', '').toUpperCase();
         const activeClusters = this.getActiveClusters();
         const clusters = this.curriculumManager.clusters[grade];
-
         this.clusterContainer.innerHTML = "";
+
         Object.keys(clusters).forEach(clusterKey => {
             const button = document.createElement('button');
             button.classList.add('tiny-margin', 'surface', 'border', 'round');
@@ -125,12 +125,12 @@ class FilterManager {
             button.appendChild(text);
 
             const icon = document.createElement('i');
-            icon.classList.add('mdi', 'hidden'); // default icon
+            icon.innerText = 'circle'
             button.appendChild(icon);
 
             if (activeClusters.includes(clusterKey)) {
                 button.classList.add('fill');
-                icon.classList.replace('hidden', 'mdi-check-circle');
+                icon.innerText = 'check_circle'
             }
 
             button.addEventListener('click', () => {
@@ -146,11 +146,11 @@ class FilterManager {
         const icon = icons[1];
         if (button.classList.contains('fill')) {
             button.classList.remove('fill');
-            icon?.classList.replace('mdi-check-circle', 'hidden');
+            icon.innerText = 'circle';
             this.removeActiveCluster(cluster);
         } else {
             button.classList.add('fill');
-            icon?.classList.replace('hidden', 'mdi-check-circle');
+            icon.innerText = 'check_circle';
             this.addActiveCluster(cluster);
         }
         this.filterContent();
@@ -197,10 +197,10 @@ class FilterManager {
             clusters: this.getActiveClusters(),
         });
 
-        this.renderContent(filteredData, activeGrade, searchQuery);
+        this.renderContent(filteredData, activeGrade, searchQuery, this.getActiveClusters());
     }
 
-    renderContent(learningOutcomes: ScienceLearningOutcome[], activeGrade: string, searchQuery: string) {
+    renderContent(learningOutcomes: ScienceLearningOutcome[], activeGrade: string, searchQuery: string, selectedClusters: string[]) {
         const contentDiv = document.getElementById('content');
         if (contentDiv) {
             contentDiv.innerHTML = ''; // Clear previous content
@@ -215,7 +215,7 @@ class FilterManager {
             learningOutcomes.forEach(learningOutcome => {
                 contentAdded = true;
                 const details = document.createElement('details');
-                details.classList.add('s12', 'm12', 'l12', 'learning-outcome');
+                details.classList.add('s12', 'm6', 'l4', 'learning-outcome');
 
                 if (alwaysOpenOutcome || (searchQuery && (learningOutcome.specificLearningOutcome.toLowerCase().includes(searchQuery.toLowerCase()) || alwaysOpenGLO || (searchQuery && learningOutcome.generalLearningOutcomes.some(glo => glo.toLowerCase().includes(searchQuery.toLowerCase())))))) {
                     details.setAttribute('open', '');
@@ -264,6 +264,26 @@ class FilterManager {
                 summary.appendChild(copyOutcomeButton);
 
                 details.appendChild(summary);
+
+                const skillDiv = document.createElement('div');
+
+                const strandButton = document.createElement('button');
+                strandButton.classList.add('tiny-margin', 'chip');
+                const strandIcon = document.createElement('i');
+                strandIcon.classList.add('primary-text');
+                const clusterText = document.createElement('span');
+                clusterText.textContent = this.curriculumManager.clusters[activeGrade.replace('#grade_', '')][learningOutcome.cluster];
+                strandIcon.innerText = scienceClustersIconDictionary[this.curriculumManager.clusters[activeGrade.replace('#grade_', '')][learningOutcome.cluster]];
+                strandButton.appendChild(strandIcon);
+                strandButton.appendChild(clusterText);
+
+                if (selectedClusters.includes(learningOutcome.cluster)) {
+                    strandButton.classList.add('fill');
+                }
+
+                skillDiv.appendChild(strandButton);
+
+                details.appendChild(skillDiv);
 
                 const sloDetails = document.createElement('details');
                 sloDetails.classList.add('specific-learning-outcome');

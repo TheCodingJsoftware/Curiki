@@ -25,6 +25,9 @@ nav {
     transition: background-color 0.3s ease-in-out, color 0.1s ease;
 }
 
+.hidden {
+    display: none !important;
+}
 
 ::selection {
     background-color: var(--primary);

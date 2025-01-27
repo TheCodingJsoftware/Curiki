@@ -1,13 +1,8 @@
 {
     "dependencies": {
         "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
-        "@mdi/font": "^7.4.47",
-        "@mdi/svg": "^7.4.47",
-        "@mdi/util": "^0.3.2",
         "beercss": "^3.7.8",
-        "firebase": "^11.2.0",
-        "remixicon": "^4.3.0",
-        "remixicons": "^1.0.0"
+        "firebase": "^11.2.0"
     },
     "devDependencies": {
         "@types/chrome": "^0.0.299",
@@ -25,7 +20,7 @@
         "webpack-dev-server": "^5.0.4"
     },
     "name": "gradiance",
-    "description": "A platform for educational content.",
+    "description": "A comprehensive web page for accessing curriculums.",
     "version": "1.0.0",
     "main": "webpack.config.js",
     "scripts": {

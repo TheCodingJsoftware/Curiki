@@ -90,8 +90,39 @@
             <span>Outcome copied to clipboard</span>
         </div>
         <div class=grid>
+            <div class="s12 m12 l4">
+                <fieldset>
+                    <legend>Select one or more settings</legend>
+                    <nav class="vertical">
+                        <label class="checkbox">
+                            <input type="checkbox" id="always-open-outcome">
+                            <span>Open outcome</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" id="always-open-specific-learning-outcome">
+                            <span>Open specific learning outcome</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" id="always-open-general-learning-outcomes">
+                            <span>Open general learning outcomes</span>
+                        </label>
+                    </nav>
+                </fieldset>
+                <fieldset>
+                    <legend>Quick search</legend>
+                    <div style="max-height: 150px; overflow-y: auto;" id="quick-search-container"></div>
+                </fieldset>
+                <fieldset>
+                    <legend>Choose strands</legend>
+                    <div style="max-height: 150px; overflow-y: auto;" id="strands-container"></div>
+                </fieldset>
+                <fieldset>
+                    <legend>Choose skills</legend>
+                    <div style="max-height: 150px; overflow-y: auto;" id="skills-container"></div>
+                </fieldset>
+            </div>
             <div class="s12 m12 l8">
-                <div class="field label prefix border round">
+                <div class="field label prefix border">
                     <i>search</i>
                     <input type="text" id="search">
                     <label>Search</label>
@@ -103,33 +134,6 @@
                 <div class="grid tiny-padding scroll tiny-space" id="content">
 
                 </div>
-            </div>
-            <div class="s12 m12 l4">
-                <fieldset>
-                    <legend>Select one or more settings</legend>
-                    <nav class="vertical">
-                        <label class="checkbox">
-                            <input type="checkbox" id="always-open-outcome">
-                            <span>Always open outcome</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" id="always-open-specific-learning-outcome">
-                            <span>Always open specific learning outcome</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" id="always-open-general-learning-outcomes">
-                            <span>Always open general learning outcomes</span>
-                        </label>
-                    </nav>
-                </fieldset>
-                <h6>Quick search</h6>
-                <div class="padding" style="max-height: 150px; overflow-y: auto;" id="quick-search-container"></div>
-                <hr>
-                <h6 class="top-padding">Choose strands</h6>
-                <div class="padding" style="max-height: 150px; overflow-y: auto;" id="strands-container"></div>
-                <hr>
-                <h6 class="top-padding">Choose skills</h6>
-                <div class="padding" style="max-height: 150px; overflow-y: auto;" id="skills-container"></div>
             </div>
         </div>
     </main>

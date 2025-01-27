@@ -139,7 +139,7 @@ dialog p {
 }
 
 #content {
-    max-height: calc(100vh - 320px);
+    /* max-height: calc(100vh - 320px); */
     align-items: start;
 }
 

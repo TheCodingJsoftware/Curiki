@@ -256,7 +256,7 @@ class FilterManager {
 
         sortedKeywords.forEach(keyword => {
             const button = document.createElement('button');
-            button.classList.add('tiny-margin', 'surface', 'border', );
+            button.classList.add('tiny-margin', 'surface', 'border', 'small-round');
 
             const icon = document.createElement('i');
             icon.innerText = 'search';
@@ -402,7 +402,7 @@ class FilterManager {
                 skills: this.getActiveSkills()
             });
 
-            this.renderContent(filteredData, activeGrade.dataset.ui, searchQuery, this.getActiveSkills());
+            this.renderContent(filteredData, activeGrade.dataset.ui, searchQuery, this.getActiveSkills(), this.getActiveStrands());
         }
     }
 
@@ -426,7 +426,7 @@ class FilterManager {
         return keywords.size > 0 ? `: ${Array.from(keywords).join(', ')}` : '';
     }
 
-    async renderContent(learningOutcomes: MathLearningOutcome[], activeGrade: string, searchQuery: string, selectedSkills: string[]) {
+    async renderContent(learningOutcomes: MathLearningOutcome[], activeGrade: string, searchQuery: string, selectedSkills: string[], selectedStrands: string[]) {
         const contentDiv = document.getElementById('content');
         if (contentDiv) {
             contentDiv.innerHTML = '';
@@ -492,6 +492,23 @@ class FilterManager {
                 details.appendChild(summary);
 
                 const skillDiv = document.createElement('div');
+
+                const strandButton = document.createElement('button');
+                strandButton.classList.add('tiny-margin', 'chip');
+                const strandIcon = document.createElement('i');
+                strandIcon.classList.add('primary-text');
+                const strandText = document.createElement('span');
+                strandText.textContent = this.curriculumManager.strands[learningOutcome.strand];
+                strandIcon.innerText = strandIconDictionary[learningOutcome.strand];
+                strandButton.appendChild(strandIcon);
+                strandButton.appendChild(strandText);
+
+                if (selectedStrands.includes(learningOutcome.strand)) {
+                    strandButton.classList.add('fill');
+                }
+
+                skillDiv.appendChild(strandButton);
+
                 learningOutcome.skills.forEach(skill => {
                     const button = document.createElement('button');
                     button.classList.add('tiny-margin', 'chip');
@@ -630,6 +647,7 @@ class FilterManager {
         }
     }
 }
+
 document.addEventListener('DOMContentLoaded', function () {
     function setTheme(theme: string) {
         document.body.classList.remove("light", "dark");

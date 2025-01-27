@@ -336,8 +336,12 @@ class LessonPlan {
 
                 // Additional logic for author name
                 this.authorName.value = selectedPlan.authorName;
-                if (localStorage.getItem('authorName') !== selectedPlan.authorName) {
+                const savedAuthorName = localStorage.getItem('authorName') || "";
+                if (savedAuthorName !== selectedPlan.authorName) {
                     this.authorName.disabled = true;
+                    this.shareButton.classList.add('hidden');
+                    this.publishButton.classList.add('hidden');
+                    this.saveButton.classList.add('hidden');
                 }
 
                 // Snackbar notifications

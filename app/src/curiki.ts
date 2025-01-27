@@ -145,15 +145,65 @@ function filterLessonPlans() {
         }
         localLessonPlan.classList.remove('hidden');
     });
+    serverLessonPlans.forEach(serverLessonPlan => {
+        const serverLessonPlanId = serverLessonPlan.getAttribute('data-id');
+        const authorButton = serverLessonPlan.querySelector(`#author`) as HTMLButtonElement;
+        const gradeButton = serverLessonPlan.querySelector(`#grade`) as HTMLButtonElement;
+        const outcomeButtons = serverLessonPlan.querySelectorAll(`#outcome`) as NodeListOf<HTMLButtonElement>;
 
-    // serverLessonPlans.forEach(serverLessonPlan => {
-    //     const serverLessonPlanId = serverLessonPlan.getAttribute('data-id');
-    //     if (filters.authorName) {
-    //         serverLessonPlan.classList.remove('hidden');
-    //     } else {
-    //         serverLessonPlan.classList.add('hidden');
-    //     }
-    // });
+        let authorName = authorButton.getAttribute('data-author') as string;
+        let gradeLevel = gradeButton.getAttribute('data-grade') as string;
+        let outcomes: string[] = [];
+        let matchesAuthor = authorSelections.includes(authorName);
+        let matchesGrade = gradeSelections.includes(gradeLevel);
+        let matchesOutcomes = false;
+
+        outcomeButtons.forEach(outcomeButton => {
+            outcomes.push(outcomeButton.getAttribute('data-outcome') as string);
+        });
+
+        if (authorSelections.length > 0 && authorSelections.includes(authorName)){
+            authorButton.classList.add('fill');
+            authorButton.querySelectorAll('i')[1].innerText = "check_circle";
+        } else {
+            authorButton.classList.remove('fill');
+            authorButton.querySelectorAll('i')[1].innerText = "circle";
+        }
+
+        if (gradeSelections.length > 0 && gradeSelections.includes(gradeLevel)){
+            gradeButton.classList.add('fill');
+            gradeButton.querySelectorAll('i')[1].innerText = "check_circle";
+        } else {
+            gradeButton.classList.remove('fill');
+            gradeButton.querySelectorAll('i')[1].innerText = "circle";
+        }
+
+        outcomeButtons.forEach(outcomeButton => {
+            const outcome = outcomeButton.getAttribute('data-outcome') as string;
+            if (outcomeSelections.length > 0 && outcomeSelections.includes(outcome)) {
+                outcomeButton.classList.add('fill');
+                outcomeButton.querySelectorAll('i')[1].innerText = "check_circle";
+                matchesOutcomes = true;
+            } else {
+                outcomeButton.classList.remove('fill');
+                outcomeButton.querySelectorAll('i')[1].innerText = "circle";
+            }
+        });
+
+        if (authorSelections.length > 0 && !matchesAuthor){
+            serverLessonPlan.classList.add('hidden');
+            return;
+        }
+        if (gradeSelections.length > 0 && !matchesGrade){
+            serverLessonPlan.classList.add('hidden');
+            return;
+        }
+        if (outcomeSelections.length > 0 && !matchesOutcomes){
+            serverLessonPlan.classList.add('hidden');
+            return;
+        }
+        serverLessonPlan.classList.remove('hidden');
+    });
 }
 
 function generateLessonPlanArticle(lessonPlan: any, source: string): HTMLElement {
