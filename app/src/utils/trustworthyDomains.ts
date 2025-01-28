@@ -1,6 +1,8 @@
 export const trustworthyDomains = [
     'google.com',
     'google.ca',
+    'amazon.ca',
+    'amazon.ca',
     'teacherspayteachers.com',
     'youtube.com',
     'pinterest.com',
@@ -14,7 +16,8 @@ export const trustworthyDomains = [
     'scholastic.com',
     'edx.org',
     'coursera.org',
-    'mb.ca'
+    'mb.ca',
+    'chatgpt.com'
 ];
 
 export const trustworthySuffixes = [
