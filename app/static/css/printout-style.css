@@ -58,7 +58,7 @@ details {
 }
 
 @media print {
-    header, nav, .snackbar{
+    header, nav, .snackbar, .resource-links-details{
         display: none !important;
     }
     details, details summary, body{

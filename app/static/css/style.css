@@ -83,7 +83,8 @@ details.learning-outcome{
 }
 
 details.specific-learning-outcome,
-details.general-learning-outcomes {
+details.general-learning-outcomes,
+details.resources {
     padding: 5px;
     border-radius: 0.5rem;
 }
@@ -96,6 +97,7 @@ details[open] {
 }
 
 details.specific-learning-outcome:not([open]) summary,
+details.resources:not([open]) summary,
 details.general-learning-outcomes:not([open]) summary {
     color: var(--on-primary) !important;
 }
@@ -105,6 +107,7 @@ details.learning-outcome:not([open]) summary {
 }
 
 details.specific-learning-outcome[open] summary,
+details.resources[open] summary,
 details.general-learning-outcomes[open] summary{
     color: var(--primary);
 }
@@ -113,6 +116,7 @@ details.learning-outcome[open] summary   {
 }
 
 details.specific-learning-outcome[open],
+details.resources[open],
 details.general-learning-outcomes[open] {
     color: var(--on-surface);
 }

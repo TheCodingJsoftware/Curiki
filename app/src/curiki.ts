@@ -2,85 +2,14 @@ import 'beercss';
 import 'material-dynamic-colors';
 import '../static/css/curiki-style.css';
 import '../static/css/curiki-theme.css';
+import { deleteLessonPlan, getAllLocalLessonPlans, getAllPublicLessonPlans, initDB, LessonPlanTemplate } from './utils/lessonPlan';
 
-let db: IDBDatabase | null = null;
+let db: IDBDatabase;
 let usesChromeStorage: boolean = false;
 let authorSelections: string[] = [];
 let gradeSelections: string[] = [];
 let outcomeSelections: string[] = [];
 
-async function initDB(): Promise<void> {
-    return new Promise((resolve, reject) => {
-        const request = indexedDB.open('LessonPlansDB', 1);
-
-        request.onerror = (event) => {
-            console.error('Error opening IndexedDB:', event);
-            reject(event); // Reject the promise on error
-        };
-
-        request.onupgradeneeded = (event) => {
-            const db = (event.target as IDBOpenDBRequest).result;
-            if (!db.objectStoreNames.contains('lessonPlans')) {
-                db.createObjectStore('lessonPlans', { keyPath: 'id' });
-            }
-        };
-
-        request.onsuccess = (event) => {
-            db = (event.target as IDBOpenDBRequest).result;
-            resolve(); // Resolve the promise on success
-        };
-    });
-}
-
-async function getAllLessonPlans(): Promise<any[]> {
-    if (usesChromeStorage) {
-        return new Promise((resolve, reject) => {
-            chrome.storage.sync.get(null, (items) => {
-                if (chrome.runtime.lastError) {
-                    reject(chrome.runtime.lastError);
-                } else {
-                    resolve(Object.values(items));
-                }
-            });
-        });
-    }
-
-    return new Promise((resolve, reject) => {
-        if (!db) {
-            reject('Database not initialized');
-            return;
-        }
-        const transaction = db.transaction(['lessonPlans'], 'readonly');
-        const store = transaction.objectStore('lessonPlans');
-        const request = store.getAll();
-        request.onsuccess = () => {
-            resolve(request.result);
-        };
-        request.onerror = () => {
-            reject('Error fetching lesson plans');
-        };
-    });
-}
-
-async function getAllPublicLessonPlans(): Promise<any[]> {
-    try {
-        const response = await fetch('https://pinecone.synology.me/curiki');
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        if (result.status === 'success') {
-            return result.data.map((item: any) => item.data);
-        } else {
-            console.error('Failed to load public lesson plans:', result.message || 'Unknown error');
-            return [];
-        }
-    } catch (error) {
-        console.error('Error fetching public lesson plans:', error);
-        return [];
-    }
-}
 
 function filterLessonPlans() {
     const localLessonPlans = document.querySelectorAll('.local-lesson-plan') as NodeListOf<HTMLElement>;
@@ -206,8 +135,14 @@ function filterLessonPlans() {
     });
 }
 
-function generateLessonPlanArticle(lessonPlan: any, source: string): HTMLElement {
-    const isAuthor = localStorage.getItem('authorName') === lessonPlan.authorName;
+function generateLessonPlanArticle(lessonPlan: LessonPlanTemplate, source: string): HTMLElement {
+    const authorName = localStorage.getItem('authorName') || "";
+    let isAuthor = false;
+    if (authorName === "") {
+        isAuthor = false;
+    } else {
+        isAuthor = lessonPlan.authorName.includes(authorName) || lessonPlan.source === 'local';
+    }
 
     const modifiedDate = new Date(lessonPlan.modifiedDate);
     const now = new Date();
@@ -229,8 +164,7 @@ function generateLessonPlanArticle(lessonPlan: any, source: string): HTMLElement
     } else {
         modifiedDateString = `${days} days ago`;
     }
-
-    const outcomesChips = lessonPlan.outcomes
+    const outcomesChips = Object.keys(lessonPlan.outcomes)
         .map(
             (outcome: string) =>
                 `<button class="chip tiny-margin" id="outcome" data-outcome="${outcome}">
@@ -241,11 +175,11 @@ function generateLessonPlanArticle(lessonPlan: any, source: string): HTMLElement
         )
         .join('');
     const html = `
-        <article class="s12 m6 l4 grid round ${source}-lesson-plan" data-id="${lessonPlan.id}">
+        <article class="s12 m6 l6 grid round ${source}-lesson-plan" data-id="${lessonPlan.id}">
             <div class="s12">
                 <h6 class="bold">${lessonPlan.topicTitle}</h6>
             </div>
-            <div class="s12 scroll small-round">
+            <div class="s12 small-round">
                 <button class="chip tiny-margin" id="author" data-author="${lessonPlan.authorName}">
                     <i>group</i>
                     <span>${lessonPlan.authorName}</span>
@@ -295,19 +229,11 @@ function generateLessonPlanArticle(lessonPlan: any, source: string): HTMLElement
                 return;
             }
             if (source === 'local') {
-                if (!db) {
-                    chrome.storage.sync.remove(lessonPlan.id);
-                } else {
-                    const transaction = db.transaction(['lessonPlans'], 'readwrite');
-                    const store = transaction.objectStore('lessonPlans');
-                    const request = store.delete(lessonPlan.id);
-                    request.onsuccess = () => {
+                deleteLessonPlan(lessonPlan.id).then((success) => {
+                    if (success) {
                         ui('#snackbar-deleted-lesson-plan', 2000);
                     };
-                    request.onerror = (event) => {
-                        console.error('Error deleting from IndexedDB:', event);
-                    };
-                }
+                });
             } else if (source === 'server') {
                 fetch(`https://pinecone.synology.me/curiki?id=${lessonPlan.id}`, {
                     method: 'DELETE',
@@ -379,7 +305,7 @@ async function loadAllLessonPlans(): Promise<void> {
     const publicLessonPlansContainer = document.getElementById('public-lesson-plans-container') as HTMLDivElement;
 
     Promise.all([
-        getAllLessonPlans(),
+        getAllLocalLessonPlans(),
         getAllPublicLessonPlans()
     ]).then(([savedLessonPlans, publicLessonPlans]) => {
         savedLessonPlansContainer.innerHTML = '';
@@ -402,10 +328,14 @@ async function loadAllLessonPlans(): Promise<void> {
         publicLessonPlansContainer.appendChild(publicLessonPlansFragment);
     });
 }
-
 document.addEventListener('DOMContentLoaded', async function () {
-    await initDB();
-    await loadAllLessonPlans();
+    initDB().then(() => {
+        return loadAllLessonPlans();
+    }).then(() => {
+        console.log('Database and lesson plans loaded successfully');
+    }).catch((error) => {
+        console.error('Error loading database or lesson plans:', error);
+    });
 });
 
 document.addEventListener('DOMContentLoaded', function () {

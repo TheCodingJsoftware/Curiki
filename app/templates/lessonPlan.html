@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta name="author" content="Jared Gross">
     <meta name="description" content="A platform for educational content.">
-    <meta name="keywords" content="gradiance, education, grading, content, platform">
+    <meta name="keywords" content="lesson plan, lesson planning, education, grading, content, platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="/static/icons/curiki.png">
-    <title>Lesson Plan Generator</title>
+    <title>Lesson Plan</title>
 </head>
 
 <header class="fixed no-padding">
     <nav class="primary left-padding right-padding">
         <button class="circle transparent " onclick='window.location.href="/curiki.html"'>
-            <i>arrow_back</i>
+            <i>home</i>
         </button>
-        <h5 class="max small">Lesson Plan Generator</h5>
+        <h5 class="max small">Lesson Plan</h5>
         <button class="circle transparent" id="print-button" onclick="window.print()">
             <i>print</i>
         </button>
@@ -30,16 +30,16 @@
 <body class="light">
     <main class="responsive">
         <div class="top-margin grid space">
-            <div class="field border label max s8 m8 l8">
+            <div class="field border label max s12 m8 l8">
                 <input id="topic-title">
                 <label>Topic/Unit Title</label>
             </div>
-            <div class="field border prefix label max s4 m4 l4">
+            <div class="field border prefix label max s6 m4 l4">
                 <i>group</i>
                 <input id="author-name">
                 <label>Author(s)</label>
             </div>
-            <div class="field border label s4 m4 l4">
+            <div class="field border label s6 m4 l4">
                 <select id="grade-level">
                     <option>Kindergarten</option>
                     <option>Grade 1</option>
@@ -67,7 +67,7 @@
                 </select>
                 <label>Grade/Class</label>
             </div>
-            <div class="field suffix border label max s4 m4 l4">
+            <div class="field suffix border label max s6 m4 l4">
                 <select id="time-length">
                     <option>~ 15 minutes</option>
                     <option>~ 30 minutes</option>
@@ -79,7 +79,7 @@
                 <label>Time</label>
                 <i>timer</i>
             </div>
-            <div class="field label prefix border s4 m4 l4">
+            <div class="field label prefix border s6 m4 l4">
                 <i>today</i>
                 <input type="date" id="date">
                 <label>Date</label>
@@ -97,7 +97,7 @@
                 <textarea class="small-padding" id="cross-curricular-connections"></textarea>
                 <label>Cross-Curricular/Real World Connections</label>
             </div>
-            <details class="s12 m12 l12 border no-margin" open>
+            <details class="page-break-inside s12 m12 l12 border no-margin" open>
                 <summary class="none small-padding" style="font-size: 22pt;">Assessment Evidence</summary>
                 <table class="border" id="assessment-evidence">
                     <thead>
@@ -175,15 +175,25 @@
                 </table>
                 <button id="add-row-button" class="small-round">
                     <i>add</i>
-                    <span>Add Row</span>
+                    <span>Add Assessment Evidence</span>
                 </button>
             </details>
-            <div class="page-break-inside field border label textarea extra s12 m6 l12 min bottom-margin">
+            <div class="page-break-inside field border label textarea extra s12 m12 l12 min bottom-margin">
                 <textarea class="small-padding" id="materials-considered"></textarea>
                 <label>Materials and Resources</label>
                 <span class="helper no-line">Resources (referenced), handouts, ICT, equipment, etc.</span>
             </div>
-            <div class="page-break-inside field border label textarea extra s12 m6 l12 min bottom-margin">
+            <details class="page-break-inside s12 m12 l12 border no-margin resource-links-details" open>
+                <summary class="none small-padding" style="font-size: 22pt;">Resource Links</summary>
+                <span class="small-padding">Link to a resource, such as a website, PDF, or video.</span>
+                <div class="small-padding" id="resource-links">
+                </div>
+                <button class="small-round" id="add-resource-link">
+                    <i>add</i>
+                    <span>Add Link</span>
+                </button>
+            </details>
+            <div class="page-break-inside field border label textarea extra s12 m12 l12 min bottom-margin">
                 <textarea class="small-padding" id="student-specific-planning"></textarea>
                 <label>Student Specific Planning</label>
                 <span class="helper no-line">Considering students' readiness, interests, and learning profile, how

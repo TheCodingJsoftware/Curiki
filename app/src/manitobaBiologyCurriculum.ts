@@ -7,6 +7,7 @@ import CookieManager from './utils/cookieManager';
 import { BiologyLearningOutcome } from "./utils/biologyLearningOutcome";
 import { unitIconDictionary } from './utils/icons';
 import { gradeNames } from './utils/grades';
+import { createLessonPlan, generateLessonPlan, getAllLessonPlans, initDB, LessonPlanTemplate } from './utils/lessonPlan';
 
 class FilterManager {
     container: HTMLDivElement;
@@ -17,6 +18,7 @@ class FilterManager {
     alwaysOpenGLOCheckbox: HTMLInputElement;
     unitsContainer: HTMLDivElement;
     curriculumManager: BiologyCurriculumManager;
+    allLessonPlans?: LessonPlanTemplate[];
 
     constructor() {
         this.container = document.querySelector(`#tabs-container`) as HTMLDivElement;
@@ -40,20 +42,24 @@ class FilterManager {
         this.alwaysOpenSLOCheckbox.addEventListener('change', this.handleCheckboxChange.bind(this));
         this.alwaysOpenGLOCheckbox.addEventListener('change', this.handleCheckboxChange.bind(this));
 
-        this.curriculumManager.load().then(() => {
-            this.loadSettingsFromCookies();
-            this.setActiveTabFromCookie();
+        initDB().then(async () => {
+            this.allLessonPlans = await getAllLessonPlans();
             const url = new URL(window.location.href);
             const grade = url.searchParams.get('grade');
             const outcome = url.searchParams.get('outcome');
-            if (grade) {
-                this.setActiveTab(`#grade_${grade}`);
-            }
-            if (outcome) {
-                this.searchInput.value = `${outcome}`;
-            }
-            this.filterContent();
-        });
+            this.curriculumManager.load().then(() => {
+                this.loadSettingsFromCookies();
+                this.setActiveTabFromCookie();
+
+                if (grade) {
+                    this.setActiveTab(`#grade_${grade}`);
+                }
+                if (outcome) {
+                    this.searchInput.value = `${outcome}`;
+                }
+                this.filterContent();
+            });
+        })
     }
 
     handleClick(event: Event) {
@@ -215,7 +221,7 @@ class FilterManager {
             learningOutcomes.forEach(learningOutcome => {
                 contentAdded = true;
                 const details = document.createElement('details');
-                details.classList.add('s12', 'm6', 'l4', 'learning-outcome');
+                details.classList.add('s12', 'm6', 'l6', 'learning-outcome');
 
                 if (alwaysOpenOutcome || (searchQuery && (learningOutcome.specificLearningOutcome.toLowerCase().includes(searchQuery.toLowerCase()) || alwaysOpenGLO || (searchQuery && learningOutcome.generalLearningOutcomes.some(glo => glo.toLowerCase().includes(searchQuery.toLowerCase())))))) {
                     details.setAttribute('open', '');
@@ -229,6 +235,10 @@ class FilterManager {
                 summaryText.classList.add('max');
                 summaryText.innerHTML = searchQuery ? title.replace(new RegExp(searchQuery, 'gi'), (match) => `<span class="highlight">${match}</span>`) : title;
 
+                const summeryIcon = document.createElement('i');
+                summeryIcon.innerText = 'license';
+
+                summary.appendChild(summeryIcon);
                 summary.appendChild(summaryText);
 
                 const copyOutcomeButton = document.createElement('button');
@@ -332,58 +342,115 @@ class FilterManager {
 
                 gloDetails.appendChild(gloList);
                 details.appendChild(gloDetails);
+                const buttonRowDiv = document.createElement('div');
+                buttonRowDiv.classList.add('row');
                 const createLessonPlanButton = document.createElement('button');
                 createLessonPlanButton.classList.add();
                 createLessonPlanButton.textContent = 'Create Lesson Plan';
                 createLessonPlanButton.onclick = function () {
-                    const lessonPlan = {
-                        id: "",
-                        authorName: localStorage.getItem('authorName') || '',
-                        topicTitle: `Biology`,
-                        gradeLevel: gradeNames[activeGrade.replace('#grade_', '')],
-                        timeLength: "~ 60 minutes",
-                        date: new Date().toISOString().split('T')[0],
-                        outcomes: [learningOutcome.getID()],
-                        activate: "",
-                        activateTime: "~ 5 minutes",
-                        acquire: "",
-                        acquireTime: "~ 15 minutes",
-                        apply: "",
-                        applyTime: "~ 30 minutes",
-                        closure: "",
-                        closureTime: "~ 10 minutes",
-                        assessmentEvidence: [],
-                        materialsConsidered: "",
-                        studentSpecificPlanning: "",
-                        reflections: "",
-                        crossCurricularConnections: "",
-                        modifiedDate: new Date().toString()
-                    };
-
-                    const transaction = indexedDB.open('LessonPlansDB', 1);
-                    transaction.onupgradeneeded = function(event) {
-                        const db = (event.target as IDBOpenDBRequest).result;
-                        if (!db.objectStoreNames.contains('lessonPlans')) {
-                            db.createObjectStore('lessonPlans', { keyPath: 'id' });
-                        }
-                    };
-
-                    transaction.onsuccess = function(event) {
-                        const db = (event.target as IDBOpenDBRequest).result;
-                        const timestamp = new Date().getTime();
-                        const hashtag = `${timestamp}`;
-                        lessonPlan.id = hashtag;
-
-                        const store = db.transaction('lessonPlans', 'readwrite').objectStore('lessonPlans');
-                        const request = store.put(lessonPlan);
-
-                        request.onsuccess = function() {
-                            const newUrl = `/lessonPlan.html#${hashtag}`;
-                            window.open(newUrl, '_blank');
-                        };
-                    };
+                    const hashtag = new Date().getTime().toString();
+                    const learningOutcomeDict: { [key: string]: string } = {};
+                    learningOutcomeDict[learningOutcome.getID()] = learningOutcome.generalLearningOutcomes.join('\n');
+                    createLessonPlan(
+                        "Biology",
+                        gradeNames[activeGrade.replace('#grade_', '')],
+                        learningOutcomeDict,
+                        new Date().toISOString().split('T')[0],
+                        hashtag
+                    ).then(() => {
+                        const newUrl = `/lessonPlan.html#${hashtag}`;
+                        window.open(newUrl, '_blank');
+                    });
                 }
-                details.appendChild(createLessonPlanButton);
+                buttonRowDiv.appendChild(createLessonPlanButton);
+
+                const resourcesDetails = document.createElement('details');
+                resourcesDetails.classList.add('resources');
+
+                const resourcesSummary = document.createElement('summary');
+                resourcesSummary.classList.add('row');
+                const resourcesSpan = document.createElement('span');
+                resourcesSpan.textContent = 'Resources';
+                resourcesSpan.classList.add('max');
+                resourcesSummary.appendChild(resourcesSpan);
+                resourcesDetails.appendChild(resourcesSummary);
+                const resourceCountBadge = document.createElement('span');
+                resourceCountBadge.classList.add('badge', 'none');
+                resourcesSummary.appendChild(resourceCountBadge);
+
+                let hasExistingLessonPlans = false
+                let hasExistingResourceLinks = false
+                let lessonPlanCount = 0;
+
+                if (this.allLessonPlans) {
+                    const lessonPlanDiv = document.createElement('fieldset');
+                    const legend = document.createElement('legend');
+                    legend.textContent = 'Lesson Plans';
+                    lessonPlanDiv.appendChild(legend);
+
+                    const resourceLinksDiv = document.createElement('div');
+                    resourceLinksDiv.classList.add('small-padding');
+                    this.allLessonPlans.forEach(lessonPlan => {
+                        if (Object.keys(lessonPlan.outcomes).includes(learningOutcome.getID())) {
+                            hasExistingLessonPlans = true;
+                            lessonPlanCount++;
+                            const resourceLinksList = document.createElement('ol');
+                            resourceLinksList.classList.add('left-padding');
+
+                            lessonPlan.resourceLinks.forEach(resourceLink => {
+                                lessonPlanCount++;
+                                hasExistingResourceLinks = true;
+                                const resourceLinkItem = document.createElement('li');
+                                const resourceLinkButton = document.createElement('a');
+                                resourceLinkButton.classList.add('link', 'underline', 'wave', 'small-round', 'tiny-padding');
+                                const span = document.createElement('span');
+                                span.textContent = resourceLink;
+                                resourceLinkButton.appendChild(span);
+                                const icon = document.createElement('i');
+                                icon.innerText = 'open_in_new';
+                                resourceLinkButton.appendChild(icon);
+                                resourceLinkButton.href = resourceLink;
+                                resourceLinkButton.target = '_blank';
+                                resourceLinkItem.appendChild(resourceLinkButton);
+                                resourceLinksList.appendChild(resourceLinkItem);
+                            });
+                            resourceLinksDiv.appendChild(resourceLinksList);
+
+                            const lessonPlanButton = document.createElement('a');
+                            lessonPlanButton.classList.add('tiny-margin', 'chip');
+                            const sourceIcon = document.createElement('i');
+                            if (lessonPlan.source === "public"){
+                                sourceIcon.innerText = 'public';
+                            } else if (lessonPlan.source === "local"){
+                                sourceIcon.innerText = 'storage';
+                            }
+                            const openIcon = document.createElement('i');
+                            openIcon.innerText = 'open_in_new';
+                            lessonPlanButton.appendChild(sourceIcon);
+                            const span = document.createElement('span');
+                            span.textContent = `${lessonPlan.topicTitle} by ${lessonPlan.authorName}`;
+                            lessonPlanButton.appendChild(span);
+                            lessonPlanButton.href = `/lessonPlan.html#${lessonPlan.id}`;
+                            lessonPlanButton.target = '_blank';
+                            lessonPlanButton.appendChild(openIcon);
+                            lessonPlanDiv.appendChild(lessonPlanButton);
+                            resourceCountBadge.textContent = lessonPlanCount.toString();
+                        }
+                    });
+                    if (hasExistingLessonPlans) {
+                        resourcesDetails.appendChild(lessonPlanDiv);
+                    }
+                    if (hasExistingResourceLinks) {
+                        resourcesDetails.appendChild(resourceLinksDiv);
+                    }
+                }
+
+                if (hasExistingLessonPlans || hasExistingResourceLinks){
+                    details.appendChild(resourcesDetails);
+                }
+
+                details.appendChild(buttonRowDiv);
+
                 contentDiv.appendChild(details);
             });
             if (!contentAdded) {

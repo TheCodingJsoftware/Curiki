@@ -86,59 +86,59 @@
 
 <body class="math-light">
     <main class="responsive">
-        <div class="snackbar primary" id="copy-outcome-snackbar">
+        <div class="snackbar" id="copy-outcome-snackbar">
             <span>Outcome copied to clipboard</span>
         </div>
-        <div class=grid>
-            <div class="s12 m12 l4">
-                <fieldset>
-                    <legend>Select one or more settings</legend>
-                    <nav class="vertical">
-                        <label class="checkbox">
-                            <input type="checkbox" id="always-open-outcome">
-                            <span>Open outcome</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" id="always-open-specific-learning-outcome">
-                            <span>Open specific learning outcome</span>
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" id="always-open-general-learning-outcomes">
-                            <span>Open general learning outcomes</span>
-                        </label>
-                    </nav>
-                </fieldset>
-                <fieldset>
-                    <legend>Quick search</legend>
-                    <div style="max-height: 150px; overflow-y: auto;" id="quick-search-container"></div>
-                </fieldset>
-                <fieldset>
-                    <legend>Choose strands</legend>
-                    <div style="max-height: 150px; overflow-y: auto;" id="strands-container"></div>
-                </fieldset>
-                <fieldset>
-                    <legend>Choose skills</legend>
-                    <div style="max-height: 150px; overflow-y: auto;" id="skills-container"></div>
-                </fieldset>
+        <div class="row">
+            <div class="field label prefix border max">
+                <i>search</i>
+                <input type="text" id="search">
+                <label>Search</label>
+                <span class="helper no-line">You can search by the outcomes' ID and specific or general learning
+                    outcomes.</span>
             </div>
-            <div class="s12 m12 l8">
-                <div class="field label prefix border">
-                    <i>search</i>
-                    <input type="text" id="search">
-                    <label>Search</label>
-                    <span class="helper no-line">You can search by the outcomes' ID and specific or general learning
-                        outcomes.</span>
-                </div>
-                <br>
-                <h6>Learning outcomes</h6>
-                <div class="grid tiny-padding scroll tiny-space" id="content">
+            <button class="small-round" onclick="ui('#filter-dialog')">
+                <i>filter_list</i>
+                <span>Filter</span>
+            </button>
+        </div>
+        <br>
+        <h6>Learning outcomes</h6>
 
-                </div>
-            </div>
+        <label class="checkbox">
+            <input type="checkbox" id="always-open-outcome">
+            <span>Open outcome</span>
+        </label>
+        <label class="checkbox">
+            <input type="checkbox" id="always-open-specific-learning-outcome">
+            <span>Open specific learning outcome</span>
+        </label>
+        <label class="checkbox">
+            <input type="checkbox" id="always-open-general-learning-outcomes">
+            <span>Open general learning outcomes</span>
+        </label>
+        <div class="grid tiny-padding scroll tiny-space" id="content">
+
         </div>
     </main>
 </body>
-
+<dialog id="filter-dialog" class="right large-width">
+    <button class="link transparent circle" onclick="ui('#filter-dialog')">
+        <i>close</i>
+    </button>
+    <fieldset>
+        <legend>Quick search</legend>
+        <div id="quick-search-container"></div>
+    </fieldset>
+    <fieldset>
+        <legend>Choose strands</legend>
+        <div id="strands-container"></div>
+    </fieldset>
+    <fieldset>
+        <legend>Choose skills</legend>
+        <div id="skills-container"></div>
+    </fieldset>
+</dialog>
 <!-- Skills Dialogs from Curriculum -->
 
 <dialog class="right medium-width" id="C-dialog">
