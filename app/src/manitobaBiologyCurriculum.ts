@@ -417,7 +417,7 @@ class FilterManager {
                             resourceLinksDiv.appendChild(resourceLinksList);
 
                             const lessonPlanButton = document.createElement('a');
-                            lessonPlanButton.classList.add('tiny-margin', 'chip');
+                            lessonPlanButton.classList.add('primary', 'small-padding', 'small-round', 'wave');
                             const sourceIcon = document.createElement('i');
                             if (lessonPlan.source === "public"){
                                 sourceIcon.innerText = 'public';
@@ -428,6 +428,7 @@ class FilterManager {
                             openIcon.innerText = 'open_in_new';
                             lessonPlanButton.appendChild(sourceIcon);
                             const span = document.createElement('span');
+                            span.classList.add('no-line', 'small-margin');
                             span.textContent = `${lessonPlan.topicTitle} by ${lessonPlan.authorName}`;
                             lessonPlanButton.appendChild(span);
                             lessonPlanButton.href = `/lessonPlan.html#${lessonPlan.id}`;

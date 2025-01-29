@@ -15,6 +15,7 @@ import {
 } from './utils/icons';
 import { gradeNames } from './utils/grades'
 import { createLessonPlan, generateLessonPlan, getAllLessonPlans, initDB, LessonPlanTemplate } from './utils/lessonPlan';
+// import { fetchPageTitle } from './utils/fetchPageTitle';
 
 
 class FilterManager {
@@ -101,7 +102,7 @@ class FilterManager {
         mergedClusters.forEach(cluster => {
             const button = document.createElement('button');
             const clusterName = this.curriculumManager.clusters[activeGrade][cluster];
-            button.classList.add('tiny-margin', 'surface', 'border', 'round', 'large');
+            button.classList.add('tiny-margin', 'surface', 'border', 'round');
 
             const clusterIcon = document.createElement('i');
             clusterIcon.innerText = socialStudiesClustersIconDictionary[clusterName];
@@ -789,7 +790,7 @@ class FilterManager {
                             const resourceLinksList = document.createElement('ol');
                             resourceLinksList.classList.add('left-padding');
 
-                            lessonPlan.resourceLinks.forEach(resourceLink => {
+                            lessonPlan.resourceLinks.forEach(async (resourceLink) => {
                                 lessonPlanCount++;
                                 hasExistingResourceLinks = true;
                                 const resourceLinkItem = document.createElement('li');
@@ -797,6 +798,8 @@ class FilterManager {
                                 resourceLinkButton.classList.add('link', 'underline', 'wave', 'small-round', 'tiny-padding');
                                 const span = document.createElement('span');
                                 span.textContent = resourceLink;
+                                // const title = await fetchPageTitle(resourceLink);
+                                // span.textContent = title;
                                 resourceLinkButton.appendChild(span);
                                 const icon = document.createElement('i');
                                 icon.innerText = 'open_in_new';
@@ -809,7 +812,7 @@ class FilterManager {
                             resourceLinksDiv.appendChild(resourceLinksList);
 
                             const lessonPlanButton = document.createElement('a');
-                            lessonPlanButton.classList.add('tiny-margin', 'chip');
+                            lessonPlanButton.classList.add('primary', 'small-padding', 'small-round', 'wave');
                             const sourceIcon = document.createElement('i');
                             if (lessonPlan.source === "public"){
                                 sourceIcon.innerText = 'public';
@@ -820,6 +823,7 @@ class FilterManager {
                             openIcon.innerText = 'open_in_new';
                             lessonPlanButton.appendChild(sourceIcon);
                             const span = document.createElement('span');
+                            span.classList.add('no-line', 'small-margin');
                             span.textContent = `${lessonPlan.topicTitle} by ${lessonPlan.authorName}`;
                             lessonPlanButton.appendChild(span);
                             lessonPlanButton.href = `/lessonPlan.html#${lessonPlan.id}`;
@@ -892,4 +896,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const tabManager = new FilterManager();
     tabManager.init();
+
 });

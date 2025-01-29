@@ -20,7 +20,7 @@
         "webpack-cli": "^5.1.4",
         "webpack-dev-server": "^5.0.4"
     },
-    "name": "gradiance",
+    "name": "curiki",
     "description": "A comprehensive web page for accessing curriculums.",
     "version": "1.0.0",
     "main": "webpack.config.js",
@@ -30,12 +30,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/TheCodingJsoftware/Gradiance.git"
+        "url": "git+https://github.com/TheCodingJsoftware/Curiki.git"
     },
     "author": "Jared Gross",
     "license": "GPL-3.0-only",
     "bugs": {
-        "url": "https://github.com/TheCodingJsoftware/Gradiance/issues"
+        "url": "https://github.com/TheCodingJsoftware/Curiki/issues"
     },
-    "homepage": "https://github.com/TheCodingJsoftware/Gradiance#readme"
+    "homepage": "https://github.com/TheCodingJsoftware/Curiki#readme"
 }
