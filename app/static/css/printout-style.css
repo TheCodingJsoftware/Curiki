@@ -25,7 +25,7 @@ nav {
     transition: background-color 0.3s ease-in-out, color 0.1s ease;
 }
 
-.hidden {
+.hidden, .qr-code {
     display: none !important;
 }
 
@@ -58,6 +58,9 @@ details {
 }
 
 @media print {
+    .qr-code{
+        display: block !important;
+    }
     header, nav, .snackbar, .resource-links-details{
         display: none !important;
     }

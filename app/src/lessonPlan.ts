@@ -2,6 +2,7 @@ import 'beercss';
 import 'material-dynamic-colors';
 import '../static/css/printout-style.css';
 import '../static/css/theme.css';
+import { Creator, QRContent, QRMode, Renderer, ErrorCorrectionLevel, MaskPattern } from 'easy-qrcode';
 import MathCurriculumManager from "./utils/mathCurriculumManager";
 import BiologyCurriculumManager from "./utils/biologyCurriculumManager";
 import ScienceCurriculumManager from "./utils/scienceCurriculumManager";
@@ -15,6 +16,7 @@ import { SocialStudiesSkill } from './utils/socialStudiesSkill';
 import { gradeNames } from './utils/grades'
 import { initDB, LessonPlanTemplate } from './utils/lessonPlan';
 import { isTrustworthyResource, trustworthyDomains } from './utils/trustworthyDomains';
+
 
 class OutCome {
     id: string;
@@ -159,6 +161,26 @@ class LessonPlan {
         request.onsuccess = (event) => {
             this.db = (event.target as IDBOpenDBRequest).result;
         };
+        this.generateQRCode();
+    }
+
+    generateQRCode(){
+        const qrCreator = new Creator({
+            version: 4,
+            enableECI: false,
+            errorCorrectionLevel: ErrorCorrectionLevel.M,
+            maskPattern: MaskPattern.PATTERN000,
+        });
+        const pageUrl = window.location.href;
+        qrCreator.add(pageUrl);
+        qrCreator.create();
+        const matrix = qrCreator.getMatrix();
+        const qrRenderer = new Renderer();
+        const canvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
+        const qrSize = matrix.length * 5;
+        canvas.width = qrSize;
+        canvas.height = qrSize;
+        qrRenderer.drawCanvas(matrix, canvas);
     }
 
     async saveLessonPlan(): Promise<any> {
