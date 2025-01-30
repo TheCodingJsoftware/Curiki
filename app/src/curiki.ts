@@ -344,7 +344,7 @@ function firstTimeSetup() {
             <p class="no-line">Before you start using Curiki, please read the <a class="link underline" href="/termsOfService.html">Terms of Service</a> and <a class="link underline" href="/policy.html">Privacy Policy</a>.</p>
             <label class="checkbox">
                 <input type="checkbox" id="accepted-terms-of-service">
-                <span>I have read and agree to the Terms of Service and Privacy Policy</span>
+                <span class="wrap">I have read and agree to the Terms of Service and Privacy Policy</span>
             </label>
             <div class="grid">
                 <button class="s6" id="confirm-outcome">Accept</button>
