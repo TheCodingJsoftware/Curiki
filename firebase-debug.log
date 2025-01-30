@@ -1,0 +1,36 @@
+[debug] [2025-01-30T04:01:07.202Z] ----------------------------------------------------------------------
+[debug] [2025-01-30T04:01:07.216Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jared\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting:curiki
+[debug] [2025-01-30T04:01:07.217Z] CLI Version:   13.29.2
+[debug] [2025-01-30T04:01:07.217Z] Platform:      win32
+[debug] [2025-01-30T04:01:07.217Z] Node Version:  v20.16.0
+[debug] [2025-01-30T04:01:07.218Z] Time:          Wed Jan 29 2025 22:01:07 GMT-0600 (Central Standard Time)
+[debug] [2025-01-30T04:01:07.218Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-30T04:01:07.439Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-30T04:01:07.440Z] > authorizing via signed-in user (jaredgrozz@gmail.com)
+[debug] [2025-01-30T04:01:07.440Z] [iam] checking project curiki-c3ee7 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-01-30T04:01:07.442Z] Checked if tokens are valid: false, expires at: 1738200849030
+[debug] [2025-01-30T04:01:07.442Z] Checked if tokens are valid: false, expires at: 1738200849030
+[debug] [2025-01-30T04:01:07.443Z] > refreshing access token with scopes: []
+[debug] [2025-01-30T04:01:07.445Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-01-30T04:01:07.445Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-01-30T04:01:07.730Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-01-30T04:01:07.730Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-01-30T04:01:07.742Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/curiki-c3ee7:testIamPermissions [none]
+[debug] [2025-01-30T04:01:07.742Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/curiki-c3ee7:testIamPermissions x-goog-quota-user=projects/curiki-c3ee7
+[debug] [2025-01-30T04:01:07.743Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/curiki-c3ee7:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-01-30T04:01:08.029Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/curiki-c3ee7:testIamPermissions 200
+[debug] [2025-01-30T04:01:08.029Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/curiki-c3ee7:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-01-30T04:01:08.029Z] Checked if tokens are valid: true, expires at: 1738213266730
+[debug] [2025-01-30T04:01:08.030Z] Checked if tokens are valid: true, expires at: 1738213266730
+[debug] [2025-01-30T04:01:08.030Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/curiki-c3ee7 [none]
+[debug] [2025-01-30T04:01:08.264Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/curiki-c3ee7 200
+[debug] [2025-01-30T04:01:08.265Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/curiki-c3ee7 {"projectId":"curiki-c3ee7","projectNumber":"638147684006","displayName":"Curiki","name":"projects/curiki-c3ee7","resources":{"hostingSite":"curiki-c3ee7","realtimeDatabaseInstance":"curiki-c3ee7-default-rtdb"},"state":"ACTIVE","etag":"1_1cce77f0-5c33-4c5d-bde5-1f4f97f33d08"}
+[info] 
+[info] === Deploying to 'curiki-c3ee7'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-01-30T04:01:08.275Z] Checked if tokens are valid: true, expires at: 1738213266730
+[debug] [2025-01-30T04:01:08.275Z] Checked if tokens are valid: true, expires at: 1738213266730
+[debug] [2025-01-30T04:01:08.275Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/curiki/versions [none]
+[debug] [2025-01-30T04:01:08.275Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/curiki/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}

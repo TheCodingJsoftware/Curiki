@@ -49,6 +49,7 @@ export async function initDB(): Promise<void> {
         };
     });
 }
+
 export function generateLessonPlan(topicTitle: string, gradeLevel: string, outcomes: { [key: string]: string }, date: string): LessonPlanTemplate {
     return {
         id: "",

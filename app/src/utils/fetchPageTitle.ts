@@ -1,7 +1,12 @@
-const getMetaData = require('metadata-scraper')
-
 export async function fetchPageTitle(url: string) {
-	const data = await getMetaData(url)
-	console.log(data)
-    return data.title
+	try {
+		let response = await fetch(`https://pinecone.synology.me/metadata?url=${encodeURIComponent(url)}`);
+		let data = await response.json();
+		if (data.error) {
+			return url;
+		}
+		return data.title;
+	} catch (error) {
+		return url;
+	}
 }

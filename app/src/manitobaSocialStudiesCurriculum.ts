@@ -15,7 +15,7 @@ import {
 } from './utils/icons';
 import { gradeNames } from './utils/grades'
 import { createLessonPlan, generateLessonPlan, getAllLessonPlans, initDB, LessonPlanTemplate } from './utils/lessonPlan';
-// import { fetchPageTitle } from './utils/fetchPageTitle';
+import { fetchPageTitle } from './utils/fetchPageTitle';
 
 
 class FilterManager {
@@ -781,14 +781,15 @@ class FilterManager {
                     legend.textContent = 'Lesson Plans';
                     lessonPlanDiv.appendChild(legend);
 
+                    let resourceLinks: string[] = [];
                     const resourceLinksDiv = document.createElement('div');
                     resourceLinksDiv.classList.add('small-padding', 'scroll');
+                    const resourceLinksList = document.createElement('ol');
+                    resourceLinksList.classList.add('left-padding');
                     this.allLessonPlans.forEach(lessonPlan => {
                         if (Object.keys(lessonPlan.outcomes).includes(learningOutcome.getID(activeGrade.replace("#grade_", "")))) {
                             hasExistingLessonPlans = true;
                             lessonPlanCount++;
-                            const resourceLinksList = document.createElement('ol');
-                            resourceLinksList.classList.add('left-padding');
 
                             lessonPlan.resourceLinks.forEach(async (resourceLink) => {
                                 lessonPlanCount++;
@@ -798,9 +799,8 @@ class FilterManager {
                                 resourceLinkButton.classList.add('link', 'wave', 'small-round', 'tiny-padding');
                                 const span = document.createElement('span');
                                 span.classList.add('no-line', 'small-margin', 'underline', 'right-margin');
-                                span.textContent = resourceLink;
-                                // const title = await fetchPageTitle(resourceLink);
-                                // span.textContent = title;
+                                const title = await fetchPageTitle(resourceLink);
+                                span.textContent = title;
                                 resourceLinkButton.appendChild(span);
                                 const icon = document.createElement('i');
                                 icon.innerText = 'open_in_new';
@@ -810,10 +810,9 @@ class FilterManager {
                                 resourceLinkItem.appendChild(resourceLinkButton);
                                 resourceLinksList.appendChild(resourceLinkItem);
                             });
-                            resourceLinksDiv.appendChild(resourceLinksList);
 
                             const lessonPlanButton = document.createElement('a');
-                            lessonPlanButton.classList.add('primary', 'small-padding', 'small-round', 'wave');
+                            lessonPlanButton.classList.add('primary', 'small-padding', 'small-round', 'wave', 'small-margin');
                             const sourceIcon = document.createElement('i');
                             if (lessonPlan.source === "public"){
                                 sourceIcon.innerText = 'public';
@@ -838,6 +837,7 @@ class FilterManager {
                         resourcesDetails.appendChild(lessonPlanDiv);
                     }
                     if (hasExistingResourceLinks) {
+                        resourceLinksDiv.appendChild(resourceLinksList);
                         resourcesDetails.appendChild(resourceLinksDiv);
                     }
                 }

@@ -17,7 +17,8 @@ export const trustworthyDomains = [
     'edx.org',
     'coursera.org',
     'mb.ca',
-    'chatgpt.com'
+    'chatgpt.com',
+    'mbteach.org'
 ];
 
 export const trustworthySuffixes = [
