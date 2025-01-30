@@ -20,6 +20,7 @@
         <h5 class="max small">Lesson Plan</h5>
         <button class="circle transparent" id="print-button" onclick="window.print()">
             <i>print</i>
+            <div class="tooltip left">You may have to adjust the scale.</div>
         </button>
         <button class="circle transparent" id="theme-toggle">
             <i id="theme-icon">dark_mode</i>
@@ -93,7 +94,7 @@
                 <input type="date" id="date">
                 <label>Date</label>
             </div>
-            <details class="s12 m12 l12 border no-margin" open>
+            <details class="s12 m12 l12 border top-margin" open>
                 <summary class="none small-padding" style="font-size: 22pt;">Lesson Outcomes</summary>
                 <div class="s12 m12 l12" id="curricular-outcomes">
                 </div>
@@ -106,7 +107,7 @@
                 <textarea class="small-padding" id="cross-curricular-connections"></textarea>
                 <label>Cross-Curricular/Real World Connections</label>
             </div>
-            <details class="page-break-inside s12 m12 l12 border no-margin" open>
+            <details class="page-break-inside s12 m12 l12 border top-margin" open>
                 <summary class="none small-padding" style="font-size: 22pt;">Assessment Evidence</summary>
                 <table class="border" id="assessment-evidence">
                     <thead>
@@ -187,12 +188,12 @@
                     <span>Add Assessment Evidence</span>
                 </button>
             </details>
-            <div class="page-break-inside field border label textarea extra s12 m12 l12 min bottom-margin">
+            <div class="page-break-inside top-margin field border label textarea extra s12 m12 l12 min bottom-margin">
                 <textarea class="small-padding" id="materials-considered"></textarea>
                 <label>Materials and Resources</label>
                 <span class="helper no-line">Resources (referenced), handouts, ICT, equipment, etc.</span>
             </div>
-            <details class="page-break-inside s12 m12 l12 border no-margin resource-links-details" open>
+            <details class="page-break-inside s12 m12 l12 border top-margin resource-links-details" open>
                 <summary class="none small-padding" style="font-size: 22pt;">Resource Links</summary>
                 <span class="small-padding">Link to a resource, such as a website, PDF, or video.</span>
                 <div class="small-padding" id="resource-links">
@@ -202,13 +203,13 @@
                     <span>Add Link</span>
                 </button>
             </details>
-            <div class="page-break-inside field border label textarea extra s12 m12 l12 min bottom-margin">
+            <div class="page-break-inside top-margin field border label textarea extra s12 m12 l12 min bottom-margin">
                 <textarea class="small-padding" id="student-specific-planning"></textarea>
                 <label>Student Specific Planning</label>
                 <span class="helper no-line">Considering students' readiness, interests, and learning profile, how
                     will learning tasks for this lesson be differentiated?</span>
             </div>
-            <details class="page-break-inside s12 m12 l12 border no-margin" open>
+            <details class="page-break-inside s12 m12 l12 border top-margin" open>
                 <summary class="none small-padding" style="font-size: 22pt;">Learning Plan</summary>
                 <table class="border" id="learning-plan">
                     <thead>
@@ -317,7 +318,7 @@
                     </tbody>
                 </table>
             </details>
-            <div class="page-break-inside field border label textarea extra s12 m12 l12 min">
+            <div class="page-break-inside top-margin field border label textarea extra s12 m12 l12 min">
                 <textarea class="small-padding" id="reflections"></textarea>
                 <label>Reflections</label>
             </div>
