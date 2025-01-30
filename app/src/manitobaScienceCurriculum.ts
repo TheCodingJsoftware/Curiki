@@ -8,7 +8,7 @@ import { ScienceLearningOutcome } from "./utils/scienceLearningOutcome";
 import { scienceClustersIconDictionary } from './utils/icons';
 import { gradeNames } from './utils/grades';
 import { createLessonPlan, generateLessonPlan, getAllLessonPlans, initDB, LessonPlanTemplate } from './utils/lessonPlan';
-import { fetchPageTitle } from './utils/fetchPageTitle';
+import { getMetadata } from './utils/getMetadata';
 
 class FilterManager {
     container: HTMLDivElement;
@@ -409,7 +409,7 @@ class FilterManager {
                                 resourceLinkButton.classList.add('link', 'wave', 'small-round', 'tiny-padding');
                                 const span = document.createElement('span');
                                 span.classList.add('no-line', 'small-margin', 'underline', 'right-margin');
-                                const title = await fetchPageTitle(resourceLink);
+                                const title = await getMetadata(resourceLink);
                                 span.textContent = title;
                                 resourceLinkButton.appendChild(span);
                                 const icon = document.createElement('i');

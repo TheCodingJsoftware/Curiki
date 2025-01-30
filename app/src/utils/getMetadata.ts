@@ -1,4 +1,4 @@
-export async function fetchPageTitle(url: string) {
+export async function getMetadata(url: string) {
 	try {
 		let response = await fetch(`https://pinecone.synology.me/metadata?url=${encodeURIComponent(url)}`);
 		let data = await response.json();

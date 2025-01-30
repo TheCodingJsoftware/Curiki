@@ -328,6 +328,55 @@ async function loadAllLessonPlans(): Promise<void> {
         publicLessonPlansContainer.appendChild(publicLessonPlansFragment);
     });
 }
+
+function firstTimeSetup() {
+    const acceptedTermsOfService = localStorage.getItem('acceptedTermsOfServiceAndPrivacyPolicy') === 'true';
+    if (acceptedTermsOfService) {
+        return;
+    }
+    const modal = document.createElement('dialog');
+    modal.classList.add('modal'); // Ensure you have corresponding CSS styles for the modal.
+    modal.id = 'start-up-modal';
+    modal.innerHTML = `
+        <div>
+            <h5>Welcome to Curiki</h5>
+            <p class="no-line">Curiki is a communitiy driven tool to help you learn and understand the Manitoba Curriculum. It is designed to be a simple and easy-to-use tool that can be used by anyone, anywhere.</p>
+            <p class="no-line">Before you start using Curiki, please read the <a class="link underline" href="/termsOfService.html">Terms of Service</a> and <a class="link underline" href="/policy.html">Privacy Policy</a>.</p>
+            <label class="checkbox">
+                <input type="checkbox" id="accepted-terms-of-service">
+                <span>I have read and agree to the Terms of Service and Privacy Policy</span>
+            </label>
+            <div class="grid">
+                <button class="s6" id="confirm-outcome">Accept</button>
+                <button class="s6" id="cancel-outcome">Cancel</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    modal.showModal();
+
+    const confirmButton = modal.querySelector('#confirm-outcome') as HTMLButtonElement;
+    const cancelButton = modal.querySelector('#cancel-outcome') as HTMLButtonElement;
+    const acceptedTermsOfServiceCheckbox = modal.querySelector('#accepted-terms-of-service') as HTMLInputElement;
+    confirmButton.disabled = !acceptedTermsOfServiceCheckbox.checked;
+    acceptedTermsOfServiceCheckbox.addEventListener('change', () => {
+        confirmButton.disabled = !acceptedTermsOfServiceCheckbox.checked;
+    });
+
+    confirmButton.addEventListener('click', () => {
+        localStorage.setItem('acceptedTermsOfServiceAndPrivacyPolicy', acceptedTermsOfServiceCheckbox.checked.toString());
+        document.body.removeChild(modal);
+        modal.close();
+    });
+
+    cancelButton.addEventListener('click', () => {
+        document.body.removeChild(modal);
+        modal.close();
+    });
+}
+
 document.addEventListener('DOMContentLoaded', async function () {
     initDB().then(() => {
         return loadAllLessonPlans();
@@ -339,6 +388,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+    firstTimeSetup();
+
     function setTheme(theme: string) {
         document.body.classList.remove("light", "dark");
         document.body.classList.add(theme);

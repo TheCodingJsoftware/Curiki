@@ -30,49 +30,51 @@
 <body class="light">
     <main class="responsive">
         <div class="top-margin grid space">
-            <div class="grid s8 m12 l12 tiny-space">
-                <div class="field no-margin border label s12 m12 l12">
-                    <input id="topic-title">
-                    <label>Topic/Unit Title</label>
+            <div class="s12 m12 l12 row">
+                <div class="max grid tiny-space">
+                    <div class="field no-margin border label s12 m12 l12">
+                        <input id="topic-title">
+                        <label>Topic/Unit Title</label>
+                    </div>
+                    <div class="field no-margin border prefix label s12 m12 l12">
+                        <i>group</i>
+                        <input id="author-name">
+                        <label>Author(s)</label>
+                    </div>
+                    <div class="field no-margin border label s12 m12 l12">
+                        <select id="grade-level">
+                            <option>Kindergarten</option>
+                            <option>Grade 1</option>
+                            <option>Grade 2</option>
+                            <option>Grade 3</option>
+                            <option>Grade 4</option>
+                            <option>Grade 5</option>
+                            <option>Grade 6</option>
+                            <option>Grade 7</option>
+                            <option>Grade 8</option>
+                            <option>Grade 9</option>
+                            <option>Grade 10</option>
+                            <option>Grade 11</option>
+                            <option>Grade 12</option>
+                            <option>S1</option>
+                            <option>S2</option>
+                            <option>10 Essential</option>
+                            <option>10 Introduction to Applied and Pre-Calculus</option>
+                            <option>11 Applied</option>
+                            <option>11 Essential</option>
+                            <option>11 Pre-Calculus</option>
+                            <option>12 Applied</option>
+                            <option>12 Essential</option>
+                            <option>12 Pre-Calculus</option>
+                        </select>
+                        <label>Grade/Class</label>
+                    </div>
                 </div>
-                <div class="field no-margin border prefix label s12 m12 l12">
-                    <i>group</i>
-                    <input id="author-name">
-                    <label>Author(s)</label>
+                <div class="s4 m12 l12 center-align qr-code">
+                    <canvas class="small-padding small-round border" id="qr-canvas"></canvas>
+                    <br>
+                    <span>Scan to Open</span>
                 </div>
-                <div class="field no-margin border label s12 m12 l12">
-                    <select id="grade-level">
-                        <option>Kindergarten</option>
-                        <option>Grade 1</option>
-                        <option>Grade 2</option>
-                        <option>Grade 3</option>
-                        <option>Grade 4</option>
-                        <option>Grade 5</option>
-                        <option>Grade 6</option>
-                        <option>Grade 7</option>
-                        <option>Grade 8</option>
-                        <option>Grade 9</option>
-                        <option>Grade 10</option>
-                        <option>Grade 11</option>
-                        <option>Grade 12</option>
-                        <option>S1</option>
-                        <option>S2</option>
-                        <option>10 Essential</option>
-                        <option>10 Introduction to Applied and Pre-Calculus</option>
-                        <option>11 Applied</option>
-                        <option>11 Essential</option>
-                        <option>11 Pre-Calculus</option>
-                        <option>12 Applied</option>
-                        <option>12 Essential</option>
-                        <option>12 Pre-Calculus</option>
-                    </select>
-                    <label>Grade/Class</label>
-                </div>
-            </div>
-            <div class="s4 m12 l12 center-align qr-code">
-                <canvas class="small-padding small-round border" id="qr-canvas"></canvas>
-                <br>
-                <span>Scan to Open</span>
             </div>
             <div class="field suffix border label max s6 m6 l6">
                 <select id="time-length">
@@ -315,7 +317,7 @@
                     </tbody>
                 </table>
             </details>
-            <div class="field border label textarea extra s12 m12 l12 min">
+            <div class="page-break-inside field border label textarea extra s12 m12 l12 min">
                 <textarea class="small-padding" id="reflections"></textarea>
                 <label>Reflections</label>
             </div>

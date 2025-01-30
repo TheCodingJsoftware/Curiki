@@ -1,7 +1,7 @@
 export const trustworthyDomains = [
     'google.com',
     'google.ca',
-    'amazon.ca',
+    'amazon.com',
     'amazon.ca',
     'teacherspayteachers.com',
     'youtube.com',
@@ -30,7 +30,9 @@ export function isTrustworthyResource(resourceLink: string): boolean {
     try {
         const url = new URL(resourceLink);
 
-        if (url.protocol !== 'https:') {
+        const matchesProtocol = url.protocol === 'https:';
+
+        if (!matchesProtocol) {
             return false;
         }
 
@@ -44,7 +46,7 @@ export function isTrustworthyResource(resourceLink: string): boolean {
 
         const isPdfFile = url.pathname.toLowerCase().endsWith('.pdf');
 
-        return matchesTrustedDomain || matchesTrustedSuffix || isPdfFile;
+        return matchesProtocol || matchesTrustedDomain || matchesTrustedSuffix || isPdfFile;
     } catch (error) {
         return false;
     }

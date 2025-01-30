@@ -6,7 +6,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const entries = {
+    index: './app/src/index.ts',
     policy: './app/src/policy.ts',
+    termsOfService: './app/src/termsOfService.ts',
     curiki: './app/src/curiki.ts',
     manitobaCurriculumOverview: './app/src/manitobaCurriculumOverview.ts',
     manitobaMathematicsCurriculum: './app/src/manitobaMathematicsCurriculum.ts',

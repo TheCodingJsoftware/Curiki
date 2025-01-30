@@ -16,7 +16,7 @@ import { SocialStudiesSkill } from './utils/socialStudiesSkill';
 import { gradeNames } from './utils/grades'
 import { initDB, LessonPlanTemplate } from './utils/lessonPlan';
 import { isTrustworthyResource, trustworthyDomains } from './utils/trustworthyDomains';
-
+import { getMetadata } from './utils/getMetadata';
 
 class OutCome {
     id: string;
@@ -183,7 +183,7 @@ class LessonPlan {
         qrRenderer.drawCanvas(matrix, canvas);
     }
 
-    async saveLessonPlan(): Promise<any> {
+    async saveLessonPlan(): Promise<LessonPlanTemplate> {
         const hashtag = window.location.hash.replace('#', '');
         let assessmentEvidence: { description: string, forLearning: boolean, asLearning: boolean, ofLearning: boolean }[] = [];
         let outcomes = this.outcomes.map(outcome => outcome.id);
@@ -293,7 +293,7 @@ class LessonPlan {
         }
     }
 
-    async uploadLessonPlan(lessonPlan: any): Promise<boolean> {
+    async uploadLessonPlan(lessonPlan: LessonPlanTemplate): Promise<boolean> {
         try {
             const response = await fetch('https://pinecone.synology.me/curiki', {
                 method: 'POST',
@@ -320,9 +320,10 @@ class LessonPlan {
 
     async publishLessonPlan() {
         this.saveLessonPlan().then(lessonPlan => {
-            if (lessonPlan) {
-                this.uploadLessonPlan(lessonPlan);
-            }
+            this.uploadLessonPlan(lessonPlan);
+            lessonPlan.resourceLinks.forEach(async (resourceLink) => {
+                await getMetadata(resourceLink);
+            });
         });
     }
 
@@ -653,7 +654,7 @@ class LessonPlan {
                 resourceLinkInput.parentElement.classList.toggle('invalid', !isTrustworthy);
             }
             const resourceLinkError = newRow.querySelector('#resource-link-error') as HTMLSpanElement;
-            resourceLinkError.textContent = isTrustworthy ? '' : 'Please enter a valid link.';
+            resourceLinkError.textContent = isTrustworthy ? '' : 'This url is not secure.';
             resourceLinkError.classList.toggle('hidden', isTrustworthy);
         });
 
