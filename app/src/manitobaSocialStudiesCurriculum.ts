@@ -782,7 +782,7 @@ class FilterManager {
                     lessonPlanDiv.appendChild(legend);
 
                     const resourceLinksDiv = document.createElement('div');
-                    resourceLinksDiv.classList.add('small-padding');
+                    resourceLinksDiv.classList.add('small-padding', 'scroll');
                     this.allLessonPlans.forEach(lessonPlan => {
                         if (Object.keys(lessonPlan.outcomes).includes(learningOutcome.getID(activeGrade.replace("#grade_", "")))) {
                             hasExistingLessonPlans = true;
@@ -795,8 +795,9 @@ class FilterManager {
                                 hasExistingResourceLinks = true;
                                 const resourceLinkItem = document.createElement('li');
                                 const resourceLinkButton = document.createElement('a');
-                                resourceLinkButton.classList.add('link', 'underline', 'wave', 'small-round', 'tiny-padding');
+                                resourceLinkButton.classList.add('link', 'wave', 'small-round', 'tiny-padding');
                                 const span = document.createElement('span');
+                                span.classList.add('no-line', 'small-margin', 'underline', 'right-margin');
                                 span.textContent = resourceLink;
                                 // const title = await fetchPageTitle(resourceLink);
                                 // span.textContent = title;
