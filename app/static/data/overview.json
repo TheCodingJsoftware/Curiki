@@ -1,0 +1,717 @@
+{
+    "overview_summary": {
+        "math": {
+            "strands": [
+                "Number",
+                "Patterns and Relations",
+                "Space and Shape",
+                "Statistics and Probability"
+            ],
+            "processes": [
+                "Communication",
+                "Connections",
+                "Mental Mathematics and Estimation",
+                "Problem Solving",
+                "Reasoning",
+                "Technology",
+                "Visualization"
+            ]
+        },
+        "science": {
+            "scientific_literacy": [
+                "Nature of Science and Technology",
+                "Science, Technology, Society, and Environment (STSE)",
+                "Scientific and Technological Skills and Attititudes",
+                "Essential Scientific Knowledge",
+                "Unifying Concepts"
+            ],
+            "general_learning_outcomes": [
+                "Power and Limitiions of Science",
+                "Evoloving Knowledge",
+                "Science and Technology",
+                "Diversity in Contributions",
+                "Sustainable Development",
+                "Interconnections",
+                "Inquiry and Problem Solving",
+                "Attitudes and Skills",
+                "Systems and Interactions",
+                "Energy and Change"
+            ]
+        },
+        "social_studies": {
+            "general_learning_outcomes": [
+                "Identity, Culture, and Community",
+                "The Land: Places and People",
+                "Historical Connections",
+                "Global Interdependence",
+                "Power and Authority",
+                "Economics and Resources"
+            ],
+            "skills_and_competencies": [
+                "Active Democratic Citizenship",
+                "Manage Information and Ideas",
+                "Creative and Critical Thinking",
+                "Communication"
+            ]
+        },
+        "ela": {
+            "practices": [
+                "Language as a System",
+                "Language as Sense Making",
+                "Language as Exploration and Design",
+                "Language as Power and Agency"
+            ],
+            "lenses": [
+                "Imaginative and Literary",
+                "Enviornmental and Technological",
+                "Personal and Philosophical",
+                "Social, Cultural and Historical"
+            ]
+        }
+    },
+    "overview_data": {
+        "Number": [],
+        "Patterns and Relations": [],
+        "Space and Shape": [],
+        "Statistics and Probability": [],
+        "Communication": [
+            "Communication skills enable students to interpret and express ideas clearly and purposefully, using a variety of media. These skills include the development of oral, visual, print, and media literacy, and the use of information and communication technologies for the exchange of information and ideas.",
+            "Reading about, representing, viewing, writing about, listening to, and discussing mathematical ideas allows students to create links among their own language and ideas, the language and ideas of others, and the formal language and symbols of mathematics. Communication enables students to reflect upon, to validate, and to clarify their thinking. Expression of mathematical meaning and ideas can be accomplished orally or in written representations such as journals and learning logs."
+        ],
+        "Connections": [
+            "Mathematics becomes more meaningful when it is contextualized and linked to students’ experiences across disciplines. Furthermore, mathematics should be viewed as an integrated whole, rather than as the study of separate strands or units. Within a particular topic, students should see the connections between concrete, pictorial, and symbolic modes of representation. When mathematical ideas are connected to each other or to real-world phenomena, students begin to view mathematics as useful, relevant, and integrated."
+        ],
+        "Mental Mathematics and Estimation": [
+            "Mental mathematics is a combination of strategies that enhances flexible thinking and number sense. Estimation is a strategy for determining approximate values or quantities, usually by referring to benchmarks or using referents, or for determining the reasonableness of calculated values. Estimation is often used to make mathematical judgments and to develop useful, efficient strategies for dealing with situations in daily life. Strategies in mental mathematics and estimation enable students to calculate mentally without the use of external aids. In the process, they improve their computational fluency— developing efficiency, accuracy, and flexibility."
+        ],
+        "Problem Solving": [
+            "Students develop understanding of mathematical concepts and procedures when they apply their mathematical knowledge to solve problems in new ways and meaningful contexts. When students encounter new situations and respond to questions of the type How would you . . . ? or How could you . . . ?, the problem-solving approach is being modelled. Problems are often open-ended, so students may arrive at multiple solutions in different and creative ways. Rich problems allow students in the class to demonstrate their knowledge, skill, or understanding at a level appropriate to them. Learning through problem solving should be the focus of mathematics at all grade levels and should be embedded throughout all topics. "
+        ],
+        "Reasoning": [
+            "Mathematical reasoning involves generalizing from patterns, conjecturing, validating, and proving. Students need to develop confidence in their abilities to reason and to justify their mathematical thinking. Good reasoning is as important as finding correct answers. The thinking skills developed by a focus on reasoning can be used in life in a wide variety of contexts and disciplines."
+        ],
+        "Technology": [
+            "Technology contributes to and supports the learning of a wide range of mathematical concepts and can increase the focus on conceptual understanding by decreasing the time spent on repetitive procedures. It enables students to explore and create patterns, organize and display data, examine relationships, model situations, generate and test conjectures, solve problems, and reinforce the learning of basic facts. Technology can help to satisfy the curiosity of students and lead to rich mathematical discoveries at all grade levels. The use of technology can enhance, although it should not replace, conceptual understanding, procedural thinking, and problem solving."
+        ],
+        "Visualization": [
+            "Visual images and visual reasoning are important to a sense of number, space, and measurement. Visualization is fostered through the use of concrete materials, technology, and a variety of visual representations. Visualization can help students gain a concrete understanding of abstract concepts."
+        ],
+        "Identity, Culture, and Community": [],
+        "The Land: Places and People": [],
+        "Historical Connections": [],
+        "Global Interdependence": [],
+        "Power and Authority": [],
+        "Economics and Resources": [],
+        "Active Democratic Citizenship": [
+            "Citizenship skills enable students to develop good relations with others, to work in cooperative ways toward achieving common goals, and to collaborate with others for the well-being of their communities. These interpersonal skills focus on cooperating, resolving conflict, taking responsibility, accepting differences, building consensus, negotiating, making decisions collaboratively, and learning to deal with dissent and disagreement"
+        ],
+        "Manage Information and Ideas": [
+            "Information-management skills enable students to access, select, organize, and record information and ideas, using a variety of sources, tools, and technologies. These skills include inquiry and research skills that enhance historical and geographical thinking."
+        ],
+        "Creative and Critical Thinking": [
+            "Critical and creative thinking skills enable students to make observations and decisions, to solve problems, and to devise forward-thinking strategies. These skills involve making connections among concepts and applying a variety of tools. Critical thinking involves the use of criteria and evidence to make reasoned judgments. These judgments include distinguishing fact from opinion and interpretation, evaluating information and ideas, identifying perspectives and bias, and considering the consequences of decisions and actions. Creative thinking emphasizes divergent thinking, the generation of ideas and possibilities, and the exploration of diverse approaches to questions."
+        ],
+        "Language as a System": [],
+        "Language as Sense Making": [],
+        "Language as Exploration and Design": [],
+        "Language as Power and Agency": [],
+        "Imaginative and Literary": [],
+        "Enviornmental and Technological": [],
+        "Personal and Philosophical": [],
+        "Social, Cultural and Historical": [],
+        "Nature of Science and Technology": [],
+        "Science, Technology, Society, and Environment (STSE)": [],
+        "Scientific and Technological Skills and Attititudes": [],
+        "Essential Scientific Knowledge": [],
+        "Unifying Concepts": [],
+        "Power and Limitiions of Science": [],
+        "Evoloving Knowledge": [],
+        "Science and Technology": [],
+        "Diversity in Contributions": [],
+        "Sustainable Development": [],
+        "Interconnections": [],
+        "Inquiry and Problem Solving": [],
+        "Attitudes and Skills": [],
+        "Systems and Interactions": [],
+        "Energy and Change": []
+    },
+    "grade_summary": {
+        "grade_one": {
+            "math": {
+                "Number": [
+                    "Counting number sequence and estimation to 100",
+                    "Subitize to 10",
+                    "Whole numbers to 20",
+                    "Equal grouping to 30",
+                    "Addition with answers to 20 and their corresponding subtraction facts",
+                    "Addition and related subtraction facts to 18"
+                ],
+                "Patterns and Relations": [
+                    "Repeating patterns",
+                    "Variables and Equations - Equality and inequality"
+                ],
+                "Space and Shape": [
+                    "Measurement",
+                    "3-D Objects and 2-D Shapes"
+                ],
+                "Statistics and Probability": [
+                    "Not applicable"
+                ]
+            },
+            "social_studies": {
+                "I Belong": [
+                    "Personal Identity",
+                    "Cultural expression",
+                    "Connections to the past"
+                ],
+                "My Environment": [
+                    "Globes and maps",
+                    "My province and country",
+                    "My address",
+                    "My community",
+                    "The natural environment"
+                ],
+                "Connecting with Others": [
+                    "Needs and Wants",
+                    "Diversity",
+                    "Respect, Responsibility and Rights",
+                    "Living with others",
+                    "Getting along",
+                    "Conflict resolution",
+                    "Global connections"
+                ]
+            },
+            "science": {
+                "Matter": [
+                    "All matter is made up of very small particles"
+                ],
+                "Energy": [
+                    "The total amount of energy in the Universe is always the same but can be transferred from one energy store to another during an event"
+                ],
+                "Space Science": [
+                    "Our Solar System is a very small part of one of billions of galaxies in the Universe"
+                ],
+                "Life Systems": [
+                    "Organisms require a supply of energy and materials for which they often depend on, or compete with, other organisms"
+                ],
+                "Evolution": [
+                    "The diversity of organisms, living and extinct, is the result of evolution"
+                ]
+            }
+        },
+        "grade_two": {
+            "math": {
+                "Number": [
+                    "Counting",
+                    "Representation of Whole Numbers to 100",
+                    "Operations with Whole Numbers to 100"
+                ],
+                "Patterns and Relations": [
+                    "Patterns",
+                    "Variables and Equations - Equality and Inequality"
+                ],
+                "Space and Shape": [
+                    "Measurement - Length, Area, Volume (Capacity), and Mass (Weight)",
+                    "Time",
+                    "3-D Objects and 2-D Shapes"
+                ],
+                "Statistics and Probability": [
+                    "Data Analysis - Collection, Organization, and Analysis of Data"
+                ]
+            },
+            "social_studies": {
+                "Our Local Community": [
+                    "Characteristics of communities",
+                    "Natural resources",
+                    "Stories of the past",
+                    "Culture and heritage",
+                    "Personal identity",
+                    "Contributing to our communities",
+                    "Leadership",
+                    "Remembrance Day"
+                ],
+                "Communities in Canada": [
+                    "Diverse people",
+                    "Features of Canadian communities",
+                    "Natural resources",
+                    "Work, goods, and products",
+                    "Diversity and change"
+                ],
+                "The Canadian Community": [
+                    "Canadian symbols",
+                    "Historical influences",
+                    "Cultural communities",
+                    "Canadian diversity",
+                    "Canadian needs, choices, and decisions",
+                    "Global connections"
+                ]
+            },
+            "science": {
+                "Matter": [
+                    "All matter is made up of very small particles"
+                ],
+                "Earth Science": [
+                    "The composition of the Earth and its atmosphere and the processes occurring within them shape the Earth’s surface and its climate"
+                ],
+                "Life Systems": [
+                    "Organisms require a supply of energy and materials for which they often depend on, or compete with, other organisms"
+                ],
+                "Genetics": [
+                    "Genetic information is passed down from one generation of organisms to another"
+                ]
+            }
+        },
+        "grade_three": {
+            "math": {
+                "Number": [
+                    "Counting to 1000",
+                    "Representation of Whole Numbers to 1000",
+                    "Representation of Rational Numbers (fractions)",
+                    "Operations with Whole Numbers (2-digit)"
+                ],
+                "Patterns and Relations": [
+                    "Patterning and Algebraic Thinking",
+                    "Variables and Equations"
+                ],
+                "Space and Shape": [
+                    "Length and Perimeter",
+                    "Mass (Weight)",
+                    "Time",
+                    "3-D Objects and 2-D Shapes - Identifying, Sorting, Comparing, and Constructing"
+                ],
+                "Statistics and Probability": [
+                    "Data Analysis - Collection, Organization, and Analysis of Data"
+                ]
+            },
+            "social_studies": {
+                "Connecting With Canadians": [
+                    "Canadian citizenship",
+                    "Canadian national anthem and Remembrance Day",
+                    "Personal identity",
+                    "Leadership",
+                    "Conflict resolution"
+                ],
+                "Exploring the World": [
+                    "Mapping the world",
+                    "Community connections",
+                    "Human rights and personal responsibilities"
+                ],
+                "Communities of the World": [
+                    "Locate and describe world communities",
+                    "Living with the land and its resources",
+                    "World communities",
+                    "Cultural diversity and daily life"
+                ],
+                "Exploring an Ancient Society": [
+                    "Daily life in an ancient society",
+                    "Cultural expressions in an ancient society",
+                    "Contributions, continuity, and change"
+                ]
+            },
+            "science": {
+                "Matter": [
+                    "All matter is made up of very small particles"
+                ],
+                "Fields": [
+                    "Objects can affect other objects at a distance"
+                ],
+                "Force": [
+                    "Changing the movement of an object requires a net force to be acting on it"
+                ],
+                "Life Science": [
+                    "Organisms are organized on a cellular basis and have a finite life span"
+                ],
+                "Evolution": [
+                    "The diversity of organisms, living and extinct, is the result of evolution"
+                ]
+            }
+        },
+        "grade_four": {
+            "math": {
+                "Number": [
+                    "Whole numbers to 10 000",
+                    "Rational Numbers - Decimals to hundredths, relationship between decimals and fractions",
+                    "Addition/Subtraction to 10 000",
+                    "Multiplication/Division to 9×9",
+                    "Multiplication 2 or 3 digit by 1 digit",
+                    "Division 1 digit divisor and up to 2 digit dividends"
+                ],
+                "Patterns and Relations": [
+                    "Patterning and algebraic thinking using tables, charts, and diagrams",
+                    "Algebraic representations with equations – one-step equations"
+                ],
+                "Space and Shape": [
+                    "Area of 2-D shapes",
+                    "Time and calendar dates",
+                    "3-D objects and 2-D shapes",
+                    "Transformation - Position and motion, line symmetry"
+                ],
+                "Statistics and Probability": [
+                    "Collection, organization, and analysis of data",
+                    "Pictographs, bar graphs"
+                ]
+            },
+            "social_studies": {
+                "Geography of Canada": [
+                    "Mapping Canada and Manitoba",
+                    "Geographic regions of Canada",
+                    "Symbols, monuments, and important days"
+                ],
+                "Living in Canada": [
+                    "Canadian citizenship",
+                    "Public and private property",
+                    "Power and authority",
+                    "Government",
+                    "Elected leaders"
+                ],
+                "Canada’s North": [
+                    "Physical features and natural resources",
+                    "Changes in the North",
+                    "People of the North",
+                    "Ways of life in the North",
+                    "Northern contributions"
+                ],
+                "Living in Manitoba": [
+                    "Geographic features and natural resources",
+                    "Environmental stewardship and sustainability",
+                    "Cultural communities in Manitoba"
+                ],
+                "History of Manitoba": [
+                    "Identity and culture",
+                    "Artistic and cultural achievements",
+                    "Early life and settlement",
+                    "People and events that shape Manitoba",
+                    "Historical cultural contributions",
+                    "Changes in ways of life"
+                ]
+            },
+            "science": {
+                "Fields": [
+                    "Objects can affect other objects at a distance"
+                ],
+                "Energy": [
+                    "The total amount of energy in the Universe is always the same but can be transferred from one energy store to another during an event"
+                ],
+                "Earth Science": [
+                    "The composition of the Earth and its atmosphere and the processes occurring within them shape the Earth’s surface and its climate"
+                ],
+                "Life Systems": [
+                    "Organisms require a supply of energy and materials for which they often depend on, or compete with, other organisms"
+                ]
+            }
+        },
+        "grade_five": {
+            "math": {
+                "Number": [
+                    "Whole numbers to 1 000 000",
+                    "Equivalent fractions and fractions with like and unlike denominators",
+                    "Decimals to thousandths",
+                    "Relationships between decimals and fractions",
+                    "Mental math and estimation strategies",
+                    "Recall of multiplication and related division up to 9×9",
+                    "Problems involving multiplication of 1 or 2-digit multipliers and up to 4-digit divisors and dividends",
+                    "Addition and subtraction of decimals to thousandths"
+                ],
+                "Patterns and Relations": [
+                    "Patterning and algebraic thinking, pattern rules",
+                    "Algebraic Representation with Equations - Problems involving one-step equations"
+                ],
+                "Space and Shape": [
+                    "Length and area",
+                    "Construction of rectangles",
+                    "Relationship between mm, cm, and m",
+                    "Volume (capacity) - Estimation and measurement",
+                    "3-D objects and 2-D shapes - Identifying, sorting, comparing, and constructing",
+                    "Edges, faces, sides",
+                    "Quadrilaterals",
+                    "Transformations - Position and motion - Single transformation"
+                ],
+                "Statistics and Probability": [
+                    "Data analysis - Collection, organization, and analysis of data",
+                    "First and second-hand data",
+                    "Double bar graphs",
+                    "Chance and Uncertainty",
+                    "Probability - Terminology"
+                ]
+            },
+            "social_studies": {
+                "First Peoples": [
+                    "Origins of First Peoples of North America",
+                    "Connections to the land",
+                    "Pre-contact cultures",
+                    "First Peoples governance"
+                ],
+                "Early European Colonization (1600 to 1763)": [
+                    "Early European exploration and colonization",
+                    "Nouvelle-France",
+                    "Cultural interaction in early Canada",
+                    "French-British colonial rivalry"
+                ],
+                "Fur Trade": [
+                    "European expansion in the North and West",
+                    "Importance of the land in the fur trade",
+                    "Life during the fur trade era",
+                    "Métis Nation and culture in the fur trade era"
+                ],
+                "From British Colony to Confederation (1763 to 1867)": [
+                    "Early immigration and the impact of the Loyalists",
+                    "Sharing the land",
+                    "Conflict and reform",
+                    "Negotiating Confederation",
+                    "Citizenship then and now"
+                ]
+            },
+            "science": {
+                "Matter": [
+                    "All matter in the Universe is made of very small particles"
+                ],
+                "Force": [
+                    "Changing the movement of an object requires a net force to be acting on it"
+                ],
+                "Earth Science": [
+                    "The composition of the Earth and its atmosphere and the processes occurring within them shape the Earth’s surface and its climate"
+                ],
+                "Life Science": [
+                    "Organisms are organized on a cellular basis and have a finite life span"
+                ]
+            }
+        },
+        "grade_six": {
+            "math": {
+                "Number": [
+                    "Whole numbers greater than one million",
+                    "Integers",
+                    "Numbers less than one thousandth",
+                    "Relationships between improper fractions and mixed numbers",
+                    "Ratio and percent",
+                    "Problems involving large numbers using technology",
+                    "Factors and multiples",
+                    "Order of operations",
+                    "Multiplication and division of decimals"
+                ],
+                "Patterns and Relations": [
+                    "Patterns and relationships using tables and graphs",
+                    "Algebraic representations with equations - Number relationships and preservation of equality"
+                ],
+                "Space and Shape": [
+                    "Length, Area, and Volume (Capacity)",
+                    "Formulas for perimeter, area, and volume",
+                    "Angles - Measuring angles",
+                    "3-D objects and 2-D shapes",
+                    "Triangles",
+                    "Regular and irregular polygons",
+                    "Single transformations, combinations of transformations, and the Cartesian plane"
+                ],
+                "Statistics and Probability": [
+                    "Line graphs",
+                    "Methods of collecting data",
+                    "Problems involving graphs and data",
+                    "Experimental and theoretical probability"
+                ]
+            },
+            "social_studies": {
+                "Building a Nation (1867 to 1914)": [
+                    "A new nation",
+                    "Manitoba enters Confederation",
+                    "“A mari usque ad mare” (From sea to sea)",
+                    "Aboriginal Peoples and the growing nation of Canada",
+                    "Immigration",
+                    "Farming the land"
+                ],
+                "An Emerging Nation (1914 to 1945)": [
+                    "World War 1",
+                    "Social change",
+                    "Depression",
+                    "World War II"
+                ],
+                "Shaping Contemporary Canada (1945 to Present)": [
+                    "Overview of contemporary Canada",
+                    "Changing and diverse population",
+                    "A modern industrialized nation",
+                    "Canada on the world stage",
+                    "Expressions of Canadian identity"
+                ],
+                "Canada Today: Democracy, Diversity and the Influence of the Past": [
+                    "Government in Canada",
+                    "Community of communities",
+                    "Creating a just society",
+                    "Canadian democracy in the world context"
+                ]
+            },
+            "science": {
+                "Matter": [
+                    "All matter is made up of very small particles"
+                ],
+                "Fields": [
+                    "Objects can affect other objects at a distance"
+                ],
+                "Energy": [
+                    "The total amount of energy in the Universe is always the same but can be transferred from one energy store to another during an event"
+                ],
+                "Space Science": [
+                    "Our solar system is a very small part of one of billions of galaxies in the Universe"
+                ],
+                "Life Systems": [
+                    "Organisms require a supply of energy and materials for which they often depend on, or compete with, other organisms"
+                ]
+            }
+        },
+        "grade_seven": {
+            "math": {
+                "Number": [
+                    "Relationships between decimals and fractions",
+                    "Fractions, decimals, and integers",
+                    "Divisibility rules",
+                    "Addition and subtraction of integers",
+                    "Problems involving the operations of decimals",
+                    "Problems involving percent",
+                    "Addition and subtraction of fractions"
+                ],
+                "Patterns and Relations": [
+                    "Patterns and their relations",
+                    "Problems involving tables of values and their graphs",
+                    "Preservation of equality",
+                    "Expressions and equations",
+                    "Variables",
+                    "Problems involving linear equations"
+                ],
+                "Space and Shape": [
+                    "Length and angles",
+                    "Circles",
+                    "Geometric constructions",
+                    "The Cartesian plane and transformations"
+                ],
+                "Statistics and Probability": [
+                    "Central tendency and range",
+                    "Problems involving circle graphs",
+                    "Expression of probability",
+                    "Experimental and theoretical probabilities and independent events"
+                ]
+            },
+            "social_studies": {
+                "World Geography": [
+                    "Mapping the globe",
+                    "The global natural environment",
+                    "Global population trends"
+                ],
+                "Global Quality of Life": [
+                    "What is the good life?",
+                    "Universal human rights",
+                    "Democratic citizenship and quality of life"
+                ],
+                "Ways of Life in Asia, Africa or Australasia": [
+                    "Elements of societies",
+                    "Natural environment",
+                    "Cultural influences and expressions"
+                ],
+                "Human Impact in Europe or the Americas": [
+                    "Geography",
+                    "Environmental impact",
+                    "Urbanization",
+                    "Power, wealth, and justice",
+                    "Global cooperation",
+                    "Historical and political influences",
+                    "Economy and well-being"
+                ]
+            },
+            "science": {
+                "Matter": [
+                    "All matter is made up of very small particles"
+                ],
+                "Fields": [
+                    "Objects can affect other objects at a distance"
+                ],
+                "Energy": [
+                    "The total amount of energy in the Universe is always the same but can be transferred from one energy store to another during an event"
+                ],
+                "Space Science": [
+                    "Our solar system is a very small part of one of billions of galaxies in the Universe"
+                ],
+                "Life Systems": [
+                    "Organisms require a supply of energy and materials for which they often depend on, or compete with, other organisms"
+                ]
+            }
+        },
+        "grade_eight": {
+            "math": {
+                "Number": [
+                    "Perfect squares and square roots",
+                    "Multiplication and division of integers",
+                    "Ratio and rate",
+                    "Approximate square roots",
+                    "Percent",
+                    "Problems involving rates, ratio, and proportional reasoning",
+                    "Multiplication and division of fractions",
+                    "Problems involving positive rational numbers"
+                ],
+                "Patterns and Relations": [
+                    "Graphs and analysis",
+                    "Problems involving linear equations"
+                ],
+                "Space and Shape": [
+                    "Problems involving Pythagorean theorem",
+                    "Problems involving surface area",
+                    "Formulas",
+                    "Nets",
+                    "Different views",
+                    "Tessellations",
+                    "Critique representations"
+                ],
+                "Statistics and Probability": [
+                    "Problems involving probability"
+                ]
+            },
+            "social_studies": {
+                "Understanding Societies Past and Present": [
+                    "What is a worldview?",
+                    "Origins of human societies",
+                    "Societies and civilizations",
+                    "Knowing the past"
+                ],
+                "Early Societies of Mesopotamia, Egypt, or the Indus Valley": [
+                    "Overview of early civilizations",
+                    "Interaction with the natural environment",
+                    "Living in an early society",
+                    "Communication and art in an early society"
+                ],
+                "Ancient Societies of Greece and Rome": [
+                    "Overview of antiquity",
+                    "Culture of ancient Greece",
+                    "Democracy in ancient Greece",
+                    "Roman Empire",
+                    "Legacy of ancient Greece and Rome"
+                ],
+                "Transition to the Modern World (Circa 500-1400)": [
+                    "Overview of the Middle Ages",
+                    "Life in medieval Europe",
+                    "The rise of Islam and the Ottoman Empire",
+                    "China and the Mongol Empire",
+                    "Legacy of the Middle Ages"
+                ],
+                "Shaping the Modern World (Circa 1400-1850)": [
+                    "World overview (1400-1850)",
+                    "Global exploration",
+                    "Renaissance and Reformation",
+                    "Industrial Revolution"
+                ]
+            },
+            "science": {
+                "Matter": [
+                    "All matter is made up of very small particles"
+                ],
+                "Fields": [
+                    "Objects can affect other objects at a distance"
+                ],
+                "Energy": [
+                    "The total amount of energy in the Universe is always the same but can be transferred from one energy store to another during an event"
+                ],
+                "Earth Science": [
+                    "The composition of the Earth and its atmosphere and the processes occurring within them shape the Earth’s surface and its climate"
+                ],
+                "Life Science": [
+                    "Organisms are organized on a cellular basis and have a finite life span"
+                ]
+            }
+        }
+    }
+}

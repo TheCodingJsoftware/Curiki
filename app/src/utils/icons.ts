@@ -63,6 +63,13 @@ export const skillsIconDictionary: { [key: string]: string } = {
     'R': 'psychology',
     'T': 'devices',
     'V': 'visibility',
+    'Communication': 'chat',
+    'Connections': 'link',
+    'Mental Mathematics and Estimation': 'calculate',
+    'Problem Solving': 'lightbulb',
+    'Reasoning': 'psychology',
+    'Technology': 'devices',
+    'Visualization': 'visibility',
 };
 
 export const strandIconDictionary: { [key: string]: string } = {
@@ -95,6 +102,10 @@ export const strandIconDictionary: { [key: string]: string } = {
     'GT': 'details',
     'B': 'business_center',
     'PCB': 'functions',
+    'Number': 'plus_one',
+    'Patterns and Relations': 'functions',
+    'Space and Shape': 'shapes',
+    'Statistics and Probability': 'bar_chart',
 }
 
 export const unitIconDictionary: { [key: string]: string } = {
@@ -186,4 +197,50 @@ export const skillTypesIconDictionary: { [key: string]: string } = {
     'Manage Information and Ideas': 'lightbulb', // Represents managing knowledge
     'Creative and Critical Thinking': 'psychology', // Represents thinking skills
     'Communication': 'chat', // Represents communication skills
+};
+
+export const practiceIconDictionary: { [key: string]: string } = {
+    'Language as a System': 'translate', // Represents language as a system
+    'Language as Sense Making': 'translate', // Represents language as sense making
+    'Language as Exploration and Design': 'translate', // Represents language as exploration and design
+    'Language as Power and Agency': 'translate', // Represents language as power and agency
+};
+
+export const lensIconDictionary: { [key: string]: string } = {
+    'Imaginative and Literary': 'local_florist', // Represents imaginative and literary
+    'Enviornmental and Technological': 'local_florist', // Represents environmental and technological
+    'Personal and Philosophical': 'local_florist', // Represents personal and philosophical
+    'Social, Cultural and Historical': 'local_florist', // Represents social, cultural and historical
+};
+export const scienceIconsDictionary: { [key: string]: string } = {
+    "Nature of Science and Technology": "science",
+    "Science, Technology, Society, and Environment (STSE)": "science",
+    "Scientific and Technological Skills and Attititudes": "science",
+    "Essential Scientific Knowledge": "science",
+    "Unifying Concepts": "science",
+    "Power and Limitiions of Science": "science",
+    "Evoloving Knowledge": "science",
+    "Science and Technology": "science",
+    "Diversity in Contributions": "science",
+    "Sustainable Development": "science",
+    "Interconnections": "science",
+    "Inquiry and Problem Solving": "science",
+    "Attitudes and Skills": "science",
+    "Systems and Interactions": "science",
+    "Energy and Change": "science"
+};
+
+export const combinedIconDictionary: { [key: string]: string } = {
+    ...scienceClustersIconDictionary,
+    ...skillsIconDictionary,
+    ...strandIconDictionary,
+    ...unitIconDictionary,
+    ...socialStudiesClustersIconDictionary,
+    ...generalLearningOutcomesIconDictionary,
+    ...distinctiveLearningOutcomesIconDictionary,
+    ...outcomeTypesIconDictionary,
+    ...skillTypesIconDictionary,
+    ...scienceIconsDictionary,
+    ...practiceIconDictionary,
+    ...lensIconDictionary,
 };
