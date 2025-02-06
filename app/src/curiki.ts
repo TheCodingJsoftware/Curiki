@@ -200,7 +200,7 @@ function generateLessonPlanArticle(lessonPlan: LessonPlanTemplate, source: strin
                 ${outcomesChips}
             </div>
             <nav class="s12 right-align">
-                <button class="round" onclick='window.location.href="/lessonPlan.html#${lessonPlan.id}"'>
+                <button class="round" onclick='window.open("lessonPlan.html#${lessonPlan.id}")'>
                     <i>open_in_new</i>
                     <span>Open</span>
                 </button>
