@@ -184,8 +184,6 @@ class Page {
         span.innerHTML = title;
         button.appendChild(span);
         button.addEventListener("click", () => {
-            console.log(title);
-
             this.openOverviewDataDialog(title);
         });
         return button;
