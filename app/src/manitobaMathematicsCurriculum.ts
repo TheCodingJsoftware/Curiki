@@ -646,9 +646,6 @@ class FilterManager {
                         if (Object.keys(lessonPlan.outcomes).includes(learningOutcome.getID())) {
                             hasExistingLessonPlans = true;
                             lessonPlanCount++;
-                            const resourceLinksList = document.createElement('ol');
-                            resourceLinksList.classList.add('left-padding');
-
                             lessonPlan.resourceLinks.forEach(async (resourceLink) => {
                                 lessonPlanCount++;
                                 hasExistingResourceLinks = true;

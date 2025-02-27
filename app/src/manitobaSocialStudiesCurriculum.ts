@@ -790,7 +790,6 @@ class FilterManager {
                         if (Object.keys(lessonPlan.outcomes).includes(learningOutcome.getID(activeGrade.replace("#grade_", "")))) {
                             hasExistingLessonPlans = true;
                             lessonPlanCount++;
-
                             lessonPlan.resourceLinks.forEach(async (resourceLink) => {
                                 lessonPlanCount++;
                                 hasExistingResourceLinks = true;
