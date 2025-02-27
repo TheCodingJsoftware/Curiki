@@ -582,9 +582,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 result.classList.add('row', "bottom-border", "padding");
                 result.innerHTML = `
                 <div class="max">
-                    <div class="middle-align row no-space">
-                        <i class="circle small small-round ${iconColor} tiny-margin tiny-padding">${iconName}</i>
-                        <span class="bold small-width">${title}</span>
+                    <div class="top-align middle-align row no-space">
+                        <div class="max s">
+                            <i class="circle small small-round ${iconColor} tiny-margin tiny-padding">${iconName}</i>
+                            <span class="bold">${title}</span>
+                        </div>
+                        <div class="m l">
+                            <i class="circle small small-round ${iconColor} tiny-margin tiny-padding">${iconName}</i>
+                            <span class="bold">${title}</span>
+                        </div>
                         <nav id="icons" class="no-space max wrap m l right-align"></nav>
                         <button id="copy-button" class="chip transparent link circle no-border small-round small-margin">
                             <i>content_copy</i>
