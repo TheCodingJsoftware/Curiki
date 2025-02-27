@@ -3,12 +3,21 @@ import 'material-dynamic-colors';
 import '../static/css/curiki-style.css';
 import '../static/css/curiki-theme.css';
 import { deleteLessonPlan, getAllLocalLessonPlans, getAllPublicLessonPlans, initDB, LessonPlanTemplate } from './utils/lessonPlan';
+import MathCurriculumManager from './utils/mathCurriculumManager';
+import ScienceCurriculumManager from './utils/scienceCurriculumManager';
+import BiologyCurriculumManager from './utils/biologyCurriculumManager';
+import SocialStudiesCurriculumManager from './utils/socialStudiesCurriculumManager';
+import OutComeManager from './utils/outcomes';
 
 let db: IDBDatabase;
 let usesChromeStorage: boolean = false;
 let authorSelections: string[] = [];
 let gradeSelections: string[] = [];
 let outcomeSelections: string[] = [];
+
+let outcomeManager: OutComeManager = new OutComeManager();
+
+let debounceTimeout: NodeJS.Timeout;
 
 
 function filterLessonPlans() {
@@ -32,7 +41,7 @@ function filterLessonPlans() {
             outcomes.push(outcomeButton.getAttribute('data-outcome') as string);
         });
 
-        if (authorSelections.length > 0 && authorSelections.includes(authorName)){
+        if (authorSelections.length > 0 && authorSelections.includes(authorName)) {
             authorButton.classList.add('fill');
             authorButton.querySelectorAll('i')[1].innerText = "check_circle";
         } else {
@@ -40,7 +49,7 @@ function filterLessonPlans() {
             authorButton.querySelectorAll('i')[1].innerText = "circle";
         }
 
-        if (gradeSelections.length > 0 && gradeSelections.includes(gradeLevel)){
+        if (gradeSelections.length > 0 && gradeSelections.includes(gradeLevel)) {
             gradeButton.classList.add('fill');
             gradeButton.querySelectorAll('i')[1].innerText = "check_circle";
         } else {
@@ -60,15 +69,15 @@ function filterLessonPlans() {
             }
         });
 
-        if (authorSelections.length > 0 && !matchesAuthor){
+        if (authorSelections.length > 0 && !matchesAuthor) {
             localLessonPlan.classList.add('hidden');
             return;
         }
-        if (gradeSelections.length > 0 && !matchesGrade){
+        if (gradeSelections.length > 0 && !matchesGrade) {
             localLessonPlan.classList.add('hidden');
             return;
         }
-        if (outcomeSelections.length > 0 && !matchesOutcomes){
+        if (outcomeSelections.length > 0 && !matchesOutcomes) {
             localLessonPlan.classList.add('hidden');
             return;
         }
@@ -91,7 +100,7 @@ function filterLessonPlans() {
             outcomes.push(outcomeButton.getAttribute('data-outcome') as string);
         });
 
-        if (authorSelections.length > 0 && authorSelections.includes(authorName)){
+        if (authorSelections.length > 0 && authorSelections.includes(authorName)) {
             authorButton.classList.add('fill');
             authorButton.querySelectorAll('i')[1].innerText = "check_circle";
         } else {
@@ -99,7 +108,7 @@ function filterLessonPlans() {
             authorButton.querySelectorAll('i')[1].innerText = "circle";
         }
 
-        if (gradeSelections.length > 0 && gradeSelections.includes(gradeLevel)){
+        if (gradeSelections.length > 0 && gradeSelections.includes(gradeLevel)) {
             gradeButton.classList.add('fill');
             gradeButton.querySelectorAll('i')[1].innerText = "check_circle";
         } else {
@@ -119,15 +128,15 @@ function filterLessonPlans() {
             }
         });
 
-        if (authorSelections.length > 0 && !matchesAuthor){
+        if (authorSelections.length > 0 && !matchesAuthor) {
             serverLessonPlan.classList.add('hidden');
             return;
         }
-        if (gradeSelections.length > 0 && !matchesGrade){
+        if (gradeSelections.length > 0 && !matchesGrade) {
             serverLessonPlan.classList.add('hidden');
             return;
         }
-        if (outcomeSelections.length > 0 && !matchesOutcomes){
+        if (outcomeSelections.length > 0 && !matchesOutcomes) {
             serverLessonPlan.classList.add('hidden');
             return;
         }
@@ -204,13 +213,12 @@ function generateLessonPlanArticle(lessonPlan: LessonPlanTemplate, source: strin
                     <i>open_in_new</i>
                     <span>Open</span>
                 </button>
-                ${
-                    isAuthor
-                        ? `<button class="transparent border circle" id="delete">
+                ${isAuthor
+            ? `<button class="transparent border circle" id="delete">
                             <i>delete</i>
                         </button>`
-                        : ''
-                }
+            : ''
+        }
             </nav>
         </article>
     `;
@@ -244,9 +252,9 @@ function generateLessonPlanArticle(lessonPlan: LessonPlanTemplate, source: strin
                         console.error('Error deleting from server:', response.statusText);
                     }
                 })
-                .catch((error) => {
-                    console.error('Network error:', error);
-                });
+                    .catch((error) => {
+                        console.error('Network error:', error);
+                    });
             }
             setTimeout(async () => {
                 await loadAllLessonPlans();
@@ -446,11 +454,6 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         specScript.textContent = JSON.stringify(specRules);
         document.body.append(specScript);
-    } else {
-        const linkElem = document.createElement("link");
-        linkElem.rel = "prefetch";
-        linkElem.href = "/next.html";
-        document.head.append(linkElem);
     }
 
     const tabs = document.querySelectorAll('.tabs a');
@@ -488,4 +491,135 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         setActiveTab(tabs[0] as HTMLElement);
     }
+
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const searchButton = document.getElementById('search-button') as HTMLDivElement;
+    const searchDialog = document.getElementById('search-dialog') as HTMLDialogElement;
+    const searchHelper = document.getElementById('search-helper') as HTMLSpanElement;
+
+    if (window.innerWidth < 600) {
+        searchDialog.classList.add('max');
+    } else {
+        searchDialog.classList.remove('max');
+    }
+
+    window.onresize = () => {
+        if (window.innerWidth < 600) {
+            searchDialog.classList.add('max');
+        } else {
+            searchDialog.classList.remove('max');
+        }
+    }
+    searchButton.addEventListener('click', () => {
+        ui('#search-dialog');
+        setTimeout(() => {
+            searchInput.focus();
+        }, 100);
+    }); searchInput.addEventListener('input', () => {
+        clearTimeout(debounceTimeout); // Clear any existing timeout
+        debounceTimeout = setTimeout(async () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const results = document.getElementById('results') as HTMLDivElement;
+            results.innerHTML = '';
+            if (searchTerm.length === 0) {
+                searchHelper.innerText = 'Search for a specific learning outcome';
+                return;
+            }
+            const resultsFragment = document.createDocumentFragment();
+
+            // Function to get the first match index of a term in a string
+            const getFirstMatchIndex = (text: string, term: string) => {
+                const index = text.toLowerCase().indexOf(term);
+                return index === -1 ? Infinity : index; // If not found, return a large number
+            };
+
+            // Sort outcomes based on how early the search term appears
+            const sortedOutcomes = outcomeManager.allOutcomes
+                .map(outcome => ({
+                    outcome,
+                    firstMatchIndex: Math.min(
+                        getFirstMatchIndex(outcome.id, searchTerm),
+                        getFirstMatchIndex(outcome.specificLearningOutcome, searchTerm),
+                        ...outcome.generalLearningOutcomes.map(glo => getFirstMatchIndex(glo, searchTerm))
+                    )
+                }))
+                .filter(({ firstMatchIndex }) => firstMatchIndex !== Infinity) // Exclude non-matching items
+                .sort((a, b) => a.firstMatchIndex - b.firstMatchIndex) // Sort by the earliest match
+                .map(({ outcome }) => outcome); // Extract sorted outcomes
+            searchHelper.innerText = `Found ${sortedOutcomes.length} learning outcomes`;
+            // Append sorted results to the UI
+            sortedOutcomes.forEach(outcome => {
+                const border = document.createElement('hr');
+                const result = document.createElement('div');
+                const title = searchTerm
+                    ? outcome.id.replace(new RegExp(searchTerm, 'gi'), (match) => `<span class="highlight">${match}</span>`)
+                    : outcome.id;
+                const content = searchTerm
+                    ? outcome.specificLearningOutcome.replace(new RegExp(searchTerm, 'gi'), (match) => `<span class="highlight">${match}</span>`)
+                    : outcome.specificLearningOutcome;
+
+                let iconColor = 'transparent';
+                let iconName = 'calculate';
+                let curriculumPageName = "manitobaMathematicsCurriculum";
+                if (outcome.curriculum === 'math') {
+                    iconColor = 'blue';
+                    iconName = 'calculate';
+                    curriculumPageName = "manitobaMathematicsCurriculum";
+                } else if (outcome.curriculum === 'science') {
+                    iconColor = 'green';
+                    iconName = 'science';
+                    curriculumPageName = "manitobaScienceCurriculum";
+                } else if (outcome.curriculum === 'biology') {
+                    iconColor = 'green';
+                    iconName = 'genetics';
+                    curriculumPageName = "manitobaBiologyCurriculum";
+                } else if (outcome.curriculum === 'social_studies') {
+                    iconColor = 'orange';
+                    iconName = 'public';
+                    curriculumPageName = "manitobaSocialStudiesCurriculum";
+                }
+
+                result.classList.add('row', "bottom-border", "padding");
+                result.innerHTML = `
+                <div class="max">
+                    <div class="middle-align row no-space">
+                        <i class="circle small small-round ${iconColor} tiny-margin tiny-padding">${iconName}</i>
+                        <span class="bold small-width">${title}</span>
+                        <nav id="icons" class="no-space max wrap m l right-align"></nav>
+                        <button id="copy-button" class="chip transparent link circle no-border small-round small-margin">
+                            <i>content_copy</i>
+                        </button>
+                        <a class="circle wave chip no-border small-round tiny-margin primary" href='/${curriculumPageName}.html?grade=${outcome.grade.toLowerCase()}&outcome=${outcome.id}' target="_blank">
+                            <i>open_in_new</i>
+                        </a>
+                    </div>
+                    <blockquote class="tiny-padding">${content}</blockquote>
+                </div>`;
+
+                const copyButton = result.querySelector('#copy-button') as HTMLButtonElement;
+                copyButton.addEventListener('click', function () {
+                    navigator.clipboard.writeText(`${outcome.id} ${outcome.specificLearningOutcome}`);
+                    ui('#copy-outcome-snackbar', 2000);
+                });
+
+                const icons = result.querySelector('#icons') as HTMLDivElement;
+                outcome.icons.forEach(icon => {
+                    const chip = document.createElement('button');
+                    chip.classList.add('chip', 'tiny-margin');
+                    const iconElement = document.createElement('i');
+                    const chipText = document.createElement('span');
+                    chipText.textContent = icon.title;
+                    iconElement.innerText = icon.name;
+                    chip.appendChild(iconElement);
+                    chip.appendChild(chipText);
+                    icons.appendChild(chip);
+                });
+
+                resultsFragment.appendChild(result);
+                resultsFragment.appendChild(border);
+            });
+
+            results.appendChild(resultsFragment);
+        }, 300);
+    });
 });

@@ -13,9 +13,8 @@ import { BiologyLearningOutcome } from './utils/biologyLearningOutcome';
 import { SocialStudiesLearningOutcome } from './utils/socialStudiesLearningOutcome';
 import { distinctiveLearningOutcomesIconDictionary, generalLearningOutcomesIconDictionary, outcomeTypesIconDictionary, scienceClustersIconDictionary, skillsIconDictionary, skillTypesIconDictionary, socialStudiesClustersIconDictionary, unitIconDictionary } from './utils/icons';
 import { SocialStudiesSkill } from './utils/socialStudiesSkill';
-import { gradeNames } from './utils/grades'
-import { initDB, LessonPlanTemplate } from './utils/lessonPlan';
-import { isTrustworthyResource, trustworthyDomains } from './utils/trustworthyDomains';
+import { LessonPlanTemplate } from './utils/lessonPlan';
+import { isTrustworthyResource } from './utils/trustworthyDomains';
 import { getMetadata } from './utils/getMetadata';
 
 class OutCome {

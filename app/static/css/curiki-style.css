@@ -33,6 +33,15 @@ article div{
     height: 100%;
 }
 
+span.highlight {
+    color: var(--on-primary) !important;
+    background-color: var(--primary) !important;
+    border-radius: 4px;
+    padding-left: 1px;
+    padding-right: 1px;
+    display: inline-block !important;
+}
+
 details {
     position: relative;
     width: auto;
