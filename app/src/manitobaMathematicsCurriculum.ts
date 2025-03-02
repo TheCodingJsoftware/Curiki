@@ -603,6 +603,7 @@ class FilterManager {
                     learningOutcomeDict[learningOutcome.getID()] = learningOutcome.generalLearningOutcomes.join('\n');
                     createLessonPlan(
                         "Mathematics",
+                        "",
                         gradeNames[activeGrade.replace('#grade_', '')],
                         learningOutcomeDict,
                         new Date().toISOString().split('T')[0],

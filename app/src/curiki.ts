@@ -183,6 +183,12 @@ function generateLessonPlanArticle(lessonPlan: LessonPlanTemplate, source: strin
                 </button>`
         )
         .join('');
+    let authorIcon = 'person';
+    if (lessonPlan.authorName.split(',').length > 2) {
+        authorIcon = 'groups';
+    } else if (lessonPlan.authorName.split(',').length === 2) {
+        authorIcon = 'group';
+    }
     const html = `
         <article class="s12 m6 l6 grid round ${source}-lesson-plan" data-id="${lessonPlan.id}">
             <div class="s12">
@@ -190,7 +196,7 @@ function generateLessonPlanArticle(lessonPlan: LessonPlanTemplate, source: strin
             </div>
             <div class="s12 small-round">
                 <button class="chip tiny-margin" id="author" data-author="${lessonPlan.authorName}">
-                    <i>group</i>
+                    <i>${authorIcon}</i>
                     <span>${lessonPlan.authorName}</span>
                     <i>circle</i>
                 </button>

@@ -34,30 +34,49 @@
         <div class="top-margin grid space">
             <div class="s12 m12 l12 row">
                 <div class="max grid tiny-space">
-                    <div class="field no-margin border label s12 m12 l12">
+                    <div class="field no-margin border label s12 m12 l12 small-round row">
                         <input id="topic-title">
-                        <label>Topic/Unit Title</label>
+                        <label>Topic/Theme/Unit Title</label>
+                        <button id="info" class="chip transparent link circle no-border">
+                            <i>info</i>
+                            <div class="tooltip max left">
+                                Use the same <strong>unit title</strong> and <strong>author name</strong> for all lesson plans in a unit to ensure they are grouped together.
+
+                                Leave blank if it is not part of a unit.
+                            </div>
+                        </button>
                     </div>
-                    <div class="field no-margin border prefix label s12 m12 l12">
+                    <div class="field no-margin border label s12 m12 l12 small-round ">
+                        <input id="lesson-name">
+                        <label>Lesson Name</label>
+                    </div>
+                    <div class="field no-margin border prefix label s12 m12 l12 small-round ">
                         <i>group</i>
                         <input id="author-name">
                         <label>Author(s)</label>
                     </div>
-                    <div class="field no-margin border label s12 m12 l12">
+                    <div class="field no-margin border label s12 m12 l12 small-round ">
                         <select id="grade-level">
                             <option>Kindergarten</option>
+                            <option>Kindergarten/Grade 1</option>
                             <option>Grade 1</option>
                             <option>Grade 2</option>
+                            <option>Grade 1/2</option>
                             <option>Grade 3</option>
                             <option>Grade 4</option>
+                            <option>Grade 3/4</option>
                             <option>Grade 5</option>
                             <option>Grade 6</option>
+                            <option>Grade 5/6</option>
                             <option>Grade 7</option>
                             <option>Grade 8</option>
+                            <option>Grade 7/8</option>
                             <option>Grade 9</option>
                             <option>Grade 10</option>
+                            <option>Grade 9/10</option>
                             <option>Grade 11</option>
                             <option>Grade 12</option>
+                            <option>Grade 11/12</option>
                             <option>S1</option>
                             <option>S2</option>
                             <option>10 Essential</option>
@@ -78,10 +97,13 @@
                     <span>Scan to Open</span>
                 </div>
             </div>
-            <div class="field suffix border label max s6 m6 l6">
+            <div class="field suffix border label max s6 m6 l6 small-round ">
                 <select id="time-length">
                     <option>~ 15 minutes</option>
+                    <option>~ 20 minutes</option>
+                    <option>~ 25 minutes</option>
                     <option>~ 30 minutes</option>
+                    <option>~ 40 minutes</option>
                     <option>~ 45 minutes</option>
                     <option>~ 60 minutes</option>
                     <option>~ 90 minutes</option>
@@ -90,7 +112,7 @@
                 <label>Time</label>
                 <i>timer</i>
             </div>
-            <div class="field label prefix border s6 m6 l6">
+            <div class="field label prefix border s6 m6 l6 small-round">
                 <i>today</i>
                 <input type="date" id="date">
                 <label>Date</label>
@@ -230,7 +252,15 @@
                             <td>
                                 <div class="field suffix border label max s4 m4 l4">
                                     <select id="activate-time-length">
+                                        <option>~ 1 minutes</option>
+                                        <option>~ 2 minutes</option>
+                                        <option>~ 3 minutes</option>
+                                        <option>~ 4 minutes</option>
                                         <option>~ 5 minutes</option>
+                                        <option>~ 6 minutes</option>
+                                        <option>~ 7 minutes</option>
+                                        <option>~ 8 minutes</option>
+                                        <option>~ 9 minutes</option>
                                         <option>~ 10 minutes</option>
                                         <option>~ 15 minutes</option>
                                         <option>~ 30 minutes</option>
@@ -254,7 +284,15 @@
                             <td>
                                 <div class="field suffix border label max s4 m4 l4">
                                     <select id="acquire-time-length">
+                                        <option>~ 1 minutes</option>
+                                        <option>~ 2 minutes</option>
+                                        <option>~ 3 minutes</option>
+                                        <option>~ 4 minutes</option>
                                         <option>~ 5 minutes</option>
+                                        <option>~ 6 minutes</option>
+                                        <option>~ 7 minutes</option>
+                                        <option>~ 8 minutes</option>
+                                        <option>~ 9 minutes</option>
                                         <option>~ 10 minutes</option>
                                         <option>~ 15 minutes</option>
                                         <option>~ 30 minutes</option>
@@ -278,7 +316,15 @@
                             <td>
                                 <div class="field suffix border label max s4 m4 l4">
                                     <select id="apply-time-length">
+                                        <option>~ 1 minutes</option>
+                                        <option>~ 2 minutes</option>
+                                        <option>~ 3 minutes</option>
+                                        <option>~ 4 minutes</option>
                                         <option>~ 5 minutes</option>
+                                        <option>~ 6 minutes</option>
+                                        <option>~ 7 minutes</option>
+                                        <option>~ 8 minutes</option>
+                                        <option>~ 9 minutes</option>
                                         <option>~ 10 minutes</option>
                                         <option>~ 15 minutes</option>
                                         <option>~ 30 minutes</option>
@@ -302,7 +348,15 @@
                             <td>
                                 <div class="field suffix border label max s4 m4 l4">
                                     <select id="closure-time-length">
+                                        <option>~ 1 minutes</option>
+                                        <option>~ 2 minutes</option>
+                                        <option>~ 3 minutes</option>
+                                        <option>~ 4 minutes</option>
                                         <option>~ 5 minutes</option>
+                                        <option>~ 6 minutes</option>
+                                        <option>~ 7 minutes</option>
+                                        <option>~ 8 minutes</option>
+                                        <option>~ 9 minutes</option>
                                         <option>~ 10 minutes</option>
                                         <option>~ 15 minutes</option>
                                         <option>~ 30 minutes</option>
@@ -345,6 +399,7 @@
                     <b>Save</b>
                     <p>Save to local storage</p>
                 </div>
+                <div class="badge hidden" id="save-button-badge"></div>
             </button>
         </nav>
         <div class="snackbar" id="snackbar-saved">Saved lesson plan</div>

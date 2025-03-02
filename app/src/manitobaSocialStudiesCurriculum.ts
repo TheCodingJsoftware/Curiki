@@ -746,6 +746,7 @@ class FilterManager {
                     learningOutcomeDict[learningOutcome.getID(activeGrade.replace("#grade_", ""))] = learningOutcome.generalLearningOutcome;
                     createLessonPlan(
                         "Social Studies",
+                        "",
                         gradeNames[activeGrade.replace('#grade_', '')],
                         learningOutcomeDict,
                         new Date().toISOString().split('T')[0],

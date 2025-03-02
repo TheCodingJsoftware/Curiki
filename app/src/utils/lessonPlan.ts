@@ -2,6 +2,7 @@ export type LessonPlanTemplate = {
     id: string;
     authorName: string;
     topicTitle: string;
+    lessonName: string;
     gradeLevel: string;
     timeLength: string;
     date: string;
@@ -50,10 +51,11 @@ export async function initDB(): Promise<void> {
     });
 }
 
-export function generateLessonPlan(topicTitle: string, gradeLevel: string, outcomes: { [key: string]: string }, date: string): LessonPlanTemplate {
+export function generateLessonPlan(topicTitle: string, lessonName: string, gradeLevel: string, outcomes: { [key: string]: string }, date: string): LessonPlanTemplate {
     return {
         id: "",
         authorName: localStorage.getItem('authorName') || '',
+        lessonName: lessonName,
         topicTitle: topicTitle,
         gradeLevel: gradeLevel,
         timeLength: "~ 60 minutes",
@@ -119,6 +121,7 @@ export async function getAllPublicLessonPlans(): Promise<LessonPlanTemplate[]> {
 
 export async function createLessonPlan(
     topicTitle: string,
+    lessonName: string,
     gradeLevel: string,
     outcomes: { [key: string]: string },
     date: string,
@@ -128,7 +131,7 @@ export async function createLessonPlan(
         throw new Error('Database not initialized');
     }
     return new Promise((resolve, reject) => {
-        const lessonPlan = generateLessonPlan(topicTitle, gradeLevel, outcomes, date);
+        const lessonPlan = generateLessonPlan(topicTitle, lessonName, gradeLevel, outcomes, date);
         lessonPlan.id = hashtag;
 
         const transaction = db.transaction(['lessonPlans'], 'readwrite');

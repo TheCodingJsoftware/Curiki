@@ -32,6 +32,7 @@ class OutCome {
 
 class LessonPlan {
     topicTitle: HTMLInputElement;
+    lessonName: HTMLInputElement;
     gradeLevel: HTMLSelectElement;
     timeLength: HTMLInputElement;
     date: HTMLInputElement;
@@ -60,6 +61,7 @@ class LessonPlan {
     biologyCurriculumManager: BiologyCurriculumManager;
     socialStudiesCurriculumManager: SocialStudiesCurriculumManager;
     saveButton: HTMLButtonElement;
+    saveButtonBadge: HTMLElement;
     shareButton: HTMLButtonElement;
     publishButton: HTMLButtonElement;
     outcomes: OutCome[];
@@ -69,6 +71,7 @@ class LessonPlan {
 
     constructor() {
         this.topicTitle = document.getElementById('topic-title') as HTMLInputElement;
+        this.lessonName = document.getElementById('lesson-name') as HTMLInputElement;
         this.gradeLevel = document.getElementById('grade-level') as HTMLSelectElement;
         this.timeLength = document.getElementById('time-length') as HTMLInputElement;
         this.date = document.getElementById('date') as HTMLInputElement;
@@ -93,6 +96,7 @@ class LessonPlan {
         this.closureTimeLength = document.getElementById('closure-time-length') as HTMLSelectElement;
         this.reflections = document.getElementById('reflections') as HTMLTextAreaElement;
         this.saveButton = document.getElementById('save-button') as HTMLButtonElement;
+        this.saveButtonBadge = document.getElementById('save-button-badge') as HTMLElement;
         this.shareButton = document.getElementById('share-button') as HTMLButtonElement;
         this.publishButton = document.getElementById('publish-button') as HTMLButtonElement;
         this.mathCurriculumManager = new MathCurriculumManager();
@@ -118,11 +122,22 @@ class LessonPlan {
                 }
             });
         });
+        this.gradeLevel.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.timeLength.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.date.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
         this.addAssessmentEvidenceRow.addEventListener('click', () => {
             this.addNewAssessmentEvidenceRowFunction();
+            this.saveButtonBadge.classList.remove('hidden')
         });
         this.addCurricularOutcome.addEventListener('click', () => {
             this.addCurricularOutcomeFunction();
+            this.saveButtonBadge.classList.remove('hidden')
         });
         this.saveButton.addEventListener('click', () => {
             this.saveLessonPlan();
@@ -136,15 +151,49 @@ class LessonPlan {
             ui('#snackbar-published', 2000);
         });
         this.authorName.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+            if (!this.authorName.value) {
+                this.authorName.parentElement?.classList.add('invalid');
+            } else {
+                this.authorName.parentElement?.classList.remove('invalid');
+            }
             localStorage.setItem('authorName', this.authorName.value);
-        });
-        this.addResourceLinkButton.addEventListener('click', () => {
-            this.addNewResourceLink();
-        });
-        this.topicTitle.addEventListener('input', () => {
             document.title = `${this.topicTitle.value} by ${this.authorName.value}`;
         });
-        this.authorName.addEventListener('input', () => {
+        this.addResourceLinkButton.addEventListener('click', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+            this.addNewResourceLink();
+        });
+        this.materialsConsidered.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.crossCurricularConnections.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.studentSpecificPlanning.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.reflections.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.activate.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.acquire.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.apply.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.closure.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.lessonName.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+            // document.title = `${this.topicTitle.value} by ${this.authorName.value}`;
+        });
+        this.topicTitle.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
             document.title = `${this.topicTitle.value} by ${this.authorName.value}`;
         });
         this.authorName.value = localStorage.getItem('authorName') || '';
@@ -183,6 +232,7 @@ class LessonPlan {
     }
 
     async saveLessonPlan(): Promise<LessonPlanTemplate> {
+        this.saveButtonBadge.classList.add('hidden')
         const hashtag = window.location.hash.replace('#', '');
         let assessmentEvidence: { description: string, forLearning: boolean, asLearning: boolean, ofLearning: boolean }[] = [];
         let outcomes = this.outcomes.map(outcome => outcome.id);
@@ -221,6 +271,7 @@ class LessonPlan {
             id: hashtag,
             authorName: this.authorName.value,
             topicTitle: this.topicTitle.value,
+            lessonName: this.lessonName.value,
             gradeLevel: this.gradeLevel.value,
             timeLength: this.timeLength.value,
             date: this.date.value,
@@ -405,6 +456,7 @@ class LessonPlan {
 
     private populateLessonPlan(lessonPlan: LessonPlanTemplate) {
         this.topicTitle.value = lessonPlan.topicTitle;
+        this.lessonName.value = lessonPlan.lessonName;
         this.gradeLevel.value = lessonPlan.gradeLevel;
         this.timeLength.value = lessonPlan.timeLength;
         this.date.value = lessonPlan.date;
@@ -557,6 +609,7 @@ class LessonPlan {
     }
 
     addCurricularOutcomeFunction() {
+        this.saveButtonBadge.classList.remove('hidden')
         let firstOutcome = this.allOutcomes[0];
         let generalOutcome = firstOutcome.generalLearningOutcomes.join('\n');
 
@@ -605,6 +658,7 @@ class LessonPlan {
         const deleteButton = newRow.querySelector('.delete-row-button') as HTMLButtonElement;
         deleteButton.addEventListener('click', () => {
             // Remove the row when the delete button is clicked
+            this.saveButtonBadge.classList.remove('hidden')
             this.assessmentEvidence.removeChild(newRow);
         });
         // Append the new row to the table body
@@ -618,7 +672,18 @@ class LessonPlan {
         const forLearningInput = newRow.querySelector('#for-learning') as HTMLInputElement;
         const asLearningInput = newRow.querySelector('#as-learning') as HTMLInputElement;
         const ofLearningInput = newRow.querySelector('#of-learning') as HTMLInputElement;
-
+        descriptionInput.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        forLearningInput.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        asLearningInput.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
+        ofLearningInput.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
         descriptionInput.value = description;
         forLearningInput.checked = forLearning;
         asLearningInput.checked = asLearning;
@@ -647,6 +712,7 @@ class LessonPlan {
 
         const resourceLinkInput = newRow.querySelector('#resource-link') as HTMLInputElement;
         resourceLinkInput.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
             const isTrustworthy = isTrustworthyResource(resourceLinkInput.value);
             openButton.href = resourceLinkInput.value;
             if (resourceLinkInput.parentElement) {
@@ -659,6 +725,7 @@ class LessonPlan {
 
         const deleteButton = newRow.querySelector('#delete-resource-link') as HTMLButtonElement;
         deleteButton.addEventListener('click', () => {
+            this.saveButtonBadge.classList.remove('hidden')
             this.resourceLinks.removeChild(newRow);
         });
         this.resourceLinks.appendChild(newRow);
@@ -717,6 +784,7 @@ class LessonPlan {
         deleteButton.classList.add('circle', 'delete-row-button')
         deleteButton.appendChild(deleteButtonIcon);
         deleteButton.addEventListener('click', () => {
+            this.saveButtonBadge.classList.remove('hidden')
             const index = this.outcomes.findIndex(out => out.id === outcome.id);
             if (index > -1) {
                 this.outcomes.splice(index, 1);
@@ -754,6 +822,9 @@ class LessonPlan {
         }else{
             textarea.value = outcome.generalLearningOutcomes.join('\n');
         }
+        textarea.addEventListener('input', () => {
+            this.saveButtonBadge.classList.remove('hidden')
+        });
         textareaDiv.appendChild(textarea);
 
         outcomeButton.addEventListener('click', () => {
@@ -788,6 +859,7 @@ class LessonPlan {
             confirmButton.addEventListener('click', () => {
                 const selectedOutcomeId = outcomeSelector.value;
                 if (selectedOutcomeId) {
+                    this.saveButtonBadge.classList.remove('hidden')
                     const currentIndex = this.outcomes.findIndex(o => o.id === outcome.id);
                     if (currentIndex !== -1) {
                         this.outcomes.splice(currentIndex, 1); // Remove the old outcome
