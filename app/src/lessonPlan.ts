@@ -60,6 +60,7 @@ class LessonPlan {
     scienceCurriculumManager: ScienceCurriculumManager;
     biologyCurriculumManager: BiologyCurriculumManager;
     socialStudiesCurriculumManager: SocialStudiesCurriculumManager;
+    copyContentButton: HTMLButtonElement;
     saveButton: HTMLButtonElement;
     saveButtonBadge: HTMLElement;
     shareButton: HTMLButtonElement;
@@ -95,6 +96,7 @@ class LessonPlan {
         this.closure = document.getElementById('closure') as HTMLTextAreaElement;
         this.closureTimeLength = document.getElementById('closure-time-length') as HTMLSelectElement;
         this.reflections = document.getElementById('reflections') as HTMLTextAreaElement;
+        this.copyContentButton = document.getElementById('copy-content-button') as HTMLButtonElement;
         this.saveButton = document.getElementById('save-button') as HTMLButtonElement;
         this.saveButtonBadge = document.getElementById('save-button-badge') as HTMLElement;
         this.shareButton = document.getElementById('share-button') as HTMLButtonElement;
@@ -138,6 +140,9 @@ class LessonPlan {
         this.addCurricularOutcome.addEventListener('click', () => {
             this.addCurricularOutcomeFunction();
             this.saveButtonBadge.classList.remove('hidden')
+        });
+        this.copyContentButton.addEventListener('click', () => {
+            this.copyPageContent();
         });
         this.saveButton.addEventListener('click', () => {
             this.saveLessonPlan();
@@ -225,10 +230,53 @@ class LessonPlan {
         const matrix = qrCreator.getMatrix();
         const qrRenderer = new Renderer();
         const canvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
-        const qrSize = matrix.length * 5;
+        const qrSize = matrix.length * 6;
         canvas.width = qrSize;
         canvas.height = qrSize;
         qrRenderer.drawCanvas(matrix, canvas);
+    }
+
+    copyPageContent() {
+        let content = '';
+        content += 'Topic Title: ' + this.topicTitle.value + '\n';
+        content += 'Lesson Name: ' + this.lessonName.value + '\n';
+        content += 'Grade Level: ' + this.gradeLevel.value + '\n';
+        content += 'Time Length: ' + this.timeLength.value + '\n';
+        content += 'Date: ' + this.date.value + '\n';
+        content += 'Author Name: ' + this.authorName.value + '\n';
+        content += 'Cross Curricular Connections: ' + this.crossCurricularConnections.value + '\n';
+        content += 'Materials Considered: ' + this.materialsConsidered.value + '\n';
+        content += 'Student Specific Planning: ' + this.studentSpecificPlanning.value + '\n';
+        this.outcomes.forEach(outcome => {
+            content += `Learning Outcome: ${outcome.id}. ${outcome.specificLearningOutcome}\n`;
+            outcome.generalLearningOutcomes.forEach(generalLearningOutcome => {
+                content += `    General Learning Outcome: ${generalLearningOutcome}\n`;
+            });
+        });
+        content += 'Assessment Evidence: \n';
+        this.assessmentEvidence.querySelectorAll('tr').forEach(row => {
+            const description = row.querySelector('#description') as HTMLInputElement;
+            const forLearning = row.querySelector('#for-learning') as HTMLInputElement;
+            const asLearning = row.querySelector('#as-learning') as HTMLInputElement;
+            const ofLearning = row.querySelector('#of-learning') as HTMLInputElement;
+            content += '    ' + description.value + '\n';
+            content += '    For Learning: true/false\n';
+            content += '    As Learning: true/false\n';
+            content += '    Of Learning: true/false\n';
+        });
+        content += 'Learning Plan: \n';
+        content += '    Activate: ' + this.activate.value + '\n';
+        content += '    Activate Time: ' + this.activateTimeLength.value + '\n';
+        content += '    Acquire: ' + this.acquire.value + '\n';
+        content += '    Acquire Time: ' + this.acquireTimeLength.value + '\n';
+        content += '    Apply: ' + this.apply.value + '\n';
+        content += '    Apply Time: ' + this.applyTimeLength.value + '\n';
+        content += '    Closure: ' + this.closure.value + '\n';
+        content += '    Closure Time: ' + this.closureTimeLength.value + '\n';
+        content += 'Reflections: ' + this.reflections.value + '\n';
+
+        navigator.clipboard.writeText(content);
+        ui('#snackbar-share', 2000)
     }
 
     async saveLessonPlan(): Promise<LessonPlanTemplate> {

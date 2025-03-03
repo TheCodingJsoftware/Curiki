@@ -91,7 +91,7 @@
                         <label>Grade/Class</label>
                     </div>
                 </div>
-                <div class="s4 m12 l12 center-align qr-code">
+                <div class="s5 m12 l12 center-align qr-code">
                     <canvas class="small-padding small-round border" id="qr-canvas"></canvas>
                     <br>
                     <span>Scan to Open</span>
@@ -126,7 +126,7 @@
                     <span>Add Outcome</span>
                 </button>
             </details>
-            <div class="page-break-inside field border label textarea extra s12 m12 l12 min">
+            <div class="page-break-inside field small-round border label textarea extra s12 m12 l12 min">
                 <textarea class="small-padding" id="cross-curricular-connections"></textarea>
                 <label>Cross-Curricular/Real World Connections</label>
             </div>
@@ -211,7 +211,7 @@
                     <span>Add Assessment Evidence</span>
                 </button>
             </details>
-            <div class="page-break-inside top-margin field border label textarea extra s12 m12 l12 min bottom-margin">
+            <div class="page-break-inside top-margin field small-round border label textarea extra s12 m12 l12 min bottom-margin">
                 <textarea class="small-padding" id="materials-considered"></textarea>
                 <label>Materials and Resources</label>
                 <span class="helper no-line">Resources (referenced), handouts, ICT, equipment, etc.</span>
@@ -226,7 +226,7 @@
                     <span>Add Link</span>
                 </button>
             </details>
-            <div class="page-break-inside top-margin field border label textarea extra s12 m12 l12 min bottom-margin">
+            <div class="page-break-inside top-margin field small-round border label textarea extra s12 m12 l12 min bottom-margin">
                 <textarea class="small-padding" id="student-specific-planning"></textarea>
                 <label>Student Specific Planning</label>
                 <span class="helper no-line">Considering students' readiness, interests, and learning profile, how
@@ -373,7 +373,7 @@
                     </tbody>
                 </table>
             </details>
-            <div class="page-break-inside top-margin field border label textarea extra s12 m12 l12 min">
+            <div class="page-break-inside top-margin field small-round border label textarea extra s12 m12 l12 min">
                 <textarea class="small-padding" id="reflections"></textarea>
                 <label>Reflections</label>
             </div>
@@ -381,26 +381,34 @@
         <nav class="fixed transparent bottom vertical right-align extra-margin">
             <button id="share-button" class="circle large-elevate">
                 <i>share</i>
-                <div class="tooltip max left">
-                    <b>Share</b>
-                    <p>Copy the lesson plan to the clipboard</p>
+                <div class="tooltip left">
+                    <p>Copy the lesson plan url to the clipboard</p>
                 </div>
             </button>
             <button id="publish-button" class="circle large large-elevate">
                 <i>publish</i>
-                <div class="tooltip max left">
-                    <b>Publish</b>
-                    <p>Save the lesson plan to public storage</p>
+                <div class="tooltip left">
+                    <p>Publish the lesson plan for others to see</p>
                 </div>
             </button>
-            <button id="save-button" class="circle extra large-elevate">
-                <i>save</i>
-                <div class="tooltip max left">
-                    <b>Save</b>
-                    <p>Save to local storage</p>
-                </div>
-                <div class="badge hidden" id="save-button-badge"></div>
-            </button>
+            <div class="row bottom-align right-align">
+                <button id="copy-content-button" class="circle large-elevate" >
+                    <i>content_copy</i>
+                    <div class="badge">
+                        <i class="tiny">smart_toy</i>
+                    </div>
+                    <div class="tooltip left">
+                        <p>Copy page content to paste into ChatGPT.</p>
+                    </div>
+                </button>
+                <button id="save-button" class="circle extra large-elevate">
+                    <i>save</i>
+                    <div class="tooltip left">
+                        <p>Save to local browser storage</p>
+                    </div>
+                    <div class="badge hidden" id="save-button-badge"></div>
+                </button>
+            </div>
         </nav>
         <div class="snackbar" id="snackbar-saved">Saved lesson plan</div>
         <div class="snackbar" id="snackbar-share">Copied to clipboard</div>
