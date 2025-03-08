@@ -1,3 +1,5 @@
+import natsort from "natsort";
+
 export type LessonPlanTemplate = {
     id: string;
     authorName: string;
@@ -176,6 +178,24 @@ export async function getAllLessonPlans(): Promise<LessonPlanTemplate[]> {
     }
 
     return [...localLessonPlans, ...publicLessonPlans];
+}
+
+export async function getSortedLessonPlans(): Promise<LessonPlanTemplate[]> {
+    let lessonPlans = await getAllLessonPlans();
+
+    const sorter = natsort(); // Natural sorting
+
+    lessonPlans.sort((a, b) => {
+        const topicComparison = sorter(a.topicTitle, b.topicTitle);
+        if (topicComparison !== 0) return topicComparison;
+
+        const lessonComparison = sorter(a.lessonName, b.lessonName);
+        if (lessonComparison !== 0) return lessonComparison;
+
+        return sorter(a.authorName, b.authorName);
+    });
+
+    return lessonPlans;
 }
 
 export async function getAllResourceLinks(lessonPlan: LessonPlanTemplate): Promise<string[]> {

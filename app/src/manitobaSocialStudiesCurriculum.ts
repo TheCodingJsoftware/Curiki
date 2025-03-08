@@ -14,7 +14,7 @@ import {
     skillTypesIconDictionary
 } from './utils/icons';
 import { gradeNames } from './utils/grades'
-import { createLessonPlan, generateLessonPlan, getAllLessonPlans, initDB, LessonPlanTemplate } from './utils/lessonPlan';
+import { createLessonPlan, generateLessonPlan, getAllLessonPlans, getSortedLessonPlans, initDB, LessonPlanTemplate } from './utils/lessonPlan';
 import { getMetadata } from './utils/getMetadata';
 
 
@@ -54,7 +54,7 @@ class FilterManager {
         this.alwaysOpenOutcomeCheckbox.addEventListener('change', this.handleCheckboxChange.bind(this));
 
         initDB().then(async () => {
-            this.allLessonPlans = await getAllLessonPlans();
+            this.allLessonPlans = await getSortedLessonPlans();
             const url = new URL(window.location.href);
             const grade = url.searchParams.get('grade');
             const outcome = url.searchParams.get('outcome');
@@ -824,7 +824,7 @@ class FilterManager {
                             lessonPlanButton.appendChild(sourceIcon);
                             const span = document.createElement('span');
                             span.classList.add('no-line', 'small-margin');
-                            span.textContent = `${lessonPlan.topicTitle} by ${lessonPlan.authorName}`;
+                            span.textContent = `${lessonPlan.topicTitle} ${lessonPlan.lessonName} by ${lessonPlan.authorName}`;
                             lessonPlanButton.appendChild(span);
                             lessonPlanButton.href = `/lessonPlan.html#${lessonPlan.id}`;
                             lessonPlanButton.target = '_blank';

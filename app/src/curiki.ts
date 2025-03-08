@@ -8,6 +8,8 @@ import ScienceCurriculumManager from './utils/scienceCurriculumManager';
 import BiologyCurriculumManager from './utils/biologyCurriculumManager';
 import SocialStudiesCurriculumManager from './utils/socialStudiesCurriculumManager';
 import OutComeManager from './utils/outcomes';
+import natsort from 'natsort';
+
 
 let db: IDBDatabase;
 let usesChromeStorage: boolean = false;
@@ -192,7 +194,7 @@ function generateLessonPlanArticle(lessonPlan: LessonPlanTemplate, source: strin
     const html = `
         <article class="s12 m6 l6 grid round ${source}-lesson-plan" data-id="${lessonPlan.id}">
             <div class="s12">
-                <h6 class="bold">${lessonPlan.topicTitle}</h6>
+                <h6 class="bold">${lessonPlan.topicTitle} ${lessonPlan.lessonName}</h6>
             </div>
             <div class="s12 small-round">
                 <button class="chip tiny-margin" id="author" data-author="${lessonPlan.authorName}">
@@ -314,9 +316,12 @@ function generateLessonPlanArticle(lessonPlan: LessonPlanTemplate, source: strin
     return div.firstElementChild as HTMLElement;
 }
 
+
 async function loadAllLessonPlans(): Promise<void> {
     const savedLessonPlansContainer = document.getElementById('saved-lesson-plans-container') as HTMLDivElement;
     const publicLessonPlansContainer = document.getElementById('public-lesson-plans-container') as HTMLDivElement;
+
+    const sorter = natsort(); // Initialize natural sorting
 
     Promise.all([
         getAllLocalLessonPlans(),
@@ -327,6 +332,27 @@ async function loadAllLessonPlans(): Promise<void> {
 
         const savedLessonPlansFragment = document.createDocumentFragment();
         const publicLessonPlansFragment = document.createDocumentFragment();
+
+        // Sort lesson plans using natural sorting by topicTitle > lessonName > authorName
+        savedLessonPlans.sort((a, b) => {
+            const topicComparison = sorter(a.topicTitle, b.topicTitle);
+            if (topicComparison !== 0) return topicComparison;
+
+            const lessonComparison = sorter(a.lessonName, b.lessonName);
+            if (lessonComparison !== 0) return lessonComparison;
+
+            return sorter(a.authorName, b.authorName);
+        });
+
+        publicLessonPlans.sort((a, b) => {
+            const topicComparison = sorter(a.topicTitle, b.topicTitle);
+            if (topicComparison !== 0) return topicComparison;
+
+            const lessonComparison = sorter(a.lessonName, b.lessonName);
+            if (lessonComparison !== 0) return lessonComparison;
+
+            return sorter(a.authorName, b.authorName);
+        });
 
         savedLessonPlans.forEach((lessonPlan) => {
             const article = generateLessonPlanArticle(lessonPlan, "local");
