@@ -60,7 +60,7 @@ export function generateLessonPlan(topicTitle: string, lessonName: string, grade
         lessonName: lessonName,
         topicTitle: topicTitle,
         gradeLevel: gradeLevel,
-        timeLength: "~ 60 minutes",
+        timeLength: "~ 1 hour",
         date: date,
         outcomes: outcomes,
         activate: "",
