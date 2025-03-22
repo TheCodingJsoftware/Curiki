@@ -119,8 +119,8 @@
                 <i>timer</i>
             </div>
             <div class="field label prefix border s6 m6 l6 small-round">
-                <i>today</i>
-                <input type="date" id="date">
+                <i>event</i>
+                <input type="date" id="date-time-picker" name="date" />
                 <label>Date</label>
             </div>
             <details class="s12 m12 l12 border top-margin" open>
@@ -226,6 +226,16 @@
                 <button id="add-row-button" class="small-round">
                     <i>add</i>
                     <span>Add Assessment Evidence</span>
+                </button>
+            </details>
+            <details class="page-break-inside s12 m12 l12 border top-margin resource-links-details" open>
+                <summary class="none small-padding" style="font-size: 22pt;">Resource Links</summary>
+                <span class="small-padding">Link to a resource, such as a website, PDF, or video.</span>
+                <div class="small-padding" id="resource-links">
+                </div>
+                <button class="small-round" id="add-resource-link">
+                    <i>add</i>
+                    <span>Add Link</span>
                 </button>
             </details>
             <details class="page-break-inside s12 m12 l12 border top-margin" open>
@@ -381,16 +391,6 @@
                 <textarea class="small-padding" id="reflections"></textarea>
                 <label>Reflections</label>
             </div>
-            <details class="page-break-inside s12 m12 l12 border top-margin resource-links-details" open>
-                <summary class="none small-padding" style="font-size: 22pt;">Resource Links</summary>
-                <span class="small-padding">Link to a resource, such as a website, PDF, or video.</span>
-                <div class="small-padding" id="resource-links">
-                </div>
-                <button class="small-round" id="add-resource-link">
-                    <i>add</i>
-                    <span>Add Link</span>
-                </button>
-            </details>
         </div>
         <nav class="fixed transparent bottom vertical right-align extra-margin">
             <button id="share-button" class="circle large-elevate">

@@ -1,9 +1,10 @@
 {
     "dependencies": {
         "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
-        "beercss": "^3.7.8",
+        "beercss": "^3.9.6",
         "easy-qrcode": "^0.1.0",
         "firebase": "^11.2.0",
+        "flatpickr": "^4.6.13",
         "natsort": "^2.0.3"
     },
     "devDependencies": {

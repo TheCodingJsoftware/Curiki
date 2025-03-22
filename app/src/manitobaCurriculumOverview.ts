@@ -313,7 +313,6 @@ class Page {
             const resourceDiv = document.createElement("a");
             resourceDiv.classList.add('link', 'transparent', 'wave', 'small-round', 'small-padding', 'tiny-margin')
             resourceDiv.href = resourceLink
-            resourceDiv.target = "_target"
             resourceDiv.innerHTML = `
                 <span class="tiny-padding underline no-line">${resourceName}</span>
                 <i>open_in_new</i>

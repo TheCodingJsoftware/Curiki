@@ -16,6 +16,8 @@ import { SocialStudiesSkill } from './utils/socialStudiesSkill';
 import { LessonPlanTemplate } from './utils/lessonPlan';
 import { isTrustworthyResource } from './utils/trustworthyDomains';
 import { getMetadata } from './utils/getMetadata';
+import flatpickr from 'flatpickr';
+require("flatpickr/dist/themes/dark.css");
 
 class OutCome {
     id: string;
@@ -76,7 +78,7 @@ class LessonPlan {
         this.lessonName = document.getElementById('lesson-name') as HTMLInputElement;
         this.gradeLevel = document.getElementById('grade-level') as HTMLSelectElement;
         this.timeLength = document.getElementById('time-length') as HTMLInputElement;
-        this.date = document.getElementById('date') as HTMLInputElement;
+        this.date = document.getElementById('date-time-picker') as HTMLInputElement;
         this.authorName = document.getElementById('author-name') as HTMLInputElement;
         this.curricularOutcomes = document.getElementById('curricular-outcomes') as HTMLElement;
         this.addCurricularOutcome = document.getElementById('add-curricular-outcome') as HTMLButtonElement;
@@ -521,7 +523,13 @@ class LessonPlan {
         this.lessonName.value = lessonPlan.lessonName;
         this.gradeLevel.value = lessonPlan.gradeLevel;
         this.timeLength.value = lessonPlan.timeLength;
-        this.date.value = lessonPlan.date;
+        flatpickr("#date-time-picker", {
+            enableTime: true,
+            dateFormat: "Y-m-d h:i K",
+            altInput: true,
+            altFormat: "F j, Y h:i K",
+            defaultDate: lessonPlan.date,
+        });
         this.crossCurricularConnections.value = lessonPlan.crossCurricularConnections;
         this.materialsConsidered.value = lessonPlan.materialsConsidered;
         this.studentSpecificPlanning.value = lessonPlan.studentSpecificPlanning;
@@ -770,7 +778,6 @@ class LessonPlan {
             </button>`
 
         const openButton = newRow.querySelector('#open-resource-link') as HTMLAnchorElement;
-        openButton.target = '_blank';
 
         const resourceLinkInput = newRow.querySelector('#resource-link') as HTMLInputElement;
         resourceLinkInput.addEventListener('input', () => {

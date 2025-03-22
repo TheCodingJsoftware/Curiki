@@ -627,7 +627,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <button id="copy-button" class="chip transparent link circle no-border small-round small-margin">
                             <i>content_copy</i>
                         </button>
-                        <a class="circle wave chip no-border small-round tiny-margin primary" href='/${curriculumPageName}.html?grade=${outcome.grade.toLowerCase()}&outcome=${outcome.id}' target="_blank">
+                        <a class="circle wave chip no-border small-round tiny-margin primary" href='/${curriculumPageName}.html?grade=${outcome.grade.toLowerCase()}&outcome=${outcome.id}'>
                             <i>open_in_new</i>
                         </a>
                     </div>

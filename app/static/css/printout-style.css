@@ -61,7 +61,7 @@ details {
     .qr-code{
         display: block !important;
     }
-    header, nav, .snackbar, .resource-links-details, #info{
+    header, nav, .snackbar, #info{
         display: none !important;
     }
     details, details summary, body{

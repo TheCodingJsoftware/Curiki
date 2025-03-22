@@ -610,7 +610,7 @@ class FilterManager {
                         hashtag
                     ).then(() => {
                         const newUrl = `/lessonPlan.html#${hashtag}`;
-                        window.open(newUrl, '_blank');
+                        window.open(newUrl);
                     });
                 }
                 buttonRowDiv.appendChild(createLessonPlanButton);
@@ -662,7 +662,6 @@ class FilterManager {
                                 icon.innerText = 'open_in_new';
                                 resourceLinkButton.appendChild(icon);
                                 resourceLinkButton.href = resourceLink;
-                                resourceLinkButton.target = '_blank';
                                 resourceLinkItem.appendChild(resourceLinkButton);
                                 resourceLinksList.appendChild(resourceLinkItem);
                             });
@@ -683,7 +682,6 @@ class FilterManager {
                             span.textContent = `${lessonPlan.topicTitle} ${lessonPlan.lessonName} by ${lessonPlan.authorName}`;
                             lessonPlanButton.appendChild(span);
                             lessonPlanButton.href = `/lessonPlan.html#${lessonPlan.id}`;
-                            lessonPlanButton.target = '_blank';
                             lessonPlanButton.appendChild(openIcon);
                             lessonPlanDiv.appendChild(lessonPlanButton);
                             resourceCountBadge.textContent = lessonPlanCount.toString();
