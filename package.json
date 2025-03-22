@@ -1,26 +1,26 @@
 {
     "dependencies": {
         "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
-        "beercss": "^3.9.6",
+        "beercss": "^3.9.7",
         "easy-qrcode": "^0.1.0",
-        "firebase": "^11.2.0",
+        "firebase": "^11.5.0",
         "flatpickr": "^4.6.13",
         "natsort": "^2.0.3"
     },
     "devDependencies": {
-        "@types/chrome": "^0.0.299",
-        "copy-webpack-plugin": "^12.0.2",
+        "@types/chrome": "^0.0.310",
+        "copy-webpack-plugin": "^13.0.0",
         "css-loader": "^7.1.2",
-        "html-webpack-plugin": "^5.6.0",
+        "html-webpack-plugin": "^5.6.3",
         "material-dynamic-colors": "^1.1.2",
-        "mini-css-extract-plugin": "^2.9.1",
+        "mini-css-extract-plugin": "^2.9.2",
         "style-loader": "^4.0.0",
-        "ts-loader": "^9.5.1",
-        "typescript": "^5.5.4",
-        "webpack": "^5.94.0",
+        "ts-loader": "^9.5.2",
+        "typescript": "^5.8.2",
+        "webpack": "^5.98.0",
         "webpack-bundle-analyzer": "^4.10.2",
-        "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "^5.0.4"
+        "webpack-cli": "^6.0.1",
+        "webpack-dev-server": "^5.2.0"
     },
     "name": "curiki",
     "description": "A comprehensive web page for accessing curriculums.",
